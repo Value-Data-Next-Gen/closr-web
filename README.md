@@ -87,10 +87,29 @@ GEMINI_IMAGE_MODEL=gemini-2.5-flash-image-preview python generate_images.py
    - Publish directory: `.`
 3. **Deploy**. La primera build toma ~30 segundos.
 
-### Dominio custom
+### Dominio custom — closr.cl
 
-En el dashboard de Netlify → Domain management → Add domain → `closr.cl` (o el que sea).
-Apuntar DNS según las instrucciones del proveedor (Netlify DNS recomendado para zero-config HTTPS).
+Dominio ya adquirido en NIC Chile.
+
+**Setup en Netlify** (una sola vez):
+1. Site → **Domain management** → **Add a domain** → `closr.cl` → confirmar propiedad
+2. Repetir con `www.closr.cl` (redirect automático a apex)
+3. Esperar verificación DNS (5-15 min)
+4. **HTTPS** → "Verify DNS configuration" → "Provision certificate" (Let's Encrypt, auto-renueva)
+
+**Configuración DNS en NIC Chile**:
+
+| Tipo  | Nombre | Valor                          | TTL  |
+|-------|--------|--------------------------------|------|
+| A     | @      | `75.2.60.5`                    | 3600 |
+| CNAME | www    | `<site-name>.netlify.app`      | 3600 |
+
+(reemplazar `<site-name>` por el nombre actual del site en Netlify — ej. `closr.netlify.app`)
+
+**Alternativa más fácil** — usar **Netlify DNS**:
+- Netlify te da 4 nameservers (`dns1.p01.nsone.net` etc.)
+- En NIC Chile → "Nameservers" → reemplazar los actuales por los de Netlify
+- Tarda 24-48h en propagar, después Netlify maneja TODO solo (HTTPS, www, redirects)
 
 ### Branch previews
 
