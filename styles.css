@@ -2183,14 +2183,48 @@ template { display: none; }
   margin-top: 8px;
 }
 .cta-inner small.trust { color: rgba(255, 255, 255, 0.55); }
-#ctaSuccess {
-  color: #4ADE80;
+#ctaSuccess, .cta-error {
+  display: block;
   font-weight: 600;
   height: 0;
   opacity: 0;
-  transition: opacity .3s, height .3s;
+  overflow: hidden;
+  transition: opacity .3s, height .3s, margin .3s;
+  margin: 0;
 }
-#ctaSuccess.show { height: auto; opacity: 1; }
+#ctaSuccess.show, .cta-error.show {
+  height: auto;
+  opacity: 1;
+  margin-top: 12px;
+}
+#ctaSuccess { color: #4ADE80; }
+.cta-error { color: #FCA5A5; }
+.cta-error a { color: var(--white); text-decoration: underline; }
+
+/* Honeypot — hidden from humans, visible to bots */
+.hp-field {
+  position: absolute !important;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Loading spinner on submit button */
+#ctaSubmitBtn .btn-spinner {
+  display: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: btn-spin .7s linear infinite;
+}
+#ctaSubmitBtn.loading .btn-text   { opacity: 0.5; }
+#ctaSubmitBtn.loading .btn-spinner { display: inline-block; }
+#ctaSubmitBtn.loading { cursor: wait; }
+@keyframes btn-spin { to { transform: rotate(360deg); } }
 
 /* ---------- Footer ---------- */
 .site-footer {

@@ -1055,11 +1055,30 @@
     <div class="container cta-inner">
       <h2>Cierra la próxima venta sin levantar el dedo.</h2>
       <p>Conecta tu WhatsApp en 5 minutos. La IA aprende de tus chats anteriores y arranca el mismo día.</p>
-      <form class="cta-form" id="ctaForm" onsubmit="event.preventDefault(); document.getElementById('ctaSuccess').classList.add('show'); this.reset();">
-        <input type="email" name="email" placeholder="tu@email.cl" required aria-label="Tu email" />
-        <button type="submit" class="btn btn-primary">Probar gratis</button>
+      <form
+        class="cta-form"
+        id="ctaForm"
+        name="closr-leads"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        action="/?form=success#cta"
+      >
+        <!-- Required for Netlify Forms AJAX detection -->
+        <input type="hidden" name="form-name" value="closr-leads" />
+        <!-- Honeypot anti-spam (hidden from humans) -->
+        <p class="hp-field" aria-hidden="true">
+          <label>No completar: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <input type="email" name="email" placeholder="tu@email.cl" required aria-label="Tu email" autocomplete="email" />
+        <button type="submit" class="btn btn-primary" id="ctaSubmitBtn">
+          <span class="btn-text">Probar gratis</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
       </form>
       <small id="ctaSuccess">¡Gracias! Te escribimos en menos de 1 hora hábil.</small>
+      <small id="ctaError" class="cta-error">Algo falló. Escríbenos directo a <a href="mailto:hola@closr.cl">hola@closr.cl</a>.</small>
       <small class="trust">Sin tarjeta · Cancelas cuando quieras · Soporte en chileno</small>
     </div>
   </section>

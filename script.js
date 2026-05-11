@@ -198,6 +198,45 @@
 
   if (replayBtn) replayBtn.addEventListener('click', playDemo);
 
+  // ---------- Netlify Forms — AJAX submit ----------
+  const ctaForm = document.getElementById('ctaForm');
+  const ctaSuccess = document.getElementById('ctaSuccess');
+  const ctaError = document.getElementById('ctaError');
+  const ctaSubmitBtn = document.getElementById('ctaSubmitBtn');
+
+  if (ctaForm) {
+    ctaForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ctaSuccess?.classList.remove('show');
+      ctaError?.classList.remove('show');
+      ctaSubmitBtn?.classList.add('loading');
+      ctaSubmitBtn?.setAttribute('disabled', 'true');
+
+      try {
+        const formData = new FormData(ctaForm);
+        // Netlify expects URL-encoded body
+        const body = new URLSearchParams(formData).toString();
+
+        const res = await fetch(ctaForm.getAttribute('action') || '/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        ctaSuccess?.classList.add('show');
+        ctaForm.reset();
+      } catch (err) {
+        console.warn('Form submit failed:', err);
+        ctaError?.classList.add('show');
+      } finally {
+        ctaSubmitBtn?.classList.remove('loading');
+        ctaSubmitBtn?.removeAttribute('disabled');
+      }
+    });
+  }
+
   // ---------- Hero carousel ----------
   const carousel = document.getElementById('heroCarousel');
   if (carousel) {

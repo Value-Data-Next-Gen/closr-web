@@ -96,6 +96,42 @@ Apuntar DNS según las instrucciones del proveedor (Netlify DNS recomendado para
 
 Cada PR genera un deploy preview automático. Cada push a `main` deploya a producción.
 
+### Netlify Forms (formulario de leads)
+
+El formulario del CTA (`#ctaForm`, name=`closr-leads`) ya está conectado a **Netlify Forms** — Netlify lo detecta automáticamente al deployar.
+
+**Atributos clave** del form en `index.html`:
+- `name="closr-leads"` — identifica el formulario en el dashboard
+- `data-netlify="true"` — activa la detección
+- `data-netlify-honeypot="bot-field"` — anti-spam (campo oculto que los bots completan; humanos no lo ven)
+- `<input type="hidden" name="form-name" value="closr-leads">` — necesario para que el AJAX funcione
+
+El JS (`script.js`) hace **POST AJAX** sin recargar la página y muestra `#ctaSuccess` / `#ctaError` inline.
+
+**Setup en el dashboard de Netlify** (después del primer deploy):
+
+1. **Verificar detección**: Site Settings → Forms → debe aparecer "closr-leads"
+2. **Notificaciones por email** (Site configuration → Forms → Form notifications → Add notification):
+   - Type: Email notification
+   - Event: New form submission
+   - Form: `closr-leads`
+   - Email: hola@closr.cl (o el que sea)
+3. **Anti-spam adicional** (opcional, recomendado):
+   - Site Settings → Forms → Spam filters → enable **reCAPTCHA 2** invisible
+   - O dejar solo el honeypot (ya está configurado, suele alcanzar)
+4. **Webhook a Slack/Zapier/HubSpot** (opcional):
+   - Site configuration → Forms → Outgoing webhooks → Add webhook
+   - URL del webhook destino → Netlify le pega un POST con cada submission
+5. **Ver submissions**: Site → Forms → `closr-leads` → ahí están todos los leads
+
+**Free tier de Netlify Forms**: 100 submissions/mes y 10 MB en uploads. Si crece, plan Pro = $19/mes/site con 1000 submissions.
+
+**Probar local**: Netlify Forms NO funciona en `localhost` (solo cuando está deployado). Para testear, deployá una rama preview y mandá el formulario desde la URL `.netlify.app`.
+
+### Manejo de submissions sin Netlify (alternativa)
+
+Si más adelante querés bypass de Netlify, podés cambiar el `action` del form a un endpoint propio (n8n, AWS Lambda, Formspree, etc.) y borrar los atributos `data-netlify*` del form.
+
 ## SEO checklist
 
 - ✅ Meta tags completos (title, description, keywords, author)
