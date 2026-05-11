@@ -197,4 +197,71 @@
   }
 
   if (replayBtn) replayBtn.addEventListener('click', playDemo);
+
+  // ---------- Hero carousel ----------
+  const carousel = document.getElementById('heroCarousel');
+  if (carousel) {
+    const slides = carousel.querySelectorAll('.slide');
+    const dots   = carousel.querySelectorAll('.carousel-dots .dot');
+    const tagEl  = document.getElementById('slideTag');
+    const autoplay = parseInt(carousel.dataset.autoplay, 10) || 4500;
+    let idx = 0;
+    let intervalId = null;
+
+    const goTo = (next) => {
+      const newIdx = ((next % slides.length) + slides.length) % slides.length;
+      if (newIdx === idx) return;
+      slides[idx].classList.remove('active');
+      dots[idx]?.classList.remove('active');
+      idx = newIdx;
+      slides[idx].classList.add('active');
+      dots[idx]?.classList.add('active');
+      if (tagEl) {
+        tagEl.style.opacity = '0';
+        setTimeout(() => {
+          tagEl.textContent = slides[idx].dataset.tag || '';
+          tagEl.style.opacity = '1';
+        }, 200);
+      }
+    };
+
+    const start = () => {
+      stop();
+      intervalId = setInterval(() => goTo(idx + 1), autoplay);
+    };
+    const stop = () => {
+      if (intervalId) clearInterval(intervalId);
+      intervalId = null;
+    };
+
+    dots.forEach((d, i) => {
+      d.addEventListener('click', () => {
+        stop();
+        goTo(i);
+        start();
+      });
+    });
+
+    // Pause on hover (desktop)
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+
+    // Pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop(); else start();
+    });
+
+    // Only autoplay when visible
+    if ('IntersectionObserver' in window) {
+      const visObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) start();
+          else stop();
+        });
+      }, { threshold: 0.25 });
+      visObs.observe(carousel);
+    } else {
+      start();
+    }
+  }
 })();

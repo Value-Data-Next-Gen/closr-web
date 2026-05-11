@@ -218,72 +218,82 @@
     </div>
   </header>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero animated-grid-bg">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <span class="kicker">
-          <span class="dot-live"></span>
-          AI Agentic Sales · Producto ValueData
-        </span>
-        <h1>
-          Cierra ventas con IA
-          <span class="gradient-text">sin perder leads</span>
-          mientras duermes.
-        </h1>
-        <p class="lede" id="leadeText">
-          closr es un agente autónomo que conversa por WhatsApp con tus clientes,
-          responde 24/7 con tu tono, hace seguimiento y te entrega solo los leads
-          listos para comprar. No es un chatbot: es un closer que ejecuta.
-        </p>
-        <div class="hero-ctas">
-          <a href="#cta" class="btn btn-primary">
-            Probar 14 días gratis
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <a href="#como-funciona" class="btn btn-ghost">Ver cómo funciona</a>
-        </div>
-        <ul class="hero-trust">
-          <li><span class="check">✓</span> Sin tarjeta</li>
-          <li><span class="check">✓</span> Conecta tu WhatsApp en 5 min</li>
-          <li><span class="check">✓</span> Español chileno</li>
-        </ul>
+  <!-- ============ HERO — Cosmic editorial ============ -->
+  <section class="hero hero-cosmic">
+    <!-- Fondo cosmico full-bleed -->
+    <div class="cosmic-bg" aria-hidden="true">
+      <img src="images/hero_cosmic.png" alt="" class="cosmic-img" loading="eager" fetchpriority="high" />
+      <div class="cosmic-gradient"></div>
+      <div class="cosmic-particles">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
 
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-value" data-counter="24">24</span><span class="stat-suffix">/7</span>
-            <span class="stat-label">Operación continua</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value" data-counter="40">40</span><span class="stat-suffix">%</span>
-            <span class="stat-label">+ tasa de cierre</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value" data-counter="5">5</span><span class="stat-suffix"> min</span>
-            <span class="stat-label">Setup inicial</span>
-          </div>
+    <!-- Contenido sobre el fondo -->
+    <div class="container hero-cosmic-content">
+      <span class="hero-kicker-overlay">
+        <span class="dot-live"></span>
+        AI Agentic Sales · Producto ValueData
+      </span>
+
+      <!-- Headline cinematográfico con echo effect -->
+      <h1 class="hero-echo">
+        <span class="echo-line echo-3" aria-hidden="true">El caos del WhatsApp termina aquí.</span>
+        <span class="echo-line echo-2" aria-hidden="true">El caos del WhatsApp termina aquí.</span>
+        <span class="echo-line echo-1">El caos del WhatsApp <span class="echo-accent">termina aquí.</span></span>
+      </h1>
+
+      <p class="hero-cosmic-lede">
+        closr es el agente de IA que responde, califica y cierra ventas por WhatsApp.
+        <strong>24/7. En tu tono. Sin que tengas que mover un dedo.</strong>
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#cta" class="btn btn-primary btn-lg">
+          Comenzar ahora
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="#dolor" class="btn btn-cosmic-ghost btn-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          Ver demo en vivo
+        </a>
+      </div>
+
+      <ul class="hero-cosmic-trust">
+        <li><span class="check-cosmic">✓</span> Sin tarjeta de crédito</li>
+        <li><span class="check-cosmic">✓</span> Conecta WhatsApp en 5 min</li>
+        <li><span class="check-cosmic">✓</span> Español chileno</li>
+      </ul>
+
+      <!-- Stats flotando sobre el cosmic -->
+      <div class="hero-cosmic-stats">
+        <div class="cosmic-stat">
+          <span class="cosmic-stat-value" data-counter="24">24</span><span class="cosmic-stat-suffix">/7</span>
+          <span class="cosmic-stat-label">Operación continua</span>
+        </div>
+        <div class="cosmic-stat-divider"></div>
+        <div class="cosmic-stat">
+          <span class="cosmic-stat-value" data-counter="40">40</span><span class="cosmic-stat-suffix">%</span>
+          <span class="cosmic-stat-label">+ tasa de cierre</span>
+        </div>
+        <div class="cosmic-stat-divider"></div>
+        <div class="cosmic-stat">
+          <span class="cosmic-stat-value" data-counter="8">8</span><span class="cosmic-stat-suffix">s</span>
+          <span class="cosmic-stat-label">Respuesta promedio</span>
+        </div>
+        <div class="cosmic-stat-divider"></div>
+        <div class="cosmic-stat">
+          <span class="cosmic-stat-value" data-counter="5">5</span><span class="cosmic-stat-suffix"> min</span>
+          <span class="cosmic-stat-label">Setup inicial</span>
         </div>
       </div>
 
-      <div class="hero-visual">
-        <img
-          src="images/hero.png"
-          alt="closr corriendo en un iPhone — chat con IA cerrando una venta por WhatsApp"
-          class="hero-img"
-          width="600" height="600"
-        />
-        <div class="float-card float-1" aria-hidden="true">
-          <div class="float-mini-icon">📈</div>
-          <div>
-            <strong>+24%</strong>
-            <span>tasa de cierre</span>
-          </div>
-        </div>
-        <div class="float-card float-2" aria-hidden="true">
-          <span class="dot-live"></span>
-          <span>9 chats activos · 2 listos para cotizar</span>
-        </div>
-      </div>
+      <a href="#dolor" class="hero-scroll-hint" aria-label="Scroll para ver más">
+        <span>El dolor que ya conoces</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </a>
+    </div>
+
 
       <!-- Mockup CSS antiguo desactivado (queda como referencia) -->
       <template id="phone-mockup-legacy">
@@ -348,7 +358,6 @@
           </div>
         </div>
       </template>
-    </div>
   </section>
 
   <!-- ============ STRIP — canales integrados ============ -->
