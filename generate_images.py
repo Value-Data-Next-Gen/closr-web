@@ -1,0 +1,301 @@
+"""
+Generate closr hero/section images via Gemini Nano Banana
+(gemini-2.5-flash-image-preview).
+
+Reads API key from enn.txt (one line, raw key).
+Saves PNG output to ./images/.
+"""
+from __future__ import annotations
+import os
+import sys
+import time
+from pathlib import Path
+
+# Fix Windows SSL: monkey-patch requests.Session.request to always pass
+# verify=<certifi bundle>. Genai SDK uses google.auth.transport.requests
+# under the hood, which is a requests.Session subclass.
+import certifi
+_CA = certifi.where()
+os.environ["SSL_CERT_FILE"] = _CA
+os.environ["REQUESTS_CA_BUNDLE"] = _CA
+import requests
+_orig_request = requests.Session.request
+def _patched_request(self, method, url, **kwargs):  # noqa: ANN001
+    kwargs.setdefault("verify", _CA)
+    return _orig_request(self, method, url, **kwargs)
+requests.Session.request = _patched_request  # type: ignore[assignment]
+
+from google import genai
+from google.genai import types
+
+ROOT = Path(__file__).parent
+KEY_FILE = ROOT / "enn.txt"
+OUT_DIR = ROOT / "images"
+OUT_DIR.mkdir(exist_ok=True)
+
+MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
+
+BRAND_PREAMBLE = (
+    "BRAND: closr — premium B2B SaaS by ValueData. AI Agentic Sales for "
+    "Chilean SMBs. Aesthetic: Linear / Vercel / Stripe — clean editorial, "
+    "premium tech, sober. NOT cute, NOT warm-illustrated, NOT corporate-stiff.\n"
+    "PALETTE (use exactly): primary indigo #6366F1, indigo dark #4F46E5, "
+    "indigo light #E0E7FF, secondary blue #3B82F6, navy text #0F172A, "
+    "slate body #64748B, off-white bg #F8FAFC, white surface #FFFFFF, "
+    "success green #22C55E. Gradient: linear 135deg from #6366F1 to #3B82F6 "
+    "for accents and CTAs. Plus Jakarta Sans typography.\n"
+    "STRICTLY NO: robots, holograms, neural-network lines, glowing brains, "
+    "purple/violet/teal/mint, AI clichés, drawn human characters with faces, "
+    "stock-photo handshakes, code on screens, tropical illustrations.\n\n"
+)
+
+PROMPTS: dict[str, str] = {
+    "hero": (
+        "PHOTOREALISTIC product render of an iPhone 17 Pro in NATURAL "
+        "TITANIUM finish, FRONT VIEW ONLY — viewer sees the SCREEN, not the "
+        "back. The phone is hovering vertically, slightly tilted ~7 degrees "
+        "to the right (NOT lying flat, NOT laid down). Apple-keynote studio "
+        "fidelity.\n\n"
+        "DEVICE DETAILS (must be accurate):\n"
+        "- Natural-titanium side rails (slightly warm silver, brushed micro "
+        "matte), chamfered flat edges. NO chrome, NO plastic look.\n"
+        "- Real Dynamic Island: centered black pill at the top of the screen, "
+        "approximately 125 wide × 35 tall, with the small front-camera dot "
+        "and Face ID sensor visible inside it.\n"
+        "- Slim uniform bezels around the screen (Ceramic Shield).\n"
+        "- LEFT side (subtle, partially visible due to tilt): small Action "
+        "Button on top, then two long volume buttons (up/down).\n"
+        "- RIGHT side (subtle): single long power/side button.\n"
+        "- ABSOLUTELY NO camera lenses on the front. The camera goes on the "
+        "BACK and the back is NOT visible in this shot. Front face only.\n\n"
+        "SCREEN CONTENT — render a clean, REALISTIC WhatsApp chat:\n"
+        "1) iOS status bar at top: time '23:47' on left in white, signal "
+        "bars + Wi-Fi + battery on right in white. Status-bar background "
+        "matches WhatsApp dark green #075E54.\n"
+        "2) WhatsApp dark-green header bar (#075E54) with: small white "
+        "back-arrow, circular avatar with white WhatsApp logo on green, "
+        "title 'Ferretería El Tornillo' (white, bold), subtitle 'en línea' "
+        "(white, smaller, with a tiny green pulsing dot before it). Two "
+        "small white icons on the right (camera + phone).\n"
+        "3) Chat body with the AUTHENTIC WhatsApp beige background "
+        "(#ECE5DD) and the faint pattern of doodles. A small pill saying "
+        "'HOY' in light blue at the top.\n"
+        "4) Five chat bubbles, alternating sides, with VERY SHORT and "
+        "CLEARLY LEGIBLE Spanish text — render the text crisp, NOT garbled:\n"
+        "   • Incoming (left, WHITE bubble, dark text): 'Tienen rodamiento?'\n"
+        "   • Outgoing (right, light-green #DCF8C6 bubble, dark text, with "
+        "a tiny indigo 'IA' tag inside): 'Sí, queda 1. ¿Lo aparto?'\n"
+        "   • Incoming (left, white): 'Sí porfa 🙏'\n"
+        "   • Outgoing (right, light-green, with 'IA' tag): 'Listo ✓ "
+        "mañana 9 AM'\n"
+        "   • Incoming (left, white): 'Gracias!'\n"
+        "5) WhatsApp input bar at the bottom: light-grey background with a "
+        "rounded white pill saying 'Mensaje', plus a green circular mic "
+        "button on the right (#25D366).\n\n"
+        "RESERVED: text must be LEGIBLE and spelled EXACTLY as written "
+        "above. Use Latin characters only — do not invent or scramble "
+        "letters.\n\n"
+        "POSE & COMPOSITION: phone vertical, centered, floating in mid-air, "
+        "no hand, no desk. Slight 7-degree tilt to the right. Subtle "
+        "contact shadow under the phone.\n"
+        "LIGHTING: soft three-point studio lighting. Subtle indigo "
+        "(#6366F1) rim light on the right edge of the device, gentle blue "
+        "(#3B82F6) fill on the left, picking up the brushed titanium.\n"
+        "BACKGROUND: clean off-white #F8FAFC seamless studio backdrop. "
+        "Two large out-of-focus glowing orbs — indigo top-right at ~35% "
+        "opacity, blue bottom-left at ~25% opacity. A subtle dot grid "
+        "pattern (40px spacing, indigo at 6% opacity) faded toward the "
+        "edges. Nothing else competing for attention.\n\n"
+        "DO NOT INCLUDE: NO floating UI cards, NO badges, NO stickers, NO "
+        "watermarks, NO text overlays outside the screen. Only the phone "
+        "and the soft glow background.\n"
+        "DO NOT INCLUDE: NO violet, NO teal, NO mint background. NO "
+        "cartoon style. NO drawn humans. NO hand holding the phone.\n\n"
+        "FINAL CHECK: must look like a REAL Apple-marketing photograph of "
+        "the iPhone 17 Pro, sharp focus, premium product photography. "
+        "Square aspect ratio, hi-res."
+    ),
+
+    "section_night": (
+        "Premium dark-mode SaaS illustration. Dark navy #0F172A panel as the "
+        "scene. A small minimal line-art icon of a closed shopfront rolling "
+        "shutter with a tiny pulsing green 'AI active' indicator. Stacked "
+        "WhatsApp-style chat bubbles alternating: incoming white with navy "
+        "text 'tienen rodamiento 6203?'; outgoing in indigo→blue gradient with "
+        "white text and 'AI' badge 'sí, te queda 1 en stock. ¿lo dejamos "
+        "apartado para mañana?'; incoming 'porfa'. A faint indigo halo behind "
+        "the bubbles. Top-right corner: small clock showing 23:47 in slate "
+        "#94A3B8 plus a subtle indigo-light moon glow and tiny twinkling "
+        "white star dots. Atmosphere: 'business keeps selling at night'. "
+        "Aspect ratio 4:3. NO drawn humans, NO buildings — only UI elements "
+        "and atmospheric glow. Premium editorial."
+    ),
+
+    "section_notification": (
+        "Premium SaaS notification card mockup, hero-product-shot style. "
+        "Centered: a rounded white card (28px radius) with a subtle indigo "
+        "glow shadow. Card content: top row 'phone icon + llamada terminó "
+        "hace 2 min' in slate; middle bold 'María — Joyería Andes' with the "
+        "name in indigo→blue gradient text fill, navy for the rest; subtitle "
+        "'Sugerencia: enviar cotización antes de las 18:00' in slate; bottom "
+        "two buttons side by side — left 'Enviar plantilla' as indigo→blue "
+        "gradient pill with white text, right 'Agendar tarea' as a white "
+        "outlined ghost button. Background: off-white #F8FAFC with translucent "
+        "coffee cup illustration at 5% opacity for atmosphere. Soft indigo "
+        "radial glow surrounding the card. Subtle dot grid pattern faded at "
+        "edges. Aspect ratio 4:3."
+    ),
+
+    "section_kanban": (
+        "Premium SaaS kanban board UI mockup, slight 3-degree tilt for depth "
+        "(NOT full isometric, mostly flat). Four columns on a slate-100 panel "
+        "with rounded corners and 1px border. Column headers in uppercase "
+        "tracked-out labels: 'NUEVO' (indigo underline), 'CONVERSANDO' "
+        "(indigo), 'COTIZANDO' (indigo), 'CERRADO' (green #22C55E underline). "
+        "Each column has 2-3 small cards with abstract pill avatars, name, "
+        "and amount. CERRADO cards have a soft mint-green tint #DCFCE7. "
+        "KEY: one card mid-flight floating between CONVERSANDO and COTIZANDO "
+        "— indigo→blue gradient background, white 'AI' badge, three tiny "
+        "sparkle stars around it, soft indigo glowing shadow underneath. "
+        "Below the kanban: small floating card 'IA: lead respondió 3 veces "
+        "en 10 min · ¿cotizar ahora?' with a gradient 'sí, cotizar' button. "
+        "Background: off-white #F8FAFC with subtle indigo gradient orbs "
+        "in corners. Aspect ratio 16:10."
+    ),
+
+    "og_image": (
+        "Social share OG image, EXACTLY 1200x630 aspect ratio. Premium "
+        "editorial SaaS aesthetic. LEFT 60%: bold headline on off-white "
+        "#F8FAFC. Line 1 'Cierra ventas con IA' in navy #0F172A, Plus Jakarta "
+        "Sans ExtraBold, ~64px, tight tracking. Line 2 'sin perder ningún "
+        "lead' with that whole phrase in indigo→blue gradient text fill. "
+        "Line 3 'nunca más.' in navy. Below smaller (~24px) in slate: 'closr "
+        "· by ValueData'. RIGHT 40%: a stylized vertical stack of three "
+        "rounded chat bubbles slightly rotated and overlapping casually. Top "
+        "bubble: solid indigo with white 'AI' badge. Middle: indigo→blue "
+        "gradient. Bottom: white with slate border. Each contains a tiny "
+        "green checkmark. Behind: soft indigo glow orbs and faint dot grid. "
+        "Bottom-right corner: small closr horizontal logo lockup (gradient "
+        "bubble + wordmark). NO illustrated humans, pure SaaS editorial."
+    ),
+
+    "pain_lost_lead": (
+        "PHOTOREALISTIC iPhone screen-only render (no device frame, just "
+        "the screen content cropped tight). A real WhatsApp chat showing a "
+        "LOST sale due to slow response. WhatsApp dark-green header reading "
+        "'Cliente · última vez ayer'. Beige WhatsApp body with the doodle "
+        "pattern. The chat has timestamps showing the night-to-morning gap:\n"
+        "- 23:14 — Incoming WHITE bubble: 'Tienen el polerón rojo talla M?'\n"
+        "- 23:14 — Tiny double-grey-tick (delivered, NOT read) below it\n"
+        "- A clear visual GAP / vertical separator showing 'MAÑANA SIGUIENTE' "
+        "as a small grey pill\n"
+        "- 09:42 — Outgoing GREEN-tinted bubble (#DCF8C6) from the business: "
+        "'Hola! Sí, queda uno. ¿Lo dejo apartado?'\n"
+        "- 09:43 — Incoming WHITE bubble: 'Ya compré en otra tienda 😅'\n"
+        "- 09:43 — Outgoing GREEN bubble: '😞'\n"
+        "Background of chat: the WhatsApp beige with subtle pattern. "
+        "OVERLAY a translucent sad/red tint on top, very subtle (not dominant) "
+        "to communicate 'lost'. A small floating tag in the top-right corner "
+        "of the image (NOT inside the chat) reading 'VENTA PERDIDA' in red "
+        "uppercase, small, like a sticker.\n"
+        "Style: realistic WhatsApp UI fidelity. Text must be CLEARLY "
+        "LEGIBLE and spelled exactly as written.\n"
+        "Aspect ratio: tall portrait (3:4). Off-white #F8FAFC studio "
+        "background outside the screen content. NO phone bezel, NO hand. "
+        "Just the chat content with the red 'venta perdida' sticker."
+    ),
+
+    "pain_won_lead": (
+        "PHOTOREALISTIC iPhone screen-only render (no device frame, just "
+        "the screen content cropped tight, parallel composition to the 'lost' "
+        "version). A real WhatsApp chat showing a SAVED sale via instant AI "
+        "response. WhatsApp dark-green header reading 'Cliente · en línea'. "
+        "Beige WhatsApp body with the doodle pattern. Timestamps all close "
+        "together at night, showing speed:\n"
+        "- 23:14 — Incoming WHITE bubble: 'Tienen el polerón rojo talla M?'\n"
+        "- 23:14 — Outgoing GREEN-tinted bubble (#DCF8C6) with a tiny indigo "
+        "'IA' tag at the start: 'Sí! Queda 1. ¿Te lo aparto hasta mañana?'\n"
+        "- 23:15 — Incoming WHITE: 'Sí porfa 🙏'\n"
+        "- 23:15 — Outgoing GREEN with 'IA' tag: 'Listo ✓ Te espero mañana "
+        "9 AM. Pago en local o transferencia?'\n"
+        "- 23:16 — Incoming WHITE: 'Transferencia, gracias!'\n"
+        "- 23:17 — Outgoing GREEN with 'IA' tag: 'Te enviamos los datos. "
+        "Reserva: $24.990 confirmada ✅'\n"
+        "Background subtle GREEN tint (very subtle, like a soft success "
+        "halo). A small floating tag in the top-right corner (NOT inside "
+        "the chat) reading 'VENTA CERRADA' in green uppercase, small, like "
+        "a sticker, with a checkmark.\n"
+        "Style: realistic WhatsApp UI fidelity. Text must be CLEARLY "
+        "LEGIBLE and spelled exactly as written. The 'IA' badges must be "
+        "clearly visible inside the green outgoing bubbles.\n"
+        "Aspect ratio: tall portrait (3:4). Off-white #F8FAFC studio "
+        "background outside the screen content. NO phone bezel, NO hand. "
+        "Just the chat content with the green 'venta cerrada' sticker."
+    ),
+
+    "icons_set": (
+        "Set of 5 SaaS feature icons in a single horizontal row, equal "
+        "spacing. Premium tech aesthetic (Linear/Stripe). Each icon ~96x96 "
+        "geometric flat illustration in indigo #6366F1 and blue #3B82F6 with "
+        "subtle gradient fills. Each sits inside a soft 20px-rounded square "
+        "of light indigo #E0E7FF or light blue #DBEAFE alternating. "
+        "1) chat bubble with paperclip and smiley face. "
+        "2) three horizontal stacked bars (kanban sideways) with one card "
+        "mid-flight between two of them. "
+        "3) calendar grid with one date highlighted in indigo→blue gradient "
+        "plus small clock icon overlapping. "
+        "4) stack of three offset rounded message-shaped cards, top one "
+        "with a white checkmark on indigo. "
+        "5) three vertical bars ascending (slate, indigo, blue) with a small "
+        "'+24%' pill badge floating top-right. "
+        "NO text labels under icons. Background: transparent or off-white. "
+        "Aspect ratio 5:1."
+    ),
+}
+
+
+def main(only: list[str] | None = None) -> None:
+    if not KEY_FILE.exists():
+        sys.exit(f"❌ Falta {KEY_FILE.name} con la API key de Gemini")
+
+    api_key = KEY_FILE.read_text(encoding="utf-8").strip()
+    if not api_key:
+        sys.exit(f"❌ {KEY_FILE.name} está vacío")
+
+    client = genai.Client(api_key=api_key)
+
+    targets = {k: v for k, v in PROMPTS.items() if not only or k in only}
+    print(f"→ Generando {len(targets)} imagen(es) con {MODEL}\n")
+
+    for name, body in targets.items():
+        prompt = BRAND_PREAMBLE + body
+        out_path = OUT_DIR / f"{name}.png"
+        print(f"  · {name} → {out_path.name} ", end="", flush=True)
+        t0 = time.time()
+        try:
+            resp = client.models.generate_content(
+                model=MODEL,
+                contents=[prompt],
+                config=types.GenerateContentConfig(
+                    response_modalities=["IMAGE"],
+                ),
+            )
+        except Exception as exc:
+            print(f"\n    ❌ {exc!r}")
+            continue
+
+        saved = False
+        for part in resp.candidates[0].content.parts or []:
+            inline = getattr(part, "inline_data", None)
+            if inline and inline.data:
+                out_path.write_bytes(inline.data)
+                saved = True
+                break
+
+        dt = time.time() - t0
+        print(f"({dt:.1f}s)" if saved else f"⚠ sin imagen ({dt:.1f}s)")
+
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    main(only=args or None)

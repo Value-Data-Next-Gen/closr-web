@@ -1,0 +1,38 @@
+# Secrets — NUNCA committear
+enn.txt
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+
+# Diagnostic scripts
+_list_models.py
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
+# Build / dist (por si después se agrega bundler)
+node_modules/
+dist/
+build/
+.next/
+.netlify/
+
+# Logs
+*.log
+npm-debug.log*
