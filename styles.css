@@ -286,6 +286,49 @@ p { margin: 0; }
   z-index: 1;
 }
 
+/* Flying WhatsApp icons — drift up across the cosmic backdrop */
+.floating-wa {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.wa-fly {
+  position: absolute;
+  display: inline-flex;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: wa-fly-up var(--dur, 18s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  filter: drop-shadow(0 0 14px var(--glow, rgba(99, 102, 241, 0.55)));
+}
+.wa-fly svg {
+  width: var(--size, 36px);
+  height: var(--size, 36px);
+  color: var(--c, rgba(99, 102, 241, 0.55));
+}
+
+/* Drift trajectory: from below-the-fold up + slight horizontal sway + slow rotate */
+@keyframes wa-fly-up {
+  0%   { transform: translate(0, 110vh) rotate(-12deg) scale(0.9);  opacity: 0; }
+  8%   { opacity: 0.85; }
+  35%  { transform: translate(-30px, 50vh)  rotate(8deg)  scale(1); }
+  60%  { transform: translate(20px, 10vh)   rotate(-6deg) scale(1); }
+  88%  { opacity: 0.65; }
+  100% { transform: translate(-10px, -30vh) rotate(14deg) scale(0.85); opacity: 0; }
+}
+
+/* Individual variations: position, color, size, duration, delay */
+.wa-fly.wa-1 { left:  6%;  --size: 38px; --dur: 16s; --delay:  0s; --c: rgba(74, 222, 128, 0.45);   --glow: rgba(34, 197, 94, 0.40); }
+.wa-fly.wa-2 { left: 18%;  --size: 26px; --dur: 22s; --delay: -4s; --c: rgba(255, 255, 255, 0.35);  --glow: rgba(255, 255, 255, 0.25); }
+.wa-fly.wa-3 { left: 32%;  --size: 32px; --dur: 19s; --delay: -8s; --c: rgba(99, 102, 241, 0.55);   --glow: rgba(99, 102, 241, 0.55); }
+.wa-fly.wa-4 { left: 48%;  --size: 42px; --dur: 24s; --delay: -2s; --c: rgba(74, 222, 128, 0.50);   --glow: rgba(34, 197, 94, 0.45); }
+.wa-fly.wa-5 { left: 62%;  --size: 28px; --dur: 17s; --delay:-12s; --c: rgba(96, 165, 250, 0.55);   --glow: rgba(59, 130, 246, 0.55); }
+.wa-fly.wa-6 { left: 76%;  --size: 36px; --dur: 21s; --delay: -6s; --c: rgba(255, 255, 255, 0.40);  --glow: rgba(199, 210, 254, 0.45); }
+.wa-fly.wa-7 { left: 88%;  --size: 30px; --dur: 18s; --delay:-10s; --c: rgba(99, 102, 241, 0.50);   --glow: rgba(99, 102, 241, 0.55); }
+.wa-fly.wa-8 { left: 12%;  --size: 22px; --dur: 26s; --delay:-15s; --c: rgba(74, 222, 128, 0.40);   --glow: rgba(34, 197, 94, 0.35); }
+
 /* Floating particles */
 .cosmic-particles {
   position: absolute;
