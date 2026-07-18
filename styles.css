@@ -190,6 +190,14 @@ p { margin: 0; }
   gap: 24px;
   padding: 14px 24px;
 }
+.header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+@media (max-width: 640px) {
+  .header-actions .btn-ghost { display: none; }
+}
 .brand {
   display: inline-flex;
   align-items: center;
