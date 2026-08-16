@@ -2052,6 +2052,14 @@ template { display: none; }
   font-weight: 700;
 }
 .price-card .btn { margin-top: auto; }
+.price-note {
+  margin: 28px auto 0;
+  max-width: 620px;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
 
 @media (max-width: 900px) {
   .price-grid { grid-template-columns: 1fr; }
@@ -2367,6 +2375,14 @@ template { display: none; }
   font-weight: 800;
   color: #DC2626;
   margin-left: 2px;
+}
+.pain-stat-headline {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  color: #DC2626;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 .pain-stat-label {
   display: block;
@@ -2968,6 +2984,73 @@ template { display: none; }
   color: var(--text-soft);
   border-radius: 6px;
 }
+/* ---------- Piloto (reemplaza los casos hasta tener datos) ---------- */
+.pilot-panel {
+  display: flex;
+  justify-content: center;
+}
+.pilot-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 36px;
+  max-width: 720px;
+  width: 100%;
+}
+.pilot-badge {
+  display: inline-block;
+  background: var(--indigo-50);
+  color: var(--indigo-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+.pilot-head h3 {
+  margin: 16px 0 6px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.pilot-head h3 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid var(--indigo-light);
+  transition: border-color .2s, color .2s;
+}
+.pilot-head h3 a:hover {
+  color: var(--indigo-dark);
+  border-bottom-color: var(--indigo);
+}
+.pilot-meta {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+.pilot-body {
+  margin-top: 20px;
+}
+.pilot-body p {
+  color: var(--slate-600);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.pilot-body p + p { margin-top: 14px; }
+.pilot-status {
+  border-left: 3px solid var(--indigo);
+  padding-left: 14px;
+  color: var(--text-soft) !important;
+  font-size: 14px !important;
+}
+
+@media (max-width: 640px) {
+  .pilot-card { padding: 24px; }
+}
+
 .cases-cta {
   margin-top: 56px;
   display: flex;

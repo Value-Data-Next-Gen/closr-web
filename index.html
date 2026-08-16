@@ -4,6 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- ============ ANALYTICS (GA4) ============
+       Stub inmediato + carga diferida del script real tras la primera
+       interacción o 12s, para no castigar el LCP. Mismo patrón que valuedata.cl.
+
+       PENDIENTE: pegar abajo el Measurement ID de la propiedad GA4 de closr.
+       Mientras diga 'G-XXXXXXXXXX' la analítica queda APAGADA a propósito:
+       no se carga gtag.js y no se envía ningún hit. Nunca apuntar este sitio
+       a la propiedad de valuedata.cl: mezclaría los datos de dos negocios. -->
+  <script>
+    window.CLOSR_GA_ID = 'G-XXXXXXXXXX';
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag(){ window.dataLayer.push(arguments); };
+    (function initGtag(){
+      var id = window.CLOSR_GA_ID;
+      if (!id || id.indexOf('XXXX') !== -1) return; // placeholder → apagado
+      window.gtag('js', new Date());
+      window.gtag('config', id);
+      var loaded = false;
+      var load = function(){
+        if (loaded) return; loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(s);
+      };
+      ['pointerdown','scroll','keydown','touchstart'].forEach(function(e){
+        window.addEventListener(e, load, { once: true, passive: true });
+      });
+      setTimeout(load, 12000);
+    })();
+  </script>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,30 +100,25 @@
       {
         "@type": "Offer",
         "name": "Plan Parte",
-        "price": "0",
-        "priceCurrency": "CLP",
+        "price": "1",
+        "priceCurrency": "CLF",
         "availability": "https://schema.org/InStock"
       },
       {
         "@type": "Offer",
         "name": "Plan Crece",
-        "price": "29900",
-        "priceCurrency": "CLP",
+        "price": "2.5",
+        "priceCurrency": "CLF",
         "availability": "https://schema.org/InStock"
       },
       {
         "@type": "Offer",
         "name": "Plan Equipo",
-        "price": "79900",
-        "priceCurrency": "CLP",
+        "price": "5",
+        "priceCurrency": "CLF",
         "availability": "https://schema.org/InStock"
       }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "47"
-    }
+    ]
   }
   </script>
 
@@ -157,15 +184,7 @@
         "name": "¿Cuánto demora la implementación?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Conectas tu WhatsApp en 5 minutos. La IA aprende de tus chats anteriores y arranca el mismo día."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Necesito tarjeta de crédito para probar?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Tienes 14 días gratis sin tarjeta. Cancelas cuando quieras."
+          "text": "Conectas tu WhatsApp en 5 minutos. La IA aprende de tus chats anteriores y arranca el mismo día. No hay \"fase de descubrimiento\" eterna — partes vendiendo de inmediato."
         }
       },
       {
@@ -173,7 +192,55 @@
         "name": "¿La IA inventa respuestas?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. closr solo responde con información que tú le diste (productos, precios, horarios, stock). Si no sabe algo, te lo deja anotado para que respondas tú."
+          "text": "No. closr solo responde con información que tú le diste (productos, precios, horarios, stock). Si no sabe algo, te lo deja anotado para que respondas tú. Cero alucinaciones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Necesito tarjeta de crédito para probar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Tienes 14 días gratis sin tarjeta. Cancelas cuando quieras desde el panel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cumple con normas de protección de datos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. closr cumple con la Ley 19.628 de Chile y políticas de WhatsApp Business API. Tus datos viven en infraestructura segura, encriptada y auditable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reemplaza a mi equipo de ventas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. closr se encarga de los leads que se caían entre las grietas (consultas de noche, seguimientos olvidados, calificación de leads). Tu equipo queda libre para cerrar los casos que requieren criterio humano."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Por qué los precios están en UF y no en pesos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Porque la UF se reajusta con la inflación y el precio no se desactualiza solo. Te cobramos en pesos: cada factura se emite al valor de la UF de ese día, así que sabes exactamente cuánto pagas. Los valores son netos, o sea que se les suma IVA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa cuando terminan los 14 días de prueba?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eliges un plan o no pasa nada. No pedimos tarjeta al inicio, así que no hay cobro automático ni renovación sorpresa: si no eliges plan, la cuenta simplemente deja de responder mensajes y tus conversaciones quedan disponibles para que las descargues."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Sirve si vendo productos con muchas variantes o precios que cambian?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, y es el caso donde más rinde. closr responde con el catálogo y las condiciones que tú mantienes, así que cuando cambias un precio o se acaba el stock la respuesta cambia con él. Lo que no sabe no lo inventa: lo deja anotado para que una persona lo conteste."
         }
       }
     ]
@@ -285,8 +352,8 @@
         </div>
         <div class="cosmic-stat-divider"></div>
         <div class="cosmic-stat">
-          <span class="cosmic-stat-value" data-counter="40">40</span><span class="cosmic-stat-suffix">%</span>
-          <span class="cosmic-stat-label">+ tasa de cierre</span>
+          <span class="cosmic-stat-value" data-counter="3">3</span><span class="cosmic-stat-suffix"> canales</span>
+          <span class="cosmic-stat-label">WhatsApp, Instagram y email</span>
         </div>
         <div class="cosmic-stat-divider"></div>
         <div class="cosmic-stat">
@@ -336,7 +403,7 @@
                   <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
                 </div>
                 <div class="wa-info">
-                  <div class="wa-name">Ferretería El Tornillo</div>
+                  <div class="wa-name">Tu negocio</div>
                   <div class="wa-status"><span class="dot-live"></span>en línea · IA activa</div>
                 </div>
                 <svg class="wa-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
@@ -418,19 +485,24 @@
         <p class="section-sub">Las PYMEs chilenas pierden plata por una sola razón: el cliente no espera.</p>
       </div>
 
-      <!-- Pain stats -->
+      <!--
+        Pain points en cualitativo a propósito.
+        TODO (Gonzalo): si quieres volver a poner porcentajes acá, necesitamos
+        fuente citable (estudio, informe sectorial o medición propia del piloto).
+        Sin fuente no se publican cifras de mercado.
+      -->
       <div class="pain-stats">
         <div class="pain-stat">
-          <span class="pain-stat-value" data-counter="38">0</span><span class="pain-stat-suffix">%</span>
-          <span class="pain-stat-label">de consultas llegan después de las 22:00</span>
+          <span class="pain-stat-headline">Después del cierre</span>
+          <span class="pain-stat-label">Buena parte de las consultas llega cuando ya nadie está atendiendo</span>
         </div>
         <div class="pain-stat">
-          <span class="pain-stat-value" data-counter="67">0</span><span class="pain-stat-suffix">%</span>
-          <span class="pain-stat-label">de leads se enfrían si esperan más de 1 hora</span>
+          <span class="pain-stat-headline">La espera enfría</span>
+          <span class="pain-stat-label">Si el cliente espera horas por una respuesta, se va donde le contesten primero</span>
         </div>
         <div class="pain-stat">
-          <span class="pain-stat-prefix">$</span><span class="pain-stat-value" data-counter="2.4" data-decimal="1">0</span><span class="pain-stat-suffix">M</span>
-          <span class="pain-stat-label">al año pierde una PYME promedio en seguimiento olvidado</span>
+          <span class="pain-stat-headline">Seguimiento olvidado</span>
+          <span class="pain-stat-label">La cotización que nadie recordó volver a tocar es plata que se dejó sobre la mesa</span>
         </div>
       </div>
 
@@ -578,7 +650,7 @@
       <div class="split-visual">
         <img
           src="images/section_notification.png"
-          alt="Notificación post-llamada con María de Joyería Andes y sugerencia de enviar cotización"
+          alt="Notificación post-llamada con el resumen del contacto y la sugerencia de enviar una cotización"
           class="section-img"
           width="600" height="600" loading="lazy"
         />
@@ -746,111 +818,63 @@
     </div>
   </section>
 
-  <!-- ============ CASOS ============ -->
+  <!-- ============ PILOTO ============ -->
+  <!--
+    TODO (Gonzalo) — métricas del piloto con Kemass (www.kemass.cl).
+    No publicar ningún número aquí hasta tenerlo medido y respaldable.
+    Cuando estén los datos, descomentar el bloque .case-metric de más abajo
+    y reemplazar los TODO por las cifras reales + la ventana de medición.
+      - Tasa de respuesta fuera de horario: TODO
+      - Tiempo medio de primera respuesta (antes → después): TODO
+      - Ventana medida (fecha inicio → fecha fin): TODO
+  -->
   <section id="casos" class="cases reveal">
     <div class="container">
       <div class="section-head">
-        <span class="kicker indigo">Casos reales</span>
-        <h2 class="section-title">PYMEs que dejaron de perder ventas.</h2>
-        <p class="section-sub">Tres negocios reales, tres operaciones distintas. Mismas grietas, misma solución.</p>
+        <span class="kicker indigo">En piloto</span>
+        <h2 class="section-title">Hoy closr está en piloto con negocios reales.</h2>
+        <p class="section-sub">
+          Estamos midiendo con los primeros clientes antes de publicar resultados.
+          Preferimos mostrarte el producto funcionando que un número que todavía no
+          podemos respaldar.
+        </p>
       </div>
 
-      <div class="cases-grid">
-        <article class="case-card hover-lift">
-          <header class="case-head">
-            <div class="case-avatar gradient-bg">CM</div>
-            <div>
-              <div class="case-name">Carolina Morales</div>
-              <div class="case-role">Dueña · Panadería La Maipucina</div>
-            </div>
-            <span class="case-industry">🥖 Retail</span>
+      <div class="pilot-panel">
+        <article class="pilot-card">
+          <header class="pilot-head">
+            <span class="pilot-badge">Piloto en curso</span>
+            <h3>
+              <a href="https://www.kemass.cl" target="_blank" rel="noopener">Kemass</a>
+            </h3>
+            <p class="pilot-meta">
+              Importadora y comercializadora de motos y cuatrimotos · Buin, Región
+              Metropolitana · tienda física y despacho a todo Chile
+            </p>
           </header>
-          <div class="case-metric">
-            <div class="metric">
-              <span class="metric-value">31<span class="metric-unit">%</span></span>
-              <span class="metric-label">Tasa de cierre</span>
-              <span class="metric-prev">desde 12%</span>
-            </div>
-            <div class="metric">
-              <span class="metric-value">+147<span class="metric-unit"> pedidos</span></span>
-              <span class="metric-label">/ mes en 60 días</span>
-            </div>
+          <div class="pilot-body">
+            <p>
+              Venden vehículos que la gente investiga de noche y por WhatsApp: cilindrada,
+              precio, si queda stock, si despachan a regiones. Las consultas llegan cuando
+              el local ya cerró y al día siguiente varias ya compraron en otro lado. closr
+              responde con el catálogo y las condiciones que ellos mismos cargaron, y deja
+              anotado lo que no sabe para que una persona lo tome en la mañana.
+            </p>
+            <p class="pilot-status">
+              <strong>Estado:</strong> operando y en medición. Publicaremos las cifras
+              acá cuando tengamos una ventana suficiente.
+            </p>
           </div>
-          <blockquote class="case-quote">
-            "Antes no dábamos abasto con los pedidos por WhatsApp después de las 7 PM.
-            La IA aprendió mi tono en una semana y ahora <strong>responde sola con stock,
-            precios y horarios</strong>. Yo solo entro a confirmar los grandes."
-          </blockquote>
-          <div class="case-footer">
-            <span class="case-tag">WhatsApp Business</span>
-            <span class="case-tag">+ Instagram</span>
-            <span class="case-tag">3 meses</span>
-          </div>
-        </article>
 
-        <article class="case-card hover-lift featured-case">
-          <header class="case-head">
-            <div class="case-avatar gradient-bg">DP</div>
-            <div>
-              <div class="case-name">Diego Pérez</div>
-              <div class="case-role">Founder · Ferretería El Tornillo</div>
-            </div>
-            <span class="case-industry">🔧 B2B</span>
-          </header>
+          <!--
           <div class="case-metric">
             <div class="metric">
-              <span class="metric-value">2.4<span class="metric-unit">×</span></span>
-              <span class="metric-label">Más cotizaciones</span>
-              <span class="metric-prev">en 90 días</span>
-            </div>
-            <div class="metric">
-              <span class="metric-value">$8<span class="metric-unit">M+</span></span>
-              <span class="metric-label">Ventas atribuibles a IA</span>
+              <span class="metric-value">TODO<span class="metric-unit">%</span></span>
+              <span class="metric-label">TODO</span>
+              <span class="metric-prev">TODO</span>
             </div>
           </div>
-          <blockquote class="case-quote">
-            "El 38% de mis consultas llegan entre 22:00 y 9:00. Antes se perdían.
-            <strong>closr cierra el 60% de esas conversaciones</strong> sin que yo
-            tenga que estar despierto. Es como tener un vendedor nocturno que nunca
-            se enferma."
-          </blockquote>
-          <div class="case-footer">
-            <span class="case-tag">WhatsApp Business</span>
-            <span class="case-tag">CRM HubSpot</span>
-            <span class="case-tag">6 meses</span>
-          </div>
-        </article>
-
-        <article class="case-card hover-lift">
-          <header class="case-head">
-            <div class="case-avatar gradient-bg">VA</div>
-            <div>
-              <div class="case-name">Valentina Andrade</div>
-              <div class="case-role">Founder · Joyería Andes</div>
-            </div>
-            <span class="case-industry">💍 E-commerce</span>
-          </header>
-          <div class="case-metric">
-            <div class="metric">
-              <span class="metric-value">-68<span class="metric-unit">%</span></span>
-              <span class="metric-label">Tiempo respuesta</span>
-              <span class="metric-prev">de 4h a 9 min</span>
-            </div>
-            <div class="metric">
-              <span class="metric-value">94<span class="metric-unit">%</span></span>
-              <span class="metric-label">Satisfacción cliente</span>
-            </div>
-          </div>
-          <blockquote class="case-quote">
-            "Vendo joyería custom — cada cliente quiere algo único. Pensé que la IA no
-            iba a saber. Pero <strong>closr identifica intención y me pasa solo los
-            leads que están listos para comprar</strong>. Mi día rinde el doble."
-          </blockquote>
-          <div class="case-footer">
-            <span class="case-tag">Shopify</span>
-            <span class="case-tag">Instagram DMs</span>
-            <span class="case-tag">4 meses</span>
-          </div>
+          -->
         </article>
       </div>
 
@@ -866,26 +890,26 @@
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">Precios sin letra chica</h2>
-        <p class="section-sub">Empieza gratis. Paga cuando vendas más.</p>
+        <p class="section-sub">Prueba 14 días. Después, desde 1 UF al mes.</p>
       </div>
 
       <div class="price-grid">
         <article class="price-card hover-lift">
           <h3>Parte</h3>
-          <div class="price"><span class="amount">$0</span> <span class="per">siempre</span></div>
+          <div class="price"><span class="amount">1 UF</span> <span class="per">/ mes</span></div>
           <ul>
             <li>1 número de WhatsApp</li>
             <li>Hasta 100 conversaciones / mes</li>
             <li>Respuestas con IA básicas</li>
             <li>Embudo simple</li>
           </ul>
-          <a href="#cta" class="btn btn-ghost">Empezar gratis</a>
+          <a href="#cta" class="btn btn-ghost">Probar 14 días</a>
         </article>
 
         <article class="price-card featured shimmer-card">
           <span class="ribbon">Más elegido</span>
           <h3>Crece</h3>
-          <div class="price"><span class="amount">$29.900</span> <span class="per">/ mes</span></div>
+          <div class="price"><span class="amount">2,5 UF</span> <span class="per">/ mes</span></div>
           <div class="price-channels" aria-label="Canales incluidos">
             <span class="ch-icon" title="WhatsApp">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
@@ -909,7 +933,7 @@
 
         <article class="price-card hover-lift">
           <h3>Equipo</h3>
-          <div class="price"><span class="amount">$79.900</span> <span class="per">/ mes</span></div>
+          <div class="price"><span class="amount">5 UF</span> <span class="per">/ mes</span></div>
           <ul>
             <li>Todo lo anterior</li>
             <li>Multi-usuario y roles</li>
@@ -919,6 +943,11 @@
           <a href="#cta" class="btn btn-ghost">Hablar con ventas</a>
         </article>
       </div>
+
+      <p class="price-note">
+        Valores en UF, netos (+ IVA). Se factura en pesos al valor de la UF del día
+        de emisión. Los 14 días de prueba no requieren tarjeta.
+      </p>
     </div>
   </section>
 
@@ -953,6 +982,18 @@
         <details class="faq-item">
           <summary>¿Reemplaza a mi equipo de ventas?</summary>
           <p>No. closr se encarga de los leads que se caían entre las grietas (consultas de noche, seguimientos olvidados, calificación de leads). Tu equipo queda libre para cerrar los casos que requieren criterio humano.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Por qué los precios están en UF y no en pesos?</summary>
+          <p>Porque la UF se reajusta con la inflación y el precio no se desactualiza solo. Te cobramos en pesos: cada factura se emite al valor de la UF de ese día, así que sabes exactamente cuánto pagas. Los valores son netos, o sea que se les suma IVA.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué pasa cuando terminan los 14 días de prueba?</summary>
+          <p>Eliges un plan o no pasa nada. No pedimos tarjeta al inicio, así que no hay cobro automático ni renovación sorpresa: si no eliges plan, la cuenta simplemente deja de responder mensajes y tus conversaciones quedan disponibles para que las descargues.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Sirve si vendo productos con muchas variantes o precios que cambian?</summary>
+          <p>Sí, y es el caso donde más rinde. closr responde con el catálogo y las condiciones que tú mantienes, así que cuando cambias un precio o se acaba el stock la respuesta cambia con él. Lo que no sabe no lo inventa: lo deja anotado para que una persona lo conteste.</p>
         </details>
       </div>
     </div>
