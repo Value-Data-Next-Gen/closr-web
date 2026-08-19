@@ -44,6 +44,11 @@
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
 
+[[redirects]]
+  from = "/privacidad"
+  to = "/privacidad.html"
+  status = 200
+
 # SPA-ish fallback (por si algún día agregamos rutas)
 [[redirects]]
   from = "/*"
