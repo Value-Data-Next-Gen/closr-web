@@ -49,6 +49,18 @@
   to = "/privacidad.html"
   status = 200
 
+# OJO: sin estas reglas el catch-all de abajo sirve index.html con status 200,
+# o sea la URL "existe" pero muestra la landing. Meta revisa estas dos paginas.
+[[redirects]]
+  from = "/terminos"
+  to = "/terminos.html"
+  status = 200
+
+[[redirects]]
+  from = "/eliminacion-datos"
+  to = "/eliminacion-datos.html"
+  status = 200
+
 # SPA-ish fallback (por si algún día agregamos rutas)
 [[redirects]]
   from = "/*"
