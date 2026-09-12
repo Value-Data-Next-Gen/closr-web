@@ -12,12 +12,19 @@
  * NUNCA poner acá la propiedad GA4 de valuedata.cl: mezclaría los datos de dos
  * negocios y GA4 no permite separar hits ya ingeridos.
  *
+ * ADS_LEAD_LABEL es la etiqueta de la acción de conversión del LEAD de
+ * contacto de esta landing — no la del registro de la app (esa vive en
+ * frontend/.env.example como VITE_ADS_SIGNUP_LABEL). Son dos acciones de
+ * conversión distintas en Google Ads a propósito: fusionarlas dejaría a
+ * Google Ads optimizando hacia la más barata de las dos, que es la que vale
+ * menos.
+ *
  * Ver docs/guia-cuentas-publicidad.md en el repo del CRM para qué crear.
  */
 window.CLOSR_CONFIG = {
   GA_ID: '',
   ADS_ID: '',
-  ADS_LABEL: '',
+  ADS_LEAD_LABEL: '',
   META_PIXEL_ID: '',
   TIKTOK_PIXEL_ID: '',
 };

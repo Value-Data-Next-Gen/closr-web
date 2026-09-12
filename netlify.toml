@@ -24,6 +24,46 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Excepcion a la regla immutable de arriba, para los cuatro scripts de
+# medicion/atribucion. Este sitio no tiene build ni hash de contenido en el
+# nombre de archivo (`publish = "."`, sin comando): un JS sin version en el
+# nombre bajo `max-age=31536000, immutable` queda fijo en el navegador de
+# cada visitante recurrente por un año, pase lo que pase con el contenido.
+#
+# config.js hoy nace con los cinco identificadores vacios (ninguna cuenta de
+# publicidad existe todavia). El dia que se peguen los reales y se haga push,
+# un visitante que ya paso por el sitio seguiria sirviendo desde cache el
+# config.js vacio de antes -- sus pixeles nunca se encenderian, en silencio,
+# indistinguible de "los pixeles no funcionan". Lo mismo aplica a cualquier
+# cambio futuro en consent.js, attribution.js o tags.js (p.ej. la etiqueta de
+# conversion de Google Ads que hoy vive en config.js).
+#
+# La regla exacta por archivo, declarada despues de la wildcard de arriba,
+# es mas especifica y gana sobre ella. `must-revalidate` (igual que /*.html
+# mas abajo) es la opcion que no depende de que alguien se acuerde de nada:
+# el navegador siempre revalida contra el servidor, y con el ETag que Netlify
+# ya sirve, un archivo sin cambios responde 304 sin volver a bajar el body --
+# no es cache cero, es cache que nunca puede quedar obsoleto en silencio.
+[[headers]]
+  for = "/config.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/consent.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/attribution.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/tags.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 [[headers]]
   for = "/*.svg"
   [headers.values]

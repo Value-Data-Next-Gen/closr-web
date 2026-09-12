@@ -105,7 +105,7 @@
 
   function conversion(evento) {
     if (!cargado) return;
-    var ga = id('GA_ID'), ads = id('ADS_ID'), label = id('ADS_LABEL');
+    var ga = id('GA_ID'), ads = id('ADS_ID'), label = id('ADS_LEAD_LABEL');
     if (ga && window.gtag) window.gtag('event', evento);
     if (ads && label && window.gtag) {
       window.gtag('event', 'conversion', { send_to: ads + '/' + label });
