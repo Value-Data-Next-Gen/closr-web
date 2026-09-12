@@ -4,37 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ============ ANALYTICS (GA4) ============
-       Stub inmediato + carga diferida del script real tras la primera
-       interacción o 12s, para no castigar el LCP. Mismo patrón que valuedata.cl.
-
-       PENDIENTE: pegar abajo el Measurement ID de la propiedad GA4 de closr.
-       Mientras diga 'G-XXXXXXXXXX' la analítica queda APAGADA a propósito:
-       no se carga gtag.js y no se envía ningún hit. Nunca apuntar este sitio
-       a la propiedad de valuedata.cl: mezclaría los datos de dos negocios. -->
-  <script>
-    window.CLOSR_GA_ID = 'G-XXXXXXXXXX';
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag(){ window.dataLayer.push(arguments); };
-    (function initGtag(){
-      var id = window.CLOSR_GA_ID;
-      if (!id || id.indexOf('XXXX') !== -1) return; // placeholder → apagado
-      window.gtag('js', new Date());
-      window.gtag('config', id);
-      var loaded = false;
-      var load = function(){
-        if (loaded) return; loaded = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
-        document.head.appendChild(s);
-      };
-      ['pointerdown','scroll','keydown','touchstart'].forEach(function(e){
-        window.addEventListener(e, load, { once: true, passive: true });
-      });
-      setTimeout(load, 12000);
-    })();
-  </script>
+  <!-- Medición: config.js trae los identificadores (vacíos por defecto),
+       consent.js decide si los píxeles pueden cargar, attribution.js captura
+       la campaña de origen y tags.js carga las plataformas. -->
+  <script src="config.js"></script>
+  <script src="consent.js" defer></script>
+  <script src="attribution.js" defer></script>
+  <script src="tags.js" defer></script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
