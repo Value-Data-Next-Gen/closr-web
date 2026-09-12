@@ -3327,3 +3327,35 @@ template { display: none; }
   }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Banner de consentimiento ---------- */
+.consent-bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 60;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(5, 8, 19, .96);
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  backdrop-filter: blur(8px);
+}
+
+.consent-bar p {
+  flex: 1 1 320px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .78);
+}
+
+.consent-bar a { color: #A5B4FC; }
+
+.consent-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}

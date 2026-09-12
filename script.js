@@ -227,6 +227,7 @@
 
         ctaSuccess?.classList.add('show');
         ctaForm.reset();
+        if (window.ClosrTags) window.ClosrTags.conversion('generate_lead');
       } catch (err) {
         console.warn('Form submit failed:', err);
         ctaError?.classList.add('show');
