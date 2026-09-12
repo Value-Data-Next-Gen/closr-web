@@ -84,9 +84,20 @@
     if (decision === true && window.ClosrTags) window.ClosrTags.cargar();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', arrancar);
-  } else {
+  // Este script va con `defer` y se ejecuta antes de tags.js. Para cuando
+  // corre, readyState ya es 'interactive', nunca 'loading', asi que el
+  // chequeo `=== 'loading'` era codigo muerto: arrancar() se ejecutaba de
+  // inmediato, en el mismo tick, ANTES de que tags.js hubiera corrido.
+  // Eso dejaba window.ClosrTags undefined en ese momento, y con eso, un
+  // visitante que ya habia aceptado en una visita anterior no recibia
+  // ningun pixel en las visitas siguientes -ni el conversion de
+  // generate_lead, porque cargado nunca pasaba a true. Solo 'complete'
+  // garantiza que DOMContentLoaded ya paso (y con el, ya corrieron los
+  // otros <script defer>); para 'loading' o 'interactive' hay que esperar
+  // el evento en vez de asumir que ya es seguro correr.
+  if (document.readyState === 'complete') {
     arrancar();
+  } else {
+    document.addEventListener('DOMContentLoaded', arrancar);
   }
 })();

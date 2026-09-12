@@ -140,11 +140,19 @@
 
   window.ClosrAttr = { leer: function () { return origen; }, decorarEnlaces: decorarEnlaces };
 
-  if (document.readyState === 'loading') {
+  // Este script va con `defer`, asi que para cuando se ejecuta el documento
+  // ya esta parseado y readyState es 'interactive', no 'loading'. El chequeo
+  // `=== 'loading'` nunca es cierto en ejecucion diferida, asi que el
+  // addEventListener('DOMContentLoaded', ...) era codigo muerto: siempre se
+  // tomaba la rama inmediata, en el mismo orden en que los scripts se van
+  // ejecutando. Solo 'complete' garantiza que DOMContentLoaded ya paso y no
+  // va a volver a disparar; para cualquier otro valor ('loading' o
+  // 'interactive') hay que esperarlo con el listener.
+  if (document.readyState === 'complete') {
+    decorarEnlaces(); rellenarFormulario();
+  } else {
     document.addEventListener('DOMContentLoaded', function () {
       decorarEnlaces(); rellenarFormulario();
     });
-  } else {
-    decorarEnlaces(); rellenarFormulario();
   }
 })();
