@@ -42,6 +42,13 @@
     decision = acepta;
     guardar(acepta);
     quitarBanner();
+    // Sin esto, cl_consent solo llegaría al link de registro en la SEGUNDA
+    // visita: attribution.js decora los links una sola vez, al cargar la
+    // página, y ese momento ya pasó. Re-llamarlo aquí deja el link al día
+    // en la misma visita en que la persona decide, que es también la visita
+    // en que puede hacer clic en "Prueba gratis". Guardado a la defensiva:
+    // si attribution.js no cargó, esto no hace nada y el resto sigue igual.
+    if (window.ClosrAttr && window.ClosrAttr.decorarEnlaces) window.ClosrAttr.decorarEnlaces();
     if (acepta && window.ClosrTags) window.ClosrTags.cargar();
   }
 

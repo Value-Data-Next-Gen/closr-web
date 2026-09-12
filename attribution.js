@@ -102,14 +102,24 @@
     return params.toString();
   }
 
+  // Se llama tanto al cargar la página como cuando el usuario decide sobre
+  // el consentimiento (ver consent.js), para que cl_consent quede en el link
+  // sin esperar a una segunda visita. Idempotente: cada link recuerda su
+  // href original en un data-attribute y siempre reconstruye desde ahí, así
+  // una segunda llamada no duplica parámetros ni deja un cl_consent viejo.
   function decorarEnlaces() {
     if (!origen && !(window.ClosrConsent && window.ClosrConsent.valor() !== null)) return;
     var qs = aQueryString(origen || {});
     if (!qs) return;
     var enlaces = document.querySelectorAll('a[href*="app.closr.cl/register"]');
     for (var i = 0; i < enlaces.length; i++) {
-      var href = enlaces[i].getAttribute('href');
-      enlaces[i].setAttribute('href', href + (href.indexOf('?') === -1 ? '?' : '&') + qs);
+      var el = enlaces[i];
+      var base = el.getAttribute('data-closr-base-href');
+      if (base === null) {
+        base = el.getAttribute('href');
+        el.setAttribute('data-closr-base-href', base);
+      }
+      el.setAttribute('href', base + (base.indexOf('?') === -1 ? '?' : '&') + qs);
     }
   }
 
@@ -128,7 +138,7 @@
     }
   }
 
-  window.ClosrAttr = { leer: function () { return origen; } };
+  window.ClosrAttr = { leer: function () { return origen; }, decorarEnlaces: decorarEnlaces };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
