@@ -190,7 +190,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20261113c" />
+  <link rel="stylesheet" href="styles.css?v=20261113e" />
 </head>
 
 <body>
@@ -230,7 +230,7 @@
   </header>
 
   <!-- ============ HERO ============ -->
-  <section class="hero hero-cosmic">
+  <section class="hero hero-cosmic" id="hero" data-phase="noche">
     <div class="cosmic-bg" aria-hidden="true">
       <img
         src="images/v2/hero-noche-1600.webp"
@@ -238,7 +238,16 @@
         sizes="100vw"
         alt="" class="cosmic-img hero-photo" width="1600" height="900"
         loading="eager" fetchpriority="high" />
+      <!-- Noche sin closr / día con closr: script.js alterna data-phase en la sección y esta foto
+           (la misma calle de mañana, con los locales abiertos) aparece encima con un fundido. -->
+      <img
+        src="images/v2/hero-dia-1600.webp"
+        srcset="images/v2/hero-dia-900.webp 900w, images/v2/hero-dia-1600.webp 1600w"
+        sizes="100vw"
+        alt="" class="cosmic-img hero-photo hero-photo-day" width="1600" height="900"
+        decoding="async" fetchpriority="low" />
       <div class="cosmic-gradient"></div>
+      <div class="hero-day-shade"></div>
 
       <!-- Íconos de canales flotando -->
       <div class="floating-wa" aria-hidden="true">
@@ -279,14 +288,28 @@
         </ul>
       </div>
 
-      <!-- Bandeja en vivo: script.js la anima (mensajes que llegan de noche y la IA responde).
-           Sin JS o con movimiento reducido se ve el estado estático de abajo. -->
+      <!-- Bandeja en vivo: script.js la anima en dos actos.
+           Noche, sin closr: llegan mensajes por WhatsApp e Instagram y nadie responde.
+           Día, con closr: abres en la mañana y la IA ya respondió, creó una tarea, pasó a una persona
+           lo que no le corresponde decidir y cerró una venta.
+           Sin JS se ve el estado estático de abajo (con closr). -->
+      <div class="hero-demo">
+      <div class="phase-switch" id="phaseSwitch" role="group" aria-label="Ver el ejemplo sin closr o con closr">
+        <button type="button" class="phase-btn" data-phase="noche" aria-pressed="true">
+          <svg width="16" height="16" aria-hidden="true"><use href="images/icons-v1.svg#t-moon"/></svg>
+          De noche, sin closr
+        </button>
+        <button type="button" class="phase-btn" data-phase="dia" aria-pressed="false">
+          <svg width="16" height="16" aria-hidden="true"><use href="images/icons-v1.svg#t-sun"/></svg>
+          De día, con closr
+        </button>
+      </div>
       <div class="live-inbox" id="liveInbox" role="img"
-           aria-label="Ejemplo: de noche llegan mensajes por WhatsApp e Instagram; el agente de IA de closr responde preguntas difíciles, crea una tarea, pasa a una persona lo que no le corresponde decidir y cierra una venta.">
+           aria-label="Ejemplo. Sin closr: de noche llegan mensajes por WhatsApp e Instagram y quedan sin respuesta. Con closr: en la mañana encuentras que el agente de IA respondió preguntas difíciles, creó una tarea, pasó a una persona lo que no le corresponde decidir y cerró una venta.">
         <div class="live-head">
           <span class="live-pulse" aria-hidden="true"></span>
-          <span class="live-title">Bandeja de closr</span>
-          <span class="live-clock" id="liveClock">23:47</span>
+          <span class="live-title" id="liveTitle">Bandeja de closr</span>
+          <span class="live-clock" id="liveClock">09:00</span>
         </div>
         <div class="live-list" id="liveList">
           <div class="live-card live-ig">
@@ -303,6 +326,7 @@
           </div>
         </div>
         <div class="live-foot">Conversaciones de ejemplo. Instagram se activa cuando Meta lo apruebe.</div>
+      </div>
       </div>
     </div>
   </section>
@@ -1033,6 +1057,6 @@
     <span class="wa-fab-label">¿Hablamos?</span>
   </a>
 
-  <script src="script.js?v=20261113d"></script>
+  <script src="script.js?v=20261113e"></script>
 </body>
 </html>

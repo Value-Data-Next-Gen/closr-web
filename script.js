@@ -306,58 +306,76 @@
   }
 })();
 
-// ---------- Bandeja en vivo del hero (v2b, 13-nov-2026) ----------
-// Mensajes de ejemplo que llegan de noche; la IA responde, crea una tarea y cierra una venta.
-// Con movimiento reducido o sin JS queda el estado estático que trae el HTML.
+// ---------- Hero: de noche sin closr, de día con closr (v2d, 13-nov-2026) ----------
+// Dos actos que se alternan solos y también con los botones de #phaseSwitch:
+//  - noche: llegan mensajes por WhatsApp e Instagram y quedan sin responder.
+//  - día: abres en la mañana y la IA ya respondió, creó una tarea, pasó a una persona
+//    lo que no le corresponde decidir y cerró una venta.
+// La sección #hero lleva data-phase="noche|dia" y el CSS hace el fundido entre las dos fotos.
+// Con movimiento reducido no hay animación: se muestra el estado final de cada acto.
+// Sin JS queda el estado estático que trae el HTML.
 (() => {
+  const hero = document.getElementById('hero');
   const list = document.getElementById('liveList');
   const clock = document.getElementById('liveClock');
+  const title = document.getElementById('liveTitle');
   const box = document.getElementById('liveInbox');
-  if (!list || !clock || !box) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const sw = document.getElementById('phaseSwitch');
+  if (!hero || !list || !clock || !box) return;
+  const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
   const ICONS = 'images/icons-v1.svg';
-  const EVENTS = [
-    { kind: 'chat', ch: 'wa', who: 'Carolina',
-      msg: 'hola!! el polerón rojo en M lo tienen? es para regalo, si no le queda lo puedo cambiar?',
-      reply: '¡Hola Carolina! Sí, queda uno en M. Tienes 30 días para cambiarlo con la boleta y te lo envolvemos para regalo sin costo. ¿Te lo aparto?',
-      mins: 0 },
-    { kind: 'chat', ch: 'ig', who: '@vale.mendez',
-      msg: 'vi las zapatillas blancas del último post, hay en 38? cuánto sale el envío a Temuco y cuándo llega?',
-      reply: 'Hola Vale, sí hay en 38 a $39.990. El envío a Temuco cuesta $4.500 y llega en 2 a 4 días hábiles. ¿Te mando el link de pago?',
-      mins: 2 },
-    { kind: 'chat', ch: 'wa', who: 'Javier',
-      msg: 'necesito 12 poleras con el logo bordado para mi equipo pero tienen que estar antes del viernes, alcanzan?',
-      reply: 'Hola Javier. El bordado toma 3 días hábiles, así que si confirmas hoy llegamos al viernes. Le pido la cotización al encargado y te escribe a primera hora.',
-      mins: 3 },
-    { kind: 'task', title: 'Tarea creada por la IA', text: 'Cotizar 12 poleras bordadas para Javier antes de las 9:30', mins: 0 },
-    { kind: 'chat', ch: 'ig', who: '@pedro.ferre', handoff: true,
-      msg: 'en otra tienda me dejan el mismo modelo 15% más barato, me lo igualan?',
-      reply: 'Entiendo, Pedro. El precio no lo defino yo: le paso tu consulta a una persona del equipo para que te responda hoy mismo.',
-      mins: 2 },
-    { kind: 'won', title: 'Venta cerrada', text: 'Carolina · $24.990 · retira mañana a las 10:00', mins: 1 },
-  ];
   const CHANNELS = { wa: { icon: 'i-wa', label: 'WhatsApp' }, ig: { icon: 'i-ig', label: 'Instagram' } };
-  const START = 23 * 60 + 47;
-  const MAX_CARDS = 3;
+  const CHATS = [
+    { ch: 'wa', who: 'Carolina', at: '23:47',
+      msg: 'hola!! el polerón rojo en M lo tienen? es para regalo, si no le queda lo puedo cambiar?',
+      reply: '¡Hola Carolina! Sí, queda uno en M. Tienes 30 días para cambiarlo con la boleta y te lo envolvemos para regalo sin costo. ¿Te lo aparto?' },
+    { ch: 'ig', who: '@vale.mendez', at: '23:49',
+      msg: 'vi las zapatillas blancas del último post, hay en 38? cuánto sale el envío a Temuco y cuándo llega?',
+      reply: 'Hola Vale, sí hay en 38 a $39.990. El envío a Temuco cuesta $4.500 y llega en 2 a 4 días hábiles. ¿Te mando el link de pago?' },
+    { ch: 'wa', who: 'Javier', at: '23:52',
+      msg: 'necesito 12 poleras con el logo bordado para mi equipo pero tienen que estar antes del viernes, alcanzan?',
+      reply: 'Hola Javier. El bordado toma 3 días hábiles, así que si confirmas hoy llegamos al viernes. Le pido la cotización al encargado y te escribe a primera hora.' },
+    { ch: 'ig', who: '@pedro.ferre', at: '00:14', handoff: true,
+      msg: 'en otra tienda me dejan el mismo modelo 15% más barato, me lo igualan?',
+      reply: 'Entiendo, Pedro. El precio no lo defino yo: le paso tu consulta a una persona del equipo para que te responda hoy mismo.' },
+  ];
+  const ACTS = {
+    noche: {
+      title: 'Tu WhatsApp, sin closr',
+      clock: CHATS[0].at,
+      max: 4,
+      steps: [
+        { kind: 'wait', chat: 0 }, { kind: 'wait', chat: 1 }, { kind: 'wait', chat: 2 }, { kind: 'wait', chat: 3 },
+        { kind: 'lost', title: '4 clientes sin respuesta', text: 'Los vas a ver mañana. Para entonces, alguno ya le compró a otro.' },
+      ],
+    },
+    dia: {
+      title: 'Bandeja de closr',
+      clock: '09:00',
+      max: 3,
+      steps: [
+        { kind: 'chat', chat: 0 }, { kind: 'chat', chat: 1 }, { kind: 'chat', chat: 2 },
+        { kind: 'task', title: 'Tarea creada por la IA', text: 'Cotizar 12 poleras bordadas para Javier antes de las 9:30' },
+        { kind: 'chat', chat: 3 },
+        { kind: 'won', title: 'Venta cerrada', text: 'Carolina · $24.990 · retira hoy a las 10:00' },
+      ],
+    },
+  };
 
-  let minutes = START;
-  let i = 0;
   let timers = [];
   let running = false;
+  let phase = 'noche';
+  let step = 0;
 
   const later = (fn, ms) => { timers.push(setTimeout(fn, ms)); };
-  const stop = () => { timers.forEach(clearTimeout); timers = []; running = false; };
-  const fmt = (m) => {
-    const h = Math.floor(m / 60) % 24;
-    const mm = m % 60;
-    return String(h).padStart(2, '0') + ':' + String(mm).padStart(2, '0');
-  };
+  const clear = () => { timers.forEach(clearTimeout); timers = []; };
   const icon = (name) => {
     const ns = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(ns, 'svg');
     svg.setAttribute('width', '14');
     svg.setAttribute('height', '14');
+    svg.setAttribute('aria-hidden', 'true');
     const use = document.createElementNS(ns, 'use');
     use.setAttribute('href', ICONS + '#' + name);
     svg.appendChild(use);
@@ -371,74 +389,160 @@
   };
   const push = (card) => {
     list.prepend(card);
-    while (list.children.length > MAX_CARDS) list.lastElementChild.remove();
+    while (list.children.length > ACTS[phase].max) list.lastElementChild.remove();
   };
 
-  const play = () => {
-    const ev = EVENTS[i];
-    minutes += ev.mins;
-    clock.textContent = fmt(minutes);
-    let wait = 2400;
+  const setPhase = (p) => {
+    phase = p;
+    hero.dataset.phase = p;
+    if (title) title.textContent = ACTS[p].title;
+    clock.textContent = ACTS[p].clock;
+    if (sw) {
+      sw.querySelectorAll('.phase-btn').forEach((b) => {
+        b.setAttribute('aria-pressed', String(b.dataset.phase === p));
+      });
+    }
+  };
 
-    if (ev.kind === 'chat') {
-      const chan = CHANNELS[ev.ch] || CHANNELS.wa;
-      const card = el('div', 'live-card live-' + ev.ch);
-      const meta = el('div', 'live-meta');
-      meta.append(icon(chan.icon), document.createTextNode(' ' + ev.who + ' · ' + chan.label));
-      card.append(meta, el('p', 'live-in', ev.msg));
+  // Tarjeta de conversación: hora, quién, canal y el mensaje del cliente.
+  const chatCard = (c) => {
+    const chan = CHANNELS[c.ch] || CHANNELS.wa;
+    const card = el('div', 'live-card live-' + c.ch);
+    const meta = el('div', 'live-meta');
+    meta.append(icon(chan.icon), document.createTextNode(' ' + c.at + ' · ' + c.who + ' · ' + chan.label));
+    card.append(meta, el('p', 'live-in', c.msg));
+    return card;
+  };
+  const addReply = (card, c) => {
+    const out = el('p', 'live-out');
+    out.append(el('span', 'ai-tag', 'IA'), document.createTextNode(c.reply));
+    card.append(out);
+  };
+  const addDone = (card, c) => {
+    card.append(c.handoff
+      ? el('span', 'live-done live-handoff', 'Pasado a una persona del equipo')
+      : el('span', 'live-done', 'Respondido por la IA'));
+  };
+  const noteCard = (s) => {
+    const card = el('div', 'live-card live-' + s.kind);
+    const meta = el('div', 'live-meta');
+    const ic = { won: 't-check', task: 't-clock', lost: 't-alert-circle' }[s.kind];
+    meta.append(icon(ic), document.createTextNode(' ' + s.title));
+    card.append(meta, el('p', 'live-strong', s.text));
+    return card;
+  };
+  const waitCard = (c) => {
+    const card = chatCard(c);
+    const pending = el('span', 'live-pending');
+    pending.append(icon('t-clock'), document.createTextNode(' Sin responder'));
+    card.append(pending);
+    return card;
+  };
+
+  // Estado final de un acto, sin animación.
+  const renderStatic = (p) => {
+    clear();
+    list.innerHTML = '';
+    setPhase(p);
+    ACTS[p].steps.forEach((s) => {
+      if (s.kind === 'wait') {
+        push(waitCard(CHATS[s.chat]));
+      } else if (s.kind === 'chat') {
+        const card = chatCard(CHATS[s.chat]);
+        addReply(card, CHATS[s.chat]);
+        addDone(card, CHATS[s.chat]);
+        push(card);
+      } else {
+        push(noteCard(s));
+      }
+    });
+    if (p === 'noche') clock.textContent = CHATS[CHATS.length - 1].at;
+  };
+
+  const next = () => {
+    const act = ACTS[phase];
+    const s = act.steps[step];
+    let wait;
+
+    if (s.kind === 'wait') {
+      const c = CHATS[s.chat];
+      clock.textContent = c.at;
+      push(waitCard(c));
+      wait = 1900;
+    } else if (s.kind === 'chat') {
+      const c = CHATS[s.chat];
+      const card = chatCard(c);
       push(card);
       later(() => {
-        const typing = el('div', 'live-typing');
-        typing.append(el('span'), el('span'), el('span'));
-        card.append(typing);
-        later(() => {
-          typing.remove();
-          const out = el('p', 'live-out');
-          out.append(el('span', 'ai-tag', 'IA'), document.createTextNode(ev.reply));
-          card.append(out);
-          later(() => card.append(ev.handoff
-            ? el('span', 'live-done live-handoff', 'Pasado a una persona del equipo')
-            : el('span', 'live-done', 'Respondido por la IA')), 350);
-        }, 1600);
-      }, 900);
-      wait = 5200;
+        addReply(card, c);
+        later(() => addDone(card, c), 350);
+      }, 800);
+      wait = 4000;
     } else {
-      const card = el('div', 'live-card ' + (ev.kind === 'won' ? 'live-won' : 'live-task'));
-      const meta = el('div', 'live-meta');
-      meta.append(icon(ev.kind === 'won' ? 't-check' : 't-clock'), document.createTextNode(' ' + ev.title));
-      card.append(meta, el('p', 'live-strong', ev.text));
-      push(card);
-      wait = ev.kind === 'won' ? 4200 : 2600;
+      push(noteCard(s));
+      wait = s.kind === 'won' ? 4600 : s.kind === 'lost' ? 4200 : 2400;
     }
 
-    i += 1;
-    if (i >= EVENTS.length) {
+    step += 1;
+    if (step >= act.steps.length) {
       later(() => {
         Array.from(list.children).forEach((c) => c.classList.add('is-leaving'));
-        later(() => { list.innerHTML = ''; i = 0; minutes = START; play(); }, 450);
+        later(() => playAct(phase === 'noche' ? 'dia' : 'noche'), 450);
       }, wait);
     } else {
-      later(play, wait);
+      later(next, wait);
     }
   };
+
+  // Empieza un acto desde cero. El de día espera un poco para que se vea el fundido de la foto.
+  const playAct = (p) => {
+    clear();
+    list.innerHTML = '';
+    setPhase(p);
+    step = 0;
+    later(next, p === 'dia' ? 1100 : 400);
+  };
+
+  if (sw) {
+    sw.addEventListener('click', (e) => {
+      const b = e.target.closest('.phase-btn');
+      if (!b || !ACTS[b.dataset.phase]) return;
+      if (reduce) { renderStatic(b.dataset.phase); return; }
+      running = true;
+      playAct(b.dataset.phase);
+    });
+  }
+
+  if (reduce) {
+    renderStatic('dia');
+    return;
+  }
 
   const start = () => {
     if (running) return;
     running = true;
-    list.innerHTML = '';
-    i = 0;
-    minutes = START;
-    play();
+    playAct('noche');
   };
+  // Mientras la bandeja no está en pantalla, muestra el final del acto de noche (coincide con la foto).
+  renderStatic('noche');
+  const stop = () => { clear(); running = false; };
 
-  if ('IntersectionObserver' in window) {
+  // Corre solo mientras la bandeja está en pantalla y la pestaña visible.
+  let inView = !('IntersectionObserver' in window);
+  if (!inView) {
     new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) start(); else stop(); });
-    }, { threshold: 0.3 }).observe(box);
+      entries.forEach((e) => {
+        inView = e.isIntersecting;
+        if (inView && !document.hidden) start(); else stop();
+      });
+    }, { threshold: 0.25 }).observe(box);
   } else {
     start();
   }
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else if (inView) start();
+  });
 })();
 
 // ---------- Eventos de GA4 que no son conversiones (v2c, 13-nov-2026) ----------
