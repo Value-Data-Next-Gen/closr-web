@@ -190,7 +190,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20261113e" />
+  <link rel="stylesheet" href="styles.css?v=20261113f" />
 </head>
 
 <body>
@@ -232,20 +232,21 @@
   <!-- ============ HERO ============ -->
   <section class="hero hero-cosmic" id="hero" data-phase="noche">
     <div class="cosmic-bg" aria-hidden="true">
-      <img
-        src="images/v2/hero-noche-1600.webp"
-        srcset="images/v2/hero-noche-900.webp 900w, images/v2/hero-noche-1600.webp 1600w"
-        sizes="100vw"
-        alt="" class="cosmic-img hero-photo" width="1600" height="900"
-        loading="eager" fetchpriority="high" />
-      <!-- Noche sin closr / día con closr: script.js alterna data-phase en la sección y esta foto
-           (la misma calle de mañana, con los locales abiertos) aparece encima con un fundido. -->
+      <!-- Noche sin closr / día con closr: script.js alterna data-phase en la sección.
+           La foto de día (la misma calle de mañana, con los locales abiertos) va abajo y la de
+           noche encima; en el acto de día la de noche se desvanece. -->
       <img
         src="images/v2/hero-dia-1600.webp"
         srcset="images/v2/hero-dia-900.webp 900w, images/v2/hero-dia-1600.webp 1600w"
         sizes="100vw"
         alt="" class="cosmic-img hero-photo hero-photo-day" width="1600" height="900"
         decoding="async" fetchpriority="low" />
+      <img
+        src="images/v2/hero-noche-1600.webp"
+        srcset="images/v2/hero-noche-900.webp 900w, images/v2/hero-noche-1600.webp 1600w"
+        sizes="100vw"
+        alt="" class="cosmic-img hero-photo hero-photo-night" width="1600" height="900"
+        loading="eager" fetchpriority="high" />
       <div class="cosmic-gradient"></div>
       <div class="hero-day-shade"></div>
 

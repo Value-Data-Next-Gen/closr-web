@@ -4202,11 +4202,8 @@ template { display: none; }
    v2d (13-nov-2026): hero de noche sin closr / de día con closr
    script.js cambia data-phase en #hero; acá se hace el fundido.
    ===================================================================== */
-.hero-photo-day {
-  opacity: 0;
-  transition: opacity 1.6s ease;
-}
-.hero-cosmic[data-phase="dia"] .hero-photo-day { opacity: 1; }
+.hero-photo-night { transition: opacity 1.6s ease; }
+.hero-cosmic[data-phase="dia"] .hero-photo-night { opacity: 0; }
 .hero-cosmic .cosmic-gradient { transition: opacity 1.6s ease; }
 .hero-cosmic[data-phase="dia"] .cosmic-gradient { opacity: 0; }
 
@@ -4303,5 +4300,5 @@ template { display: none; }
   .phase-btn { font-size: 12px; padding: 9px 8px; gap: 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-photo-day, .hero-day-shade, .hero-cosmic .cosmic-gradient, .phase-btn { transition: none; }
+  .hero-photo-night, .hero-day-shade, .hero-cosmic .cosmic-gradient, .phase-btn { transition: none; }
 }
