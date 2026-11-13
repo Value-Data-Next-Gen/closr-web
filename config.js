@@ -22,7 +22,9 @@
  * Ver docs/guia-cuentas-publicidad.md en el repo del CRM para qué crear.
  */
 window.CLOSR_CONFIG = {
-  GA_ID: '',
+  // GA4: cuenta "closr" > propiedad "closr.cl" > flujo web "closr.cl web" (ID de flujo 16337698783),
+  // creada el 13-nov-2026 con gonzalo@valuedata.cl. Hora de Chile, CLP.
+  GA_ID: 'G-54CJCSH83N',
   ADS_ID: '',
   ADS_LEAD_LABEL: '',
   META_PIXEL_ID: '',
