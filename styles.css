@@ -4190,3 +4190,10 @@ template { display: none; }
 .pilot-stat span { display: block; font-size: 13px; color: var(--slate-600); margin-top: 2px; }
 
 .hero-cosmic > .hero-split { width: 100%; }
+
+/* Bandeja del hero: Instagram y derivación a una persona */
+.live-ig .live-meta svg { color: #C13584; }
+.live-handoff { color: #92400E; }
+.live-handoff::before { content: "→ "; }
+.live-list { height: 410px; }
+@media (max-width: 920px) { .live-list { height: 340px; } }

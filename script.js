@@ -318,14 +318,28 @@
 
   const ICONS = 'images/icons-v1.svg';
   const EVENTS = [
-    { kind: 'chat', who: 'Carolina', msg: '¿Tienen el polerón rojo en talla M?', reply: 'Sí, queda uno. ¿Te lo aparto hasta mañana?', mins: 0 },
-    { kind: 'chat', who: 'Don Pedro', msg: '¿A qué hora abren el sábado?', reply: 'El sábado abrimos de 10:00 a 14:00. ¡Te esperamos!', mins: 2 },
-    { kind: 'chat', who: 'Javiera', msg: '¿Me hacen precio por 12 poleras con logo?', reply: 'Le pido la cotización al encargado y te escribimos mañana temprano.', mins: 3 },
-    { kind: 'task', title: 'Tarea creada por la IA', text: 'Enviar cotización a Javiera, mañana a las 9:30', mins: 0 },
+    { kind: 'chat', ch: 'wa', who: 'Carolina',
+      msg: 'hola!! el polerón rojo en M lo tienen? es para regalo, si no le queda lo puedo cambiar?',
+      reply: '¡Hola Carolina! Sí, queda uno en M. Tienes 30 días para cambiarlo con la boleta y te lo envolvemos para regalo sin costo. ¿Te lo aparto?',
+      mins: 0 },
+    { kind: 'chat', ch: 'ig', who: '@vale.mendez',
+      msg: 'vi las zapatillas blancas del último post, hay en 38? cuánto sale el envío a Temuco y cuándo llega?',
+      reply: 'Hola Vale, sí hay en 38 a $39.990. El envío a Temuco cuesta $4.500 y llega en 2 a 4 días hábiles. ¿Te mando el link de pago?',
+      mins: 2 },
+    { kind: 'chat', ch: 'wa', who: 'Javier',
+      msg: 'necesito 12 poleras con el logo bordado para mi equipo pero tienen que estar antes del viernes, alcanzan?',
+      reply: 'Hola Javier. El bordado toma 3 días hábiles, así que si confirmas hoy llegamos al viernes. Le pido la cotización al encargado y te escribe a primera hora.',
+      mins: 3 },
+    { kind: 'task', title: 'Tarea creada por la IA', text: 'Cotizar 12 poleras bordadas para Javier antes de las 9:30', mins: 0 },
+    { kind: 'chat', ch: 'ig', who: '@pedro.ferre', handoff: true,
+      msg: 'en otra tienda me dejan el mismo modelo 15% más barato, me lo igualan?',
+      reply: 'Entiendo, Pedro. El precio no lo defino yo: le paso tu consulta a una persona del equipo para que te responda hoy mismo.',
+      mins: 2 },
     { kind: 'won', title: 'Venta cerrada', text: 'Carolina · $24.990 · retira mañana a las 10:00', mins: 1 },
   ];
+  const CHANNELS = { wa: { icon: 'i-wa', label: 'WhatsApp' }, ig: { icon: 'i-ig', label: 'Instagram' } };
   const START = 23 * 60 + 47;
-  const MAX_CARDS = 4;
+  const MAX_CARDS = 3;
 
   let minutes = START;
   let i = 0;
@@ -367,9 +381,10 @@
     let wait = 2400;
 
     if (ev.kind === 'chat') {
-      const card = el('div', 'live-card');
+      const chan = CHANNELS[ev.ch] || CHANNELS.wa;
+      const card = el('div', 'live-card live-' + ev.ch);
       const meta = el('div', 'live-meta');
-      meta.append(icon('i-wa'), document.createTextNode(' ' + ev.who + ' · WhatsApp'));
+      meta.append(icon(chan.icon), document.createTextNode(' ' + ev.who + ' · ' + chan.label));
       card.append(meta, el('p', 'live-in', ev.msg));
       push(card);
       later(() => {
@@ -381,10 +396,12 @@
           const out = el('p', 'live-out');
           out.append(el('span', 'ai-tag', 'IA'), document.createTextNode(ev.reply));
           card.append(out);
-          later(() => card.append(el('span', 'live-done', 'Respondido por la IA')), 350);
-        }, 1300);
-      }, 800);
-      wait = 4300;
+          later(() => card.append(ev.handoff
+            ? el('span', 'live-done live-handoff', 'Pasado a una persona del equipo')
+            : el('span', 'live-done', 'Respondido por la IA')), 350);
+        }, 1600);
+      }, 900);
+      wait = 5200;
     } else {
       const card = el('div', 'live-card ' + (ev.kind === 'won' ? 'live-won' : 'live-task'));
       const meta = el('div', 'live-meta');

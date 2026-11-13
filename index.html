@@ -169,7 +169,7 @@
       {
         "@type": "Question",
         "name": "¿Cómo cuidan los datos de mis clientes?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Tratamos los datos según la Ley 19.628 y las políticas de WhatsApp Business. La plataforma corre en Microsoft Azure con cifrado en tránsito y en reposo, y los proveedores de IA no usan tus conversaciones para entrenar modelos. El detalle está en la política de privacidad." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Tratamos los datos según la Ley 21.719 de protección de datos personales (que reforma la Ley 19.628) y las políticas de WhatsApp Business. La plataforma corre en Microsoft Azure con cifrado en tránsito y en reposo, y los proveedores de IA no usan tus conversaciones para entrenar modelos. El detalle está en la política de privacidad." }
       },
       {
         "@type": "Question",
@@ -190,7 +190,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20261113b" />
+  <link rel="stylesheet" href="styles.css?v=20261113c" />
 </head>
 
 <body>
@@ -282,25 +282,27 @@
       <!-- Bandeja en vivo: script.js la anima (mensajes que llegan de noche y la IA responde).
            Sin JS o con movimiento reducido se ve el estado estático de abajo. -->
       <div class="live-inbox" id="liveInbox" role="img"
-           aria-label="Ejemplo: de noche llegan mensajes por WhatsApp y el agente de IA de closr los responde, crea una tarea y cierra una venta.">
+           aria-label="Ejemplo: de noche llegan mensajes por WhatsApp e Instagram; el agente de IA de closr responde preguntas difíciles, crea una tarea, pasa a una persona lo que no le corresponde decidir y cierra una venta.">
         <div class="live-head">
           <span class="live-pulse" aria-hidden="true"></span>
           <span class="live-title">Bandeja de closr</span>
           <span class="live-clock" id="liveClock">23:47</span>
         </div>
         <div class="live-list" id="liveList">
-          <div class="live-card">
-            <div class="live-meta"><svg width="14" height="14"><use href="images/icons-v1.svg#i-wa"/></svg> Carolina · WhatsApp</div>
-            <p class="live-in">¿Tienen el polerón rojo en talla M?</p>
-            <p class="live-out"><span class="ai-tag">IA</span>Sí, queda uno. ¿Te lo aparto hasta mañana?</p>
+          <div class="live-card live-ig">
+            <div class="live-meta"><svg width="14" height="14"><use href="images/icons-v1.svg#i-ig"/></svg> @vale.mendez · Instagram</div>
+            <p class="live-in">vi las zapatillas blancas del último post, hay en 38? cuánto sale el envío a Temuco y cuándo llega?</p>
+            <p class="live-out"><span class="ai-tag">IA</span>Hola Vale, sí hay en 38 a $39.990. El envío a Temuco cuesta $4.500 y llega en 2 a 4 días hábiles. ¿Te mando el link de pago?</p>
             <span class="live-done">Respondido por la IA</span>
           </div>
-          <div class="live-card live-won">
-            <div class="live-meta"><svg width="14" height="14"><use href="images/icons-v1.svg#t-check"/></svg> Venta cerrada</div>
-            <p class="live-strong">$24.990 · retira mañana a las 10:00</p>
+          <div class="live-card live-wa">
+            <div class="live-meta"><svg width="14" height="14"><use href="images/icons-v1.svg#i-wa"/></svg> Carolina · WhatsApp</div>
+            <p class="live-in">hola!! el polerón rojo en M lo tienen? es para regalo, si no le queda lo puedo cambiar?</p>
+            <p class="live-out"><span class="ai-tag">IA</span>¡Hola Carolina! Sí, queda uno en M. Tienes 30 días para cambiarlo con la boleta y te lo envolvemos para regalo sin costo. ¿Te lo aparto?</p>
+            <span class="live-done">Respondido por la IA</span>
           </div>
         </div>
-        <div class="live-foot">Ejemplo de una noche cualquiera</div>
+        <div class="live-foot">Conversaciones de ejemplo. Instagram se activa cuando Meta lo apruebe.</div>
       </div>
     </div>
   </section>
@@ -832,7 +834,7 @@
         </details>
         <details class="faq-item">
           <summary>¿Cómo cuidan los datos de mis clientes?</summary>
-          <p>Tratamos los datos según la Ley 19.628 y las políticas de WhatsApp Business. La plataforma corre en Microsoft Azure con cifrado en tránsito y en reposo, y los proveedores de IA no usan tus conversaciones para entrenar modelos. El detalle está en la <a href="/privacidad">política de privacidad</a>.</p>
+          <p>Tratamos los datos según la Ley 21.719 de protección de datos personales (que reforma la Ley 19.628) y las políticas de WhatsApp Business. La plataforma corre en Microsoft Azure con cifrado en tránsito y en reposo, y los proveedores de IA no usan tus conversaciones para entrenar modelos. El detalle está en la <a href="/privacidad">política de privacidad</a>.</p>
         </details>
         <details class="faq-item">
           <summary>¿Reemplaza a mi equipo de ventas?</summary>
@@ -891,8 +893,8 @@
             <div class="trust-row">
               <div class="trust-icon"><svg width="22" height="22" aria-hidden="true"><use href="images/icons-v1.svg#t-shield-lock"/></svg></div>
               <div>
-                <strong>Datos según la Ley 19.628</strong>
-                <span>Tus conversaciones no se usan para entrenar modelos</span>
+                <strong>Ley 21.719 de datos personales</strong>
+                <span>Política alineada a la nueva ley · tus conversaciones no entrenan modelos</span>
               </div>
             </div>
             <div class="trust-row">
@@ -1031,6 +1033,6 @@
     <span class="wa-fab-label">¿Hablamos?</span>
   </a>
 
-  <script src="script.js?v=20261113b"></script>
+  <script src="script.js?v=20261113c"></script>
 </body>
 </html>
