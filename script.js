@@ -440,3 +440,31 @@
   }
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
 })();
+
+// ---------- Eventos de GA4 que no son conversiones (v2c, 13-nov-2026) ----------
+// Solo se envían si GA4 ya cargó, o sea si el visitante aceptó cookies (tags.js define window.gtag).
+// No pasan por ClosrTags.conversion(): esa función también dispara la conversión de lead
+// de Google Ads, Meta y TikTok, y estos clics no son leads.
+(() => {
+  const ga = (nombre, params) => {
+    if (typeof window.gtag === 'function' && window.CLOSR_CONFIG && window.CLOSR_CONFIG.GA_ID) {
+      window.gtag('event', nombre, Object.assign({ transport_type: 'beacon' }, params || {}));
+    }
+  };
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    if (href.indexOf('app.closr.cl/register') !== -1) {
+      ga('clic_registro', { ubicacion: a.closest('section, header, footer')?.id || a.closest('section, header, footer')?.className || 'otro' });
+    } else if (a.classList.contains('whatsapp-fab') || href.indexOf('wa.me/') !== -1) {
+      ga('clic_whatsapp');
+    }
+  });
+  document.querySelectorAll('form[name="closr-lista-espera"]').forEach((f) => {
+    f.addEventListener('submit', () => {
+      const canal = f.querySelector('input[name="canal"]');
+      ga('lista_espera', { canal: canal ? canal.value : '' });
+    });
+  });
+})();

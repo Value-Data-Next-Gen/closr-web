@@ -118,9 +118,6 @@
   to = "/messenger.html"
   status = 200
 
-# SPA-ish fallback (por si algún día agregamos rutas)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
+# Antes había acá un comodín /* -> /index.html con status 200: cualquier URL inexistente
+# devolvía la portada con 200 y Google la veía como contenido duplicado ("soft 404").
+# Sin el comodín, Netlify sirve /404.html con status 404 para lo que no exista.
