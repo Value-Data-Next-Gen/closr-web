@@ -305,3 +305,121 @@
     }
   }
 })();
+
+// ---------- Bandeja en vivo del hero (v2b, 13-nov-2026) ----------
+// Mensajes de ejemplo que llegan de noche; la IA responde, crea una tarea y cierra una venta.
+// Con movimiento reducido o sin JS queda el estado estático que trae el HTML.
+(() => {
+  const list = document.getElementById('liveList');
+  const clock = document.getElementById('liveClock');
+  const box = document.getElementById('liveInbox');
+  if (!list || !clock || !box) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const ICONS = 'images/icons-v1.svg';
+  const EVENTS = [
+    { kind: 'chat', who: 'Carolina', msg: '¿Tienen el polerón rojo en talla M?', reply: 'Sí, queda uno. ¿Te lo aparto hasta mañana?', mins: 0 },
+    { kind: 'chat', who: 'Don Pedro', msg: '¿A qué hora abren el sábado?', reply: 'El sábado abrimos de 10:00 a 14:00. ¡Te esperamos!', mins: 2 },
+    { kind: 'chat', who: 'Javiera', msg: '¿Me hacen precio por 12 poleras con logo?', reply: 'Le pido la cotización al encargado y te escribimos mañana temprano.', mins: 3 },
+    { kind: 'task', title: 'Tarea creada por la IA', text: 'Enviar cotización a Javiera, mañana a las 9:30', mins: 0 },
+    { kind: 'won', title: 'Venta cerrada', text: 'Carolina · $24.990 · retira mañana a las 10:00', mins: 1 },
+  ];
+  const START = 23 * 60 + 47;
+  const MAX_CARDS = 4;
+
+  let minutes = START;
+  let i = 0;
+  let timers = [];
+  let running = false;
+
+  const later = (fn, ms) => { timers.push(setTimeout(fn, ms)); };
+  const stop = () => { timers.forEach(clearTimeout); timers = []; running = false; };
+  const fmt = (m) => {
+    const h = Math.floor(m / 60) % 24;
+    const mm = m % 60;
+    return String(h).padStart(2, '0') + ':' + String(mm).padStart(2, '0');
+  };
+  const icon = (name) => {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('width', '14');
+    svg.setAttribute('height', '14');
+    const use = document.createElementNS(ns, 'use');
+    use.setAttribute('href', ICONS + '#' + name);
+    svg.appendChild(use);
+    return svg;
+  };
+  const el = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  };
+  const push = (card) => {
+    list.prepend(card);
+    while (list.children.length > MAX_CARDS) list.lastElementChild.remove();
+  };
+
+  const play = () => {
+    const ev = EVENTS[i];
+    minutes += ev.mins;
+    clock.textContent = fmt(minutes);
+    let wait = 2400;
+
+    if (ev.kind === 'chat') {
+      const card = el('div', 'live-card');
+      const meta = el('div', 'live-meta');
+      meta.append(icon('i-wa'), document.createTextNode(' ' + ev.who + ' · WhatsApp'));
+      card.append(meta, el('p', 'live-in', ev.msg));
+      push(card);
+      later(() => {
+        const typing = el('div', 'live-typing');
+        typing.append(el('span'), el('span'), el('span'));
+        card.append(typing);
+        later(() => {
+          typing.remove();
+          const out = el('p', 'live-out');
+          out.append(el('span', 'ai-tag', 'IA'), document.createTextNode(ev.reply));
+          card.append(out);
+          later(() => card.append(el('span', 'live-done', 'Respondido por la IA')), 350);
+        }, 1300);
+      }, 800);
+      wait = 4300;
+    } else {
+      const card = el('div', 'live-card ' + (ev.kind === 'won' ? 'live-won' : 'live-task'));
+      const meta = el('div', 'live-meta');
+      meta.append(icon(ev.kind === 'won' ? 't-check' : 't-clock'), document.createTextNode(' ' + ev.title));
+      card.append(meta, el('p', 'live-strong', ev.text));
+      push(card);
+      wait = ev.kind === 'won' ? 4200 : 2600;
+    }
+
+    i += 1;
+    if (i >= EVENTS.length) {
+      later(() => {
+        Array.from(list.children).forEach((c) => c.classList.add('is-leaving'));
+        later(() => { list.innerHTML = ''; i = 0; minutes = START; play(); }, 450);
+      }, wait);
+    } else {
+      later(play, wait);
+    }
+  };
+
+  const start = () => {
+    if (running) return;
+    running = true;
+    list.innerHTML = '';
+    i = 0;
+    minutes = START;
+    play();
+  };
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) start(); else stop(); });
+    }, { threshold: 0.3 }).observe(box);
+  } else {
+    start();
+  }
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+})();

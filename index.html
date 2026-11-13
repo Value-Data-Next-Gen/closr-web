@@ -190,7 +190,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20261113" />
+  <link rel="stylesheet" href="styles.css?v=20261113b" />
 </head>
 
 <body>
@@ -253,35 +253,55 @@
       </div>
     </div>
 
-    <div class="container hero-cosmic-content">
-      <span class="hero-kicker-overlay">
-        Agente de IA para vender por WhatsApp
-      </span>
+    <div class="container hero-split">
+      <div class="hero-copy">
+        <span class="hero-kicker-overlay">Agente de IA para vender por WhatsApp</span>
 
-      <h1 class="hero-echo">
-        <span class="echo-line echo-3" aria-hidden="true">El caos del WhatsApp termina aquí.</span>
-        <span class="echo-line echo-2" aria-hidden="true">El caos del WhatsApp termina aquí.</span>
-        <span class="echo-line echo-1">El caos del WhatsApp <span class="echo-accent">termina aquí.</span></span>
-      </h1>
+        <h1 class="hero-title">El caos del WhatsApp <span class="echo-accent">termina aquí.</span></h1>
 
-      <p class="hero-cosmic-lede">
-        closr responde, califica y hace seguimiento a tus clientes por WhatsApp.
-        <strong>Las 24 horas, en tu tono, y tú decides cuándo entrar.</strong>
-      </p>
+        <p class="hero-cosmic-lede">
+          closr responde, califica y hace seguimiento a tus clientes por WhatsApp.
+          <strong>Las 24 horas, en tu tono, y tú decides cuándo entrar.</strong>
+        </p>
 
-      <div class="hero-ctas">
-        <a href="#cta" class="btn btn-primary btn-lg">
-          Comenzar ahora
-          <svg width="16" height="16" aria-hidden="true"><use href="images/icons-v1.svg#t-arrow-right"/></svg>
-        </a>
-        <a href="#demo" class="btn btn-cosmic-ghost btn-lg">Ver la demo</a>
+        <div class="hero-ctas">
+          <a href="#cta" class="btn btn-primary btn-lg">
+            Comenzar ahora
+            <svg width="16" height="16" aria-hidden="true"><use href="images/icons-v1.svg#t-arrow-right"/></svg>
+          </a>
+          <a href="#demo" class="btn btn-cosmic-ghost btn-lg">Ver la demo</a>
+        </div>
+
+        <ul class="hero-cosmic-trust">
+          <li><span class="check-cosmic">✓</span> 14 días gratis</li>
+          <li><span class="check-cosmic">✓</span> Sin tarjeta de crédito</li>
+          <li><span class="check-cosmic">✓</span> API oficial de WhatsApp</li>
+        </ul>
       </div>
 
-      <ul class="hero-cosmic-trust">
-        <li><span class="check-cosmic">✓</span> 14 días gratis</li>
-        <li><span class="check-cosmic">✓</span> Sin tarjeta de crédito</li>
-        <li><span class="check-cosmic">✓</span> API oficial de WhatsApp</li>
-      </ul>
+      <!-- Bandeja en vivo: script.js la anima (mensajes que llegan de noche y la IA responde).
+           Sin JS o con movimiento reducido se ve el estado estático de abajo. -->
+      <div class="live-inbox" id="liveInbox" role="img"
+           aria-label="Ejemplo: de noche llegan mensajes por WhatsApp y el agente de IA de closr los responde, crea una tarea y cierra una venta.">
+        <div class="live-head">
+          <span class="live-pulse" aria-hidden="true"></span>
+          <span class="live-title">Bandeja de closr</span>
+          <span class="live-clock" id="liveClock">23:47</span>
+        </div>
+        <div class="live-list" id="liveList">
+          <div class="live-card">
+            <div class="live-meta"><svg width="14" height="14"><use href="images/icons-v1.svg#i-wa"/></svg> Carolina · WhatsApp</div>
+            <p class="live-in">¿Tienen el polerón rojo en talla M?</p>
+            <p class="live-out"><span class="ai-tag">IA</span>Sí, queda uno. ¿Te lo aparto hasta mañana?</p>
+            <span class="live-done">Respondido por la IA</span>
+          </div>
+          <div class="live-card live-won">
+            <div class="live-meta"><svg width="14" height="14"><use href="images/icons-v1.svg#t-check"/></svg> Venta cerrada</div>
+            <p class="live-strong">$24.990 · retira mañana a las 10:00</p>
+          </div>
+        </div>
+        <div class="live-foot">Ejemplo de una noche cualquiera</div>
+      </div>
     </div>
   </section>
 
@@ -660,27 +680,26 @@
 
   <!-- ============ CASOS ============ -->
   <!--
-    TODO (Gonzalo): métricas de los pilotos. No publicar ningún número aquí hasta
-    tenerlo medido y respaldable (ventana de medición + antes/después).
-    El box va ANÓNIMO a propósito: contexto/confidencial.md del agente de marketing
-    pide no mostrar su nombre. Si el dueño autoriza, se puede nombrar.
+    Clientes nombrados con autorización de Gonzalo (13-nov-2026).
+    Cifra del box: dashboard de app.closr.cl, "Nuevos leads" del 14-oct al 13-nov-2026 = 62.
+    Al actualizarla, cambiar también la ventana de fechas. Kemass: sin cifras publicadas.
   -->
   <section id="casos" class="cases reveal">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title">closr ya atiende clientes de negocios reales.</h2>
-        <p class="section-sub">
-          Estamos midiendo con los primeros clientes antes de publicar cifras.
-          Preferimos mostrarte el producto funcionando a un número que todavía no podemos respaldar.
-        </p>
+        <h2 class="section-title">Negocios que ya atienden a sus clientes con closr.</h2>
+        <p class="section-sub">Una tienda de motos y un gimnasio, con WhatsApp conectado a la API oficial y el agente respondiendo.</p>
       </div>
 
       <div class="pilot-panel pilot-panel-2">
         <article class="pilot-card">
           <header class="pilot-head">
-            <span class="pilot-badge">Piloto en curso</span>
+            <a class="client-logo" href="https://www.kemass.cl" target="_blank" rel="noopener">
+              <img src="images/v2/clientes/kemass-logo.png" alt="Kemass" width="176" height="26" loading="lazy" />
+            </a>
+            <span class="pilot-badge pilot-badge-live">Cliente</span>
             <h3><a href="https://www.kemass.cl" target="_blank" rel="noopener">Kemass</a></h3>
-            <p class="pilot-meta">Importadora de motos y cuatrimotos · Buin, Región Metropolitana</p>
+            <p class="pilot-meta">Motos y cuatrimotos · Buin, Región Metropolitana · kemass.cl</p>
           </header>
           <div class="pilot-body">
             <p>
@@ -693,9 +712,12 @@
 
         <article class="pilot-card">
           <header class="pilot-head">
-            <span class="pilot-badge pilot-badge-live">En producción</span>
-            <h3>Box de entrenamiento funcional</h3>
-            <p class="pilot-meta">Gimnasio · Santiago</p>
+            <a class="client-logo" href="https://www.crossfitsantillana.cl" target="_blank" rel="noopener">
+              <img src="images/v2/clientes/box-santillana-icono.svg" alt="Box Santillana" width="52" height="52" loading="lazy" />
+            </a>
+            <span class="pilot-badge pilot-badge-live">Cliente</span>
+            <h3><a href="https://www.crossfitsantillana.cl" target="_blank" rel="noopener">Box Santillana</a></h3>
+            <p class="pilot-meta">Hyrox, funcional y boxeo · El Monte, Región Metropolitana · crossfitsantillana.cl</p>
           </header>
           <div class="pilot-body">
             <p>
@@ -703,6 +725,7 @@
               de prueba y ayuda a los alumnos a cambiarse de clase. Cuando alguien necesita a una
               persona, la conversación pasa al equipo del box.
             </p>
+            <p class="pilot-stat"><strong>62</strong> contactos nuevos atendidos por WhatsApp en 30 días <span>(14 de octubre al 13 de noviembre de 2026)</span></p>
           </div>
         </article>
       </div>
@@ -1008,6 +1031,6 @@
     <span class="wa-fab-label">¿Hablamos?</span>
   </a>
 
-  <script src="script.js?v=20261113"></script>
+  <script src="script.js?v=20261113b"></script>
 </body>
 </html>
