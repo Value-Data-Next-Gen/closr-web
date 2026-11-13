@@ -4061,8 +4061,6 @@ template { display: none; }
   height: 9px;
   border-radius: 50%;
   background: #4ADE80;
-  box-shadow: 0 0 0 0 rgba(74, 222, 128, .6);
-  animation: live-pulse 2s ease-out infinite;
 }
 @keyframes live-pulse {
   0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, .55); }
