@@ -3706,20 +3706,72 @@ template { display: none; }
   .channel-wa { grid-row: auto; min-height: 420px; }
 }
 
-/* ---------- Íconos de diferenciadores y features ---------- */
-.diff-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--indigo-50);
-  color: var(--indigo-dark);
+/* ---------- Diferenciadores y features: ícono junto al título, sin "tile" ni tarjeta ---------- */
+.diff-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 56px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-.feat-icon { color: var(--indigo-dark); }
-.feat-icon.blue-bg { color: var(--blue-dark); }
-.features-grid { grid-template-columns: repeat(3, 1fr); }
+.diff-card {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  padding: 28px 0 32px;
+  overflow: visible;
+}
+.diff-card:hover { border-color: var(--border); box-shadow: none; }
+.diff-card::after, .diff-card::before { display: none; }
+.diff-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+.diff-card p { font-size: 16px; max-width: 46ch; }
+.diff-icon {
+  display: inline-flex;
+  width: auto;
+  height: auto;
+  margin: 0;
+  background: none;
+  color: var(--indigo-dark);
+  flex-shrink: 0;
+}
+@media (max-width: 720px) { .diff-grid { grid-template-columns: 1fr; } }
+
+.features-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 40px;
+}
+.feat {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  column-gap: 14px;
+  align-content: start;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  padding: 26px 0 30px;
+}
+.feat:hover { border-color: var(--border); box-shadow: none; transform: none; }
+.feat-icon,
+.feat-icon.indigo-bg,
+.feat-icon.blue-bg {
+  grid-row: span 2;
+  width: auto;
+  height: auto;
+  margin: 2px 0 0;
+  background: none;
+  border-radius: 0;
+  color: var(--indigo-dark);
+  align-items: flex-start;
+}
+.feat h3 { margin-bottom: 6px; }
+.feat p { font-size: 15px; }
 @media (max-width: 1000px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px)  { .features-grid { grid-template-columns: 1fr; } }
 
