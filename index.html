@@ -19,129 +19,118 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="/images/v2/closr-icono-512.png" />
+
+  <!-- Hero: se precarga para el LCP -->
+  <link rel="preload" as="image" href="images/v2/hero-noche-1600.webp"
+        imagesrcset="images/v2/hero-noche-900.webp 900w, images/v2/hero-noche-1600.webp 1600w" imagesizes="100vw" />
 
   <!-- Primary Meta Tags -->
-  <title>closr | Cierra ventas con IA · WhatsApp para PYMEs · ValueData</title>
-  <meta name="title" content="closr | Cierra ventas con IA · WhatsApp para PYMEs · ValueData" />
-  <meta name="description" content="closr es el agente de IA que cierra ventas por ti en WhatsApp: responde 24/7, hace seguimiento y mueve solo los leads listos. Un producto ValueData. Prueba gratis 14 días." />
-  <meta name="keywords" content="cerrar ventas con IA, agente de ventas IA, chatbot WhatsApp PYME, IA para ventas Chile, automatización ventas, agente comercial IA, asistente WhatsApp Business, CRM con IA, ValueData, AI agentic sales" />
+  <title>closr | Agente de IA que vende por WhatsApp · Pymes en Chile</title>
+  <meta name="title" content="closr | Agente de IA que vende por WhatsApp · Pymes en Chile" />
+  <meta name="description" content="closr atiende a tus clientes por WhatsApp con IA las 24 horas: responde con tu catálogo, hace seguimiento y ordena tu embudo. Instagram y Messenger en camino. 14 días gratis." />
   <meta name="author" content="ValueData" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#6366F1" />
-  <link rel="canonical" href="https://closr.cl" />
+  <meta name="theme-color" content="#0B1020" />
+  <link rel="canonical" href="https://closr.cl/" />
 
-  <!-- Open Graph / Facebook / LinkedIn -->
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://closr.cl/" />
-  <meta property="og:title" content="closr | Cierra ventas con IA · WhatsApp para PYMEs" />
-  <meta property="og:description" content="El agente de IA que cierra ventas por ti en WhatsApp. Responde 24/7, hace seguimiento y mueve solo los leads listos. Un producto ValueData." />
-  <meta property="og:image" content="https://closr.cl/images/og_image.png" />
+  <meta property="og:title" content="closr | El agente de IA que vende por WhatsApp" />
+  <meta property="og:description" content="Responde a tus clientes las 24 horas con tu catálogo, hace seguimiento y ordena tu embudo de ventas. Hecho en Chile por ValueData." />
+  <meta property="og:image" content="https://closr.cl/images/v2/og-closr.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="closr: el agente de IA que vende por WhatsApp para pymes chilenas" />
   <meta property="og:locale" content="es_CL" />
   <meta property="og:site_name" content="closr" />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://closr.cl/" />
-  <meta property="twitter:title" content="closr | Cierra ventas con IA en WhatsApp" />
-  <meta property="twitter:description" content="El agente de IA que cierra ventas por ti. Un producto ValueData." />
-  <meta property="twitter:image" content="https://closr.cl/images/og_image.png" />
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="closr | El agente de IA que vende por WhatsApp" />
+  <meta name="twitter:description" content="Responde a tus clientes las 24 horas, hace seguimiento y ordena tu embudo. Un producto ValueData." />
+  <meta name="twitter:image" content="https://closr.cl/images/v2/og-closr.jpg" />
 
   <!-- Geo Tags -->
   <meta name="geo.region" content="CL" />
   <meta name="geo.placename" content="Santiago, Chile" />
 
-  <!-- Schema.org SoftwareApplication -->
+  <!-- Schema.org: un solo grafo con la organización, el sitio y el producto -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "closr",
-    "applicationCategory": "BusinessApplication",
-    "applicationSubCategory": "Sales Automation",
-    "operatingSystem": "Web, iOS, Android",
-    "description": "Agente de IA que cierra ventas en WhatsApp para PYMEs chilenas. Responde 24/7, hace seguimiento automático y prioriza leads listos para comprar.",
-    "url": "https://closr.cl",
-    "image": "https://closr.cl/og-image.png",
-    "inLanguage": "es-CL",
-    "publisher": {
-      "@type": "Organization",
-      "name": "ValueData",
-      "url": "https://valuedata.cl",
-      "logo": "https://valuedata.cl/logo.png",
-      "sameAs": ["https://www.linkedin.com/company/value-data-ai/"]
-    },
-    "offers": [
+    "@graph": [
       {
-        "@type": "Offer",
-        "name": "Plan Parte",
-        "price": "1",
-        "priceCurrency": "CLF",
-        "availability": "https://schema.org/InStock"
+        "@type": "Organization",
+        "@id": "https://closr.cl/#org",
+        "name": "closr",
+        "alternateName": "closr by ValueData",
+        "url": "https://closr.cl/",
+        "logo": "https://closr.cl/images/v2/closr-icono-512.png",
+        "description": "Plataforma chilena con agentes de IA que atienden y venden por WhatsApp para pymes. Producto de ValueData SpA.",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "ValueData",
+          "url": "https://valuedata.cl",
+          "sameAs": ["https://www.linkedin.com/company/value-data-ai/"]
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Santiago",
+          "addressRegion": "Región Metropolitana",
+          "addressCountry": "CL"
+        },
+        "areaServed": "CL",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+56-9-3294-2337",
+          "contactType": "sales",
+          "email": "hola@closr.cl",
+          "areaServed": "CL",
+          "availableLanguage": ["Spanish"]
+        },
+        "sameAs": ["https://www.linkedin.com/company/value-data-ai/"]
       },
       {
-        "@type": "Offer",
-        "name": "Plan Crece",
-        "price": "2.5",
-        "priceCurrency": "CLF",
-        "availability": "https://schema.org/InStock"
+        "@type": "WebSite",
+        "@id": "https://closr.cl/#website",
+        "name": "closr",
+        "url": "https://closr.cl/",
+        "inLanguage": "es-CL",
+        "publisher": { "@id": "https://closr.cl/#org" }
       },
       {
-        "@type": "Offer",
-        "name": "Plan Equipo",
-        "price": "5",
-        "priceCurrency": "CLF",
-        "availability": "https://schema.org/InStock"
+        "@type": "SoftwareApplication",
+        "@id": "https://closr.cl/#app",
+        "name": "closr",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Ventas y atención por WhatsApp con IA",
+        "operatingSystem": "Web",
+        "url": "https://closr.cl/",
+        "image": "https://closr.cl/images/v2/og-closr.jpg",
+        "inLanguage": "es-CL",
+        "description": "Agentes de IA que atienden a los clientes de una pyme por WhatsApp las 24 horas: responden con el catálogo y las políticas del negocio, hacen seguimiento, ordenan el embudo de ventas y derivan a una persona cuando hace falta.",
+        "featureList": [
+          "Bandeja de conversaciones con pestaña por canal",
+          "Agentes de IA con base de conocimiento propia",
+          "Embudo de ventas y tareas de seguimiento",
+          "Plantillas de WhatsApp aprobadas por Meta",
+          "Biblioteca de fotos, videos y documentos",
+          "Derivación a una persona con el contexto de la conversación"
+        ],
+        "publisher": { "@id": "https://closr.cl/#org" },
+        "offers": [
+          { "@type": "Offer", "name": "Plan Parte",  "price": "1",   "priceCurrency": "CLF", "availability": "https://schema.org/InStock" },
+          { "@type": "Offer", "name": "Plan Crece",  "price": "2.5", "priceCurrency": "CLF", "availability": "https://schema.org/InStock" },
+          { "@type": "Offer", "name": "Plan Equipo", "price": "5",   "priceCurrency": "CLF", "availability": "https://schema.org/InStock" }
+        ]
       }
     ]
   }
   </script>
 
-  <!-- Schema.org Organization (parent: ValueData) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "closr",
-    "alternateName": "closr by ValueData",
-    "url": "https://closr.cl",
-    "logo": "https://closr.cl/favicon.svg",
-    "description": "Producto de ValueData. Agente de IA para cerrar ventas en WhatsApp.",
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "ValueData",
-      "url": "https://valuedata.cl"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Santiago",
-      "addressCountry": "CL"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+56-9-3294-2337",
-      "contactType": "sales",
-      "email": "hola@closr.cl",
-      "availableLanguage": ["Spanish", "English"]
-    },
-    "sameAs": ["https://www.linkedin.com/company/value-data-ai/"]
-  }
-  </script>
-
-  <!-- Schema.org WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "closr",
-    "url": "https://closr.cl",
-    "inLanguage": "es-CL",
-    "publisher": { "@type": "Organization", "name": "ValueData" }
-  }
-  </script>
-
-  <!-- Schema.org FAQ -->
+  <!-- Schema.org FAQ: mismo texto que el FAQ visible de más abajo -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -150,80 +139,58 @@
       {
         "@type": "Question",
         "name": "¿Qué es closr?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "closr es un agente de IA que se conecta a tu WhatsApp Business y cierra ventas por ti: responde 24/7, hace seguimiento automático y te entrega solo los leads listos para comprar. Es un producto de ValueData, especialistas en AI Agentic Analytics."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "closr es una plataforma chilena con agentes de IA que atienden a los clientes de tu negocio por WhatsApp: responden las 24 horas con la información que tú cargas, hacen seguimiento y ordenan tu embudo de ventas. Es un producto de ValueData." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Funciona con Instagram y Facebook Messenger?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La integración ya está construida. Instagram Direct está en revisión por Meta y Messenger viene después; los activamos en tu cuenta apenas Meta los apruebe. WhatsApp ya está disponible con la API oficial de Meta." }
       },
       {
         "@type": "Question",
         "name": "¿Cuánto demora la implementación?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Conectas tu WhatsApp en 5 minutos. La IA aprende de tus chats anteriores y arranca el mismo día. No hay \"fase de descubrimiento\" eterna — partes vendiendo de inmediato."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Te ayudamos a conectar tu número a la API oficial de WhatsApp y a cargar tu catálogo, precios y preguntas frecuentes. Con eso el agente ya puede responder, y lo vas afinando con las conversaciones reales. No hay una consultoría de meses." }
       },
       {
         "@type": "Question",
         "name": "¿La IA inventa respuestas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. closr solo responde con información que tú le diste (productos, precios, horarios, stock). Si no sabe algo, te lo deja anotado para que respondas tú. Cero alucinaciones."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "El agente está instruido para responder solo con la información que tú cargas: productos, precios, horarios y políticas. Si no sabe algo, o la conversación necesita criterio humano, la pasa a tu equipo con el contexto. Cada respuesta queda registrada en la bandeja." }
       },
       {
         "@type": "Question",
         "name": "¿Necesito tarjeta de crédito para probar?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Tienes 14 días gratis sin tarjeta. Cancelas cuando quieras desde el panel."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cumple con normas de protección de datos?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. closr cumple con la Ley 19.628 de Chile y políticas de WhatsApp Business API. Tus datos viven en infraestructura segura, encriptada y auditable."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Reemplaza a mi equipo de ventas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. closr se encarga de los leads que se caían entre las grietas (consultas de noche, seguimientos olvidados, calificación de leads). Tu equipo queda libre para cerrar los casos que requieren criterio humano."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Por qué los precios están en UF y no en pesos?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Porque la UF se reajusta con la inflación y el precio no se desactualiza solo. Te cobramos en pesos: cada factura se emite al valor de la UF de ese día, así que sabes exactamente cuánto pagas. Los valores son netos, o sea que se les suma IVA."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Tienes 14 días gratis sin tarjeta." }
       },
       {
         "@type": "Question",
         "name": "¿Qué pasa cuando terminan los 14 días de prueba?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Eliges un plan o no pasa nada. No pedimos tarjeta al inicio, así que no hay cobro automático ni renovación sorpresa: si no eliges plan, la cuenta simplemente deja de responder mensajes y tus conversaciones quedan disponibles para que las descargues."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Eliges un plan o no pasa nada. No pedimos tarjeta al inicio, así que no hay cobro automático ni renovación sorpresa: si no eliges plan, la cuenta simplemente deja de responder mensajes y tus conversaciones quedan disponibles para que las descargues." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo cuidan los datos de mis clientes?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tratamos los datos según la Ley 19.628 y las políticas de WhatsApp Business. La plataforma corre en Microsoft Azure con cifrado en tránsito y en reposo, y los proveedores de IA no usan tus conversaciones para entrenar modelos. El detalle está en la política de privacidad." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Reemplaza a mi equipo de ventas?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. closr se encarga de lo que se caía entre las grietas: consultas de noche, seguimientos olvidados, preguntas repetidas. Tu equipo queda libre para los casos que requieren criterio humano." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Por qué los precios están en UF y no en pesos?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Porque la UF se reajusta con la inflación y el precio no se desactualiza solo. Te cobramos en pesos: cada factura se emite al valor de la UF de ese día, así que sabes exactamente cuánto pagas. Los valores son netos, o sea que se les suma IVA." }
       },
       {
         "@type": "Question",
         "name": "¿Sirve si vendo productos con muchas variantes o precios que cambian?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, y es el caso donde más rinde. closr responde con el catálogo y las condiciones que tú mantienes, así que cuando cambias un precio o se acaba el stock la respuesta cambia con él. Lo que no sabe no lo inventa: lo deja anotado para que una persona lo conteste."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, y es donde más rinde. El agente responde con el catálogo y las condiciones que tú mantienes, así que cuando cambias un precio la respuesta cambia con él. Lo que no sabe no lo inventa: lo deja para que una persona lo conteste." }
       }
     ]
   }
   </script>
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261113" />
 </head>
 
 <body>
@@ -253,6 +220,7 @@
       <nav class="site-nav" aria-label="principal">
         <a href="#dolor">Por qué</a>
         <a href="#como-funciona">Cómo funciona</a>
+        <a href="#canales">Canales</a>
         <a href="#casos">Casos</a>
         <a href="#precio">Precio</a>
         <a href="#nosotros">Nosotros</a>
@@ -261,37 +229,35 @@
     </div>
   </header>
 
-  <!-- ============ HERO — Cosmic editorial ============ -->
+  <!-- ============ HERO ============ -->
   <section class="hero hero-cosmic">
-    <!-- Fondo cosmico full-bleed -->
     <div class="cosmic-bg" aria-hidden="true">
-      <img src="images/hero_cosmic.png" alt="" class="cosmic-img" loading="eager" fetchpriority="high" />
+      <img
+        src="images/v2/hero-noche-1600.webp"
+        srcset="images/v2/hero-noche-900.webp 900w, images/v2/hero-noche-1600.webp 1600w"
+        sizes="100vw"
+        alt="" class="cosmic-img hero-photo" width="1600" height="900"
+        loading="eager" fetchpriority="high" />
       <div class="cosmic-gradient"></div>
-      <div class="cosmic-particles">
-        <span></span><span></span><span></span><span></span><span></span><span></span>
-      </div>
 
-      <!-- WhatsApp icons flotando -->
+      <!-- Íconos de canales flotando -->
       <div class="floating-wa" aria-hidden="true">
-        <span class="wa-fly wa-1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></span>
-        <span class="wa-fly wa-2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></span>
-        <span class="wa-fly wa-3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></span>
-        <span class="wa-fly wa-4"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></span>
-        <span class="wa-fly wa-5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></span>
-        <span class="wa-fly wa-6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></span>
-        <span class="wa-fly wa-7"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></span>
-        <span class="wa-fly wa-8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></span>
+        <span class="wa-fly wa-1"><svg><use href="images/icons-v1.svg#i-wa"/></svg></span>
+        <span class="wa-fly wa-2"><svg><use href="images/icons-v1.svg#i-ig"/></svg></span>
+        <span class="wa-fly wa-3"><svg><use href="images/icons-v1.svg#i-wa"/></svg></span>
+        <span class="wa-fly wa-4"><svg><use href="images/icons-v1.svg#i-wa"/></svg></span>
+        <span class="wa-fly wa-5"><svg><use href="images/icons-v1.svg#i-ms"/></svg></span>
+        <span class="wa-fly wa-6"><svg><use href="images/icons-v1.svg#i-wa"/></svg></span>
+        <span class="wa-fly wa-7"><svg><use href="images/icons-v1.svg#i-ig"/></svg></span>
+        <span class="wa-fly wa-8"><svg><use href="images/icons-v1.svg#i-wa"/></svg></span>
       </div>
     </div>
 
-    <!-- Contenido sobre el fondo -->
     <div class="container hero-cosmic-content">
       <span class="hero-kicker-overlay">
-        <span class="dot-live"></span>
-        AI Agentic Sales · Producto ValueData
+        Agente de IA para vender por WhatsApp
       </span>
 
-      <!-- Headline cinematográfico con echo effect -->
       <h1 class="hero-echo">
         <span class="echo-line echo-3" aria-hidden="true">El caos del WhatsApp termina aquí.</span>
         <span class="echo-line echo-2" aria-hidden="true">El caos del WhatsApp termina aquí.</span>
@@ -299,166 +265,47 @@
       </h1>
 
       <p class="hero-cosmic-lede">
-        closr es el agente de IA que responde, califica y cierra ventas por WhatsApp.
-        <strong>24/7. En tu tono. Sin que tengas que mover un dedo.</strong>
+        closr responde, califica y hace seguimiento a tus clientes por WhatsApp.
+        <strong>Las 24 horas, en tu tono, y tú decides cuándo entrar.</strong>
       </p>
 
       <div class="hero-ctas">
-        <a href="#cta" class="btn btn-primary btn-lg">
-          Comenzar ahora
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        <a href="https://app.closr.cl/register" class="btn btn-primary btn-lg">
+          Prueba gratis
+          <svg width="16" height="16" aria-hidden="true"><use href="images/icons-v1.svg#t-arrow-right"/></svg>
         </a>
-        <a href="#dolor" class="btn btn-cosmic-ghost btn-lg">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          Ver demo en vivo
-        </a>
+        <a href="#demo" class="btn btn-cosmic-ghost btn-lg">Ver la demo</a>
       </div>
 
       <ul class="hero-cosmic-trust">
+        <li><span class="check-cosmic">✓</span> 14 días gratis</li>
         <li><span class="check-cosmic">✓</span> Sin tarjeta de crédito</li>
-        <li><span class="check-cosmic">✓</span> Conecta WhatsApp en 5 min</li>
-        <li><span class="check-cosmic">✓</span> Español chileno</li>
+        <li><span class="check-cosmic">✓</span> API oficial de WhatsApp</li>
       </ul>
-
-      <!-- Stats flotando sobre el cosmic -->
-      <div class="hero-cosmic-stats">
-        <div class="cosmic-stat">
-          <span class="cosmic-stat-value" data-counter="24">24</span><span class="cosmic-stat-suffix">/7</span>
-          <span class="cosmic-stat-label">Operación continua</span>
-        </div>
-        <div class="cosmic-stat-divider"></div>
-        <div class="cosmic-stat">
-          <span class="cosmic-stat-value" data-counter="3">3</span><span class="cosmic-stat-suffix"> canales</span>
-          <span class="cosmic-stat-label">WhatsApp, Instagram y email</span>
-        </div>
-        <div class="cosmic-stat-divider"></div>
-        <div class="cosmic-stat">
-          <span class="cosmic-stat-value" data-counter="8">8</span><span class="cosmic-stat-suffix">s</span>
-          <span class="cosmic-stat-label">Respuesta promedio</span>
-        </div>
-        <div class="cosmic-stat-divider"></div>
-        <div class="cosmic-stat">
-          <span class="cosmic-stat-value" data-counter="5">5</span><span class="cosmic-stat-suffix"> min</span>
-          <span class="cosmic-stat-label">Setup inicial</span>
-        </div>
-      </div>
-
-      <a href="#dolor" class="hero-scroll-hint" aria-label="Scroll para ver más">
-        <span>El dolor que ya conoces</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      </a>
     </div>
-
-
-      <!-- Mockup CSS antiguo desactivado (queda como referencia) -->
-      <template id="phone-mockup-legacy">
-        <div class="iphone shimmer-card">
-          <div class="iphone-side-buttons">
-            <span class="action-btn"></span>
-            <span class="vol-up"></span>
-            <span class="vol-down"></span>
-          </div>
-          <span class="power-btn"></span>
-          <div class="iphone-frame">
-            <div class="dynamic-island"></div>
-            <div class="iphone-screen">
-              <!-- iOS status bar -->
-              <div class="ios-status">
-                <span class="ios-time">23:47</span>
-                <span class="ios-icons">
-                  <svg viewBox="0 0 18 12" width="17" height="11" fill="currentColor"><rect x="0"  y="6" width="3" height="6" rx="0.6"/><rect x="5"  y="3" width="3" height="9" rx="0.6"/><rect x="10" y="0" width="3" height="12" rx="0.6"/></svg>
-                  <svg viewBox="0 0 16 12" width="15" height="11" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5 q7 -7 14 0"/><path d="M3.5 7.5 q4.5 -4.5 9 0"/><circle cx="8" cy="10" r="1" fill="currentColor"/></svg>
-                  <svg viewBox="0 0 26 12" width="22" height="10"><rect x="0" y="1" width="22" height="10" rx="2.4" fill="none" stroke="currentColor" stroke-width="1"/><rect x="22.6" y="4" width="2" height="4" rx="0.6" fill="currentColor"/><rect x="1.5" y="2.5" width="19" height="7" rx="1.4" fill="currentColor"/></svg>
-                </span>
-              </div>
-
-              <!-- WhatsApp header -->
-              <div class="wa-header">
-                <svg class="wa-back" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                <div class="wa-avatar">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
-                </div>
-                <div class="wa-info">
-                  <div class="wa-name">Tu negocio</div>
-                  <div class="wa-status"><span class="dot-live"></span>en línea · IA activa</div>
-                </div>
-                <svg class="wa-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-                <svg class="wa-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
-              </div>
-
-              <!-- Chat body (WhatsApp pattern bg) -->
-              <div class="wa-body">
-                <div class="wa-date">HOY</div>
-                <div class="chat-row mine"><span>tienen rodamiento 6203?</span></div>
-                <div class="chat-row theirs">
-                  <span class="badge-ia">IA</span>
-                  <span>sí, te queda 1 en stock. ¿lo dejamos apartado para mañana?</span>
-                </div>
-                <div class="chat-row mine"><span>porfa 🙏</span></div>
-                <div class="chat-row theirs">
-                  <span class="badge-ia">IA</span>
-                  <span>listo ✓ pedido confirmado para mañana 9 AM</span>
-                </div>
-                <div class="wa-typing">closr está escribiendo<span class="dots"><span></span><span></span><span></span></span></div>
-              </div>
-
-              <!-- WhatsApp input bar -->
-              <div class="wa-input">
-                <span class="wa-icon-mute">😊</span>
-                <span class="wa-placeholder">Mensaje</span>
-                <span class="wa-icon-mute">📎</span>
-                <span class="wa-mic"><svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7z"/></svg></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </template>
   </section>
 
-  <!-- ============ STRIP — canales integrados ============ -->
-  <section class="strip">
+  <!-- ============ STRIP: canales e integraciones ============ -->
+  <!-- ESTADO-CANAL: cuando Meta apruebe Instagram/Messenger, quitar el "pronto" de abajo
+       y actualizar las etiquetas de #canales, del plan Crece, del FAQ y de /instagram y /messenger. -->
+  <section class="strip" aria-label="Canales e integraciones">
     <div class="container strip-inner">
       <span class="strip-label">Se conecta con</span>
-      <ul class="brand-row" aria-label="Canales e integraciones">
-        <li title="WhatsApp Business">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
-          <span>WhatsApp</span>
-        </li>
-        <li title="Instagram">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.897 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.897-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
-          <span>Instagram</span>
-        </li>
-        <li title="Email">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-          <span>Email</span>
-        </li>
-        <li title="Mercado Libre">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 12 C 3 7, 8 5, 12 5 C 16 5, 21 7, 21 12 C 21 16, 17 17, 14 16 C 12 16, 11 17, 10 17 C 8 17, 5 16, 4 14 Z M 8 11 a 1 1 0 1 0 0.001 0 Z M 16 11 a 1 1 0 1 0 0.001 0 Z" stroke="currentColor" stroke-width="0.5"/></svg>
-          <span>Mercado Libre</span>
-        </li>
-        <li title="Shopify">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M19.4 6.4c0-.2-.1-.3-.3-.3l-1.7-.1-1.4-1.4c-.1-.1-.4-.1-.5-.1l-.7.2c-.4-1.2-1.1-2.3-2.3-2.3h-.1c-.4-.5-.8-.7-1.2-.7-3 .1-4.5 3.9-4.9 5.8l-2.1.7c-.7.2-.7.2-.8.9C3.4 9.5 1.6 23.3 1.6 23.3l13.6 2.6 7.4-1.6S19.4 6.6 19.4 6.4zM13.4 5.3l-1.1.3c0-1-.2-2-.4-2.5 1 .1 1.4 1.4 1.5 2.2zm-2.4-2c.3.5.4 1.4.4 2.5l-2.4.7c.5-1.7 1.4-2.6 2-3.2zM10.2 2c.2 0 .3 0 .5.2-1 .5-2 1.5-2.5 3.7l-1.9.6C6.7 4.7 8.3 2 10.2 2z"/></svg>
-          <span>Shopify</span>
-        </li>
-        <li title="HubSpot CRM">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="17" cy="14" r="4"/><path d="M17 10V5"/><circle cx="17" cy="3" r="1.5" fill="currentColor"/><path d="M14 14h-4l-3 3"/><circle cx="6" cy="18" r="2.2" fill="currentColor" stroke="none"/></svg>
-          <span>HubSpot</span>
-        </li>
-        <li title="API & Webhooks">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          <span>API</span>
-        </li>
+      <ul class="brand-row">
+        <li><svg width="22" height="22" aria-hidden="true"><use href="images/icons-v1.svg#i-wa"/></svg><span>WhatsApp Business</span></li>
+        <li><svg width="22" height="22" aria-hidden="true"><use href="images/icons-v1.svg#i-ig"/></svg><span>Instagram <em class="soon">pronto</em></span></li>
+        <li><svg width="22" height="22" aria-hidden="true"><use href="images/icons-v1.svg#i-ms"/></svg><span>Messenger <em class="soon">pronto</em></span></li>
+        <li><svg width="22" height="22" aria-hidden="true"><use href="images/icons-v1.svg#i-woo"/></svg><span>WooCommerce</span></li>
       </ul>
     </div>
   </section>
 
-  <!-- ============ PAIN — Sin closr vs Con closr ============ -->
+  <!-- ============ PAIN: sin closr vs con closr ============ -->
   <section id="dolor" class="pain reveal">
     <div class="container">
       <div class="section-head">
-        <span class="kicker pain-kicker">El dolor que ya conoces</span>
         <h2 class="section-title">Cada consulta sin responder es una venta menos.</h2>
-        <p class="section-sub">Las PYMEs chilenas pierden plata por una sola razón: el cliente no espera.</p>
+        <p class="section-sub">Las pymes chilenas pierden ventas por una razón muy simple: el cliente no espera.</p>
       </div>
 
       <!--
@@ -478,75 +325,61 @@
         </div>
         <div class="pain-stat">
           <span class="pain-stat-headline">Seguimiento olvidado</span>
-          <span class="pain-stat-label">La cotización que nadie recordó volver a tocar es plata que se dejó sobre la mesa</span>
+          <span class="pain-stat-label">La cotización que nadie recordó volver a tocar es plata que se quedó sobre la mesa</span>
         </div>
       </div>
 
-      <!-- Before / After -->
+      <!-- Antes / después: conversaciones en HTML (antes eran imágenes con texto generado) -->
       <div class="pain-compare">
         <article class="pain-side pain-lost">
           <header class="pain-side-head">
             <span class="pain-side-tag bad">Sin closr</span>
-            <h3>Cliente pregunta de noche, respondes al día siguiente.</h3>
+            <h3>El cliente pregunta de noche y le respondes al día siguiente.</h3>
           </header>
-          <img
-            src="images/pain_lost_lead.png"
-            alt="Chat de WhatsApp donde el cliente compró en otra tienda"
-            class="pain-img" loading="lazy" width="600" height="600"
-          />
+          <div class="chat-card" role="img" aria-label="Conversación de WhatsApp: el cliente pregunta a las 23:14, el negocio responde a las 9:42 del día siguiente y el cliente ya compró en otra tienda.">
+            <div class="chat-msg in">Hola, ¿tienen el polerón rojo en talla M?<time>23:14</time></div>
+            <div class="chat-day">Al día siguiente</div>
+            <div class="chat-msg out">¡Hola! Sí, nos queda uno. ¿Te lo aparto?<time>09:42</time></div>
+            <div class="chat-msg in">Gracias, pero ya compré en otra tienda<time>09:43</time></div>
+          </div>
           <ul class="pain-bullets">
-            <li><span class="bullet-x">✗</span> Cliente espera 10 horas</li>
+            <li><span class="bullet-x">✗</span> El cliente espera 10 horas</li>
             <li><span class="bullet-x">✗</span> Compra en otra tienda</li>
-            <li><span class="bullet-x">✗</span> Tú ni te enteras que existió</li>
+            <li><span class="bullet-x">✗</span> Ni te enteras de que existió</li>
           </ul>
         </article>
 
         <article class="pain-side pain-won">
           <header class="pain-side-head">
             <span class="pain-side-tag good">Con closr</span>
-            <h3>La IA responde en 8 segundos. Cierra antes de que cierre WhatsApp.</h3>
+            <h3>La IA responde al tiro y la venta no se enfría.</h3>
           </header>
-          <img
-            src="images/pain_won_lead.png"
-            alt="Chat de WhatsApp donde la IA cerró la venta de noche"
-            class="pain-img" loading="lazy" width="600" height="600"
-          />
+          <div class="chat-card" role="img" aria-label="Conversación de WhatsApp: el cliente pregunta a las 23:14 y el agente de IA responde en el mismo minuto, aparta el producto y coordina el retiro.">
+            <div class="chat-msg in">Hola, ¿tienen el polerón rojo en talla M?<time>23:14</time></div>
+            <div class="chat-msg out ai"><span class="ai-tag">IA</span>¡Hola! Sí, nos queda uno en talla M. ¿Te lo aparto hasta mañana?<time>23:14</time></div>
+            <div class="chat-msg in">Sí, porfa<time>23:15</time></div>
+            <div class="chat-msg out ai"><span class="ai-tag">IA</span>Listo, quedó a tu nombre. Lo retiras mañana desde las 10:00 o te lo enviamos.<time>23:15</time></div>
+          </div>
           <ul class="pain-bullets">
-            <li><span class="bullet-check">✓</span> Responde 24/7 con tu tono</li>
-            <li><span class="bullet-check">✓</span> Aparta stock, cobra, agenda</li>
-            <li><span class="bullet-check">✓</span> Te avisa solo si hay que decidir</li>
+            <li><span class="bullet-check">✓</span> Responde 24/7 en tu tono</li>
+            <li><span class="bullet-check">✓</span> Usa tu catálogo, precios y políticas</li>
+            <li><span class="bullet-check">✓</span> Te avisa solo cuando tienes que decidir</li>
           </ul>
         </article>
       </div>
 
-      <!-- LIVE animated chat demo -->
-      <div class="demo-wrap">
+      <!-- Demo animada -->
+      <div class="demo-wrap" id="demo">
         <div class="demo-meta">
-          <span class="kicker indigo">Demo en vivo</span>
           <h3>Mira a closr cerrar una venta.</h3>
-          <p>Una conversación real, en tiempo real. Sin trucos.</p>
+          <p>Así se ve una conversación atendida por el agente, de principio a fin.</p>
           <ul class="demo-features">
-            <li>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
-              Respuesta en 8 segundos
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              Conoce tu stock real
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              Aparta y agenda solo
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
-              Cierra el pago
-            </li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="images/icons-v1.svg#t-clock"/></svg> Responde en segundos</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="images/icons-v1.svg#t-books"/></svg> Usa tu catálogo y tus precios</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="images/icons-v1.svg#t-layout-kanban"/></svg> Mueve el contacto en tu embudo</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="images/icons-v1.svg#t-user-check"/></svg> Te pasa la conversación si hace falta</li>
           </ul>
-          <button type="button" class="btn btn-ghost btn-sm" id="replayDemo">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg>
-            Volver a ver
-          </button>
+          <button type="button" class="btn btn-ghost btn-sm" id="replayDemo">Volver a ver</button>
         </div>
 
         <div class="demo-phone-wrap">
@@ -560,7 +393,7 @@
               <div class="demo-header">
                 <span class="demo-back">‹</span>
                 <span class="demo-avatar">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                  <svg width="14" height="14" aria-hidden="true" style="color:#fff"><use href="images/icons-v1.svg#i-wa"/></svg>
                 </span>
                 <div class="demo-info">
                   <div class="demo-name">Carolina M.</div>
@@ -574,17 +407,16 @@
               <div class="demo-input-bar">
                 <span class="demo-input-pill">Mensaje</span>
                 <span class="demo-mic">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7z"/></svg>
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF" aria-hidden="true"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7z"/></svg>
                 </span>
               </div>
             </div>
           </div>
-          <!-- Sale closed sticker -->
           <div class="demo-sticker" id="demoSticker">
             <span class="demo-sticker-icon">✓</span>
             <div>
               <strong>Venta cerrada</strong>
-              <span>$24.990 · 0:23 segundos</span>
+              <span>Reserva de $24.990 · conversación de ejemplo</span>
             </div>
           </div>
         </div>
@@ -592,271 +424,300 @@
     </div>
   </section>
 
-  <!-- ============ COMO FUNCIONA — 1 ============ -->
+  <!-- ============ CÓMO FUNCIONA 1: responde 24/7 ============ -->
   <section id="como-funciona" class="feature-section reveal">
     <div class="container split">
       <div class="split-visual">
-        <img
-          src="images/section_night.png"
-          alt="Conversación de WhatsApp en horario nocturno (23:47) cerrando una venta de rodamiento"
-          class="section-img section-img-dark"
-          width="600" height="600" loading="lazy"
-        />
+        <figure class="photo-frame">
+          <img src="images/v2/responde-noche-960.webp" alt="Ferretería de barrio de noche con la cortina metálica a medio bajar"
+               width="960" height="960" loading="lazy" />
+          <div class="ui-note ui-note-chat" aria-hidden="true">
+            <span class="ui-note-meta"><svg width="14" height="14"><use href="images/icons-v1.svg#i-wa"/></svg> WhatsApp · 23:47</span>
+            <p class="ui-bubble in">¿Tienen rodamiento 6203?</p>
+            <p class="ui-bubble out"><span class="ai-tag">IA</span>Sí, nos queda uno. ¿Te lo dejo apartado para mañana?</p>
+          </div>
+        </figure>
       </div>
       <div class="split-copy">
-        <span class="kicker indigo">01 · Responde 24/7</span>
+        <span class="kicker indigo">Responde 24/7</span>
         <h2>Tu negocio sigue vendiendo cuando tú ya cerraste.</h2>
         <p>
-          La IA contesta consultas en WhatsApp con tu tono, conoce tu stock,
-          tus precios y tus horarios. <strong>Si no sabe algo, te lo deja anotado</strong> —
-          nunca inventa, nunca improvisa.
+          El agente contesta por WhatsApp con tu tono y con la información que tú le das:
+          productos, precios, horarios y políticas. <strong>Si no sabe algo, no improvisa:</strong>
+          te deja la conversación para que respondas tú.
         </p>
         <ul class="check-list">
           <li>Responde de noche, fines de semana y feriados</li>
-          <li>Conoce productos, precios, stock y políticas</li>
-          <li>Te alerta solo cuando hay que intervenir</li>
+          <li>Aprende de los documentos, textos y links que subes</li>
+          <li>Envía fotos, catálogos y videos de tu biblioteca</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ============ COMO FUNCIONA — 2 ============ -->
+  <!-- ============ CÓMO FUNCIONA 2: seguimiento ============ -->
   <section class="feature-section alt reveal">
     <div class="container split reverse">
       <div class="split-visual">
-        <img
-          src="images/section_notification.png"
-          alt="Notificación post-llamada con el resumen del contacto y la sugerencia de enviar una cotización"
-          class="section-img"
-          width="600" height="600" loading="lazy"
-        />
+        <figure class="photo-frame">
+          <img src="images/v2/seguimiento-960.webp" alt="Dueña de una tienda de ropa revisa su celular detrás del mostrador"
+               width="960" height="960" loading="lazy" />
+          <div class="ui-note ui-note-task" aria-hidden="true">
+            <span class="ui-note-meta"><svg width="14" height="14"><use href="images/icons-v1.svg#t-clock"/></svg> Tarea creada por la IA</span>
+            <strong>Enviar cotización a Camila</strong>
+            <span class="ui-note-sub">Pidió precio por 12 poleras con logo. Vence hoy, 18:00.</span>
+            <span class="ui-note-actions"><span class="ui-btn">Aprobar respuesta</span><span class="ui-btn ghost">Editar</span></span>
+          </div>
+        </figure>
       </div>
       <div class="split-copy">
-        <span class="kicker indigo">02 · Te recuerda lo que olvidaste</span>
+        <span class="kicker indigo">No se te escapa nadie</span>
         <h2>El seguimiento ya no se cae entre las grietas.</h2>
         <p>
-          closr detecta cuándo terminó una conversación importante y te sugiere
-          la próxima acción: cotización, recordatorio, agendar reunión.
-          <strong>Tú decides, la IA prepara.</strong>
+          Cuando una conversación queda pendiente, la IA crea la tarea y te propone la respuesta.
+          <strong>Tú apruebas, editas o la dejas pasar.</strong>
         </p>
         <ul class="check-list">
-          <li>Plantillas listas según el contexto</li>
-          <li>Recordatorios en horario óptimo</li>
-          <li>Cero leads olvidados en el limbo</li>
+          <li>Tareas con fecha para cada seguimiento</li>
+          <li>Respuestas sugeridas para revisar antes de enviar</li>
+          <li>Plantillas aprobadas por Meta para retomar después de 24 horas</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ============ COMO FUNCIONA — 3 ============ -->
-  <section class="feature-section reveal">
-    <div class="container split">
-      <div class="split-visual">
-        <img
-          src="images/section_kanban.png"
-          alt="Embudo de ventas con 4 columnas (Nuevo, Conversando, Cotizando, Cerrado) con un lead movido por IA"
-          class="section-img"
-          width="600" height="600" loading="lazy"
-        />
-      </div>
-      <div class="split-copy">
-        <span class="kicker indigo">03 · Mueve solo los leads listos</span>
-        <h2>El embudo se ordena solo. Tú trabajas con los calientes.</h2>
+  <!-- ============ CÓMO FUNCIONA 3: embudo (banda a todo el ancho) ============ -->
+  <section class="funnel-band reveal" aria-labelledby="funnel-title">
+    <img class="funnel-band-img" src="images/v2/embudo-1254.webp"
+         srcset="images/v2/embudo-900.webp 900w, images/v2/embudo-1254.webp 1254w" sizes="100vw"
+         alt="Vendedor de una pyme trabajando en su notebook en una oficina pequeña" width="1254" height="1254" loading="lazy" />
+    <div class="container funnel-band-inner">
+      <div class="funnel-band-copy">
+        <h2 id="funnel-title">El embudo se ordena solo. Tú trabajas con los clientes listos para comprar.</h2>
         <p>
-          La IA lee las señales —tiempo de respuesta, palabras clave, contexto
-          de la conversación— y cuando un lead está listo para comprar,
-          <strong>te lo entrega con la próxima acción sugerida.</strong>
+          La IA lee cada conversación y mueve al contacto a su etapa: nuevo, conversando, cotizando o cerrado.
+          Ves de un vistazo quién está listo y qué falta para cerrar.
         </p>
-        <ul class="check-list">
-          <li>Scoring automático por conversación</li>
-          <li>Sugerencias accionables, no métricas vacías</li>
-          <li>Integrado con tu CRM o como tu único CRM</li>
-        </ul>
+        <ol class="funnel-steps" aria-label="Etapas del embudo">
+          <li>Nuevo</li>
+          <li>Conversando</li>
+          <li class="is-active">Cotizando</li>
+          <li>Cerrado</li>
+        </ol>
+        <p class="funnel-note"><svg width="16" height="16" aria-hidden="true"><use href="images/icons-v1.svg#t-layout-kanban"/></svg> La IA movió a Javiera a «Cotizando»: pidió precio por mayor.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ DIFERENCIADORES (estilo ValueData) ============ -->
+  <!-- ============ CANALES ============ -->
+  <!-- ESTADO-CANAL: estado real al 13-nov-2026. App Review de Meta enviada el 30-oct,
+       "Revisión en curso" (3 permisos de Instagram + 2 de WhatsApp). Messenger no se envió. -->
+  <section id="canales" class="channels reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">WhatsApp, Instagram y Messenger en una sola bandeja.</h2>
+        <p class="section-sub">Tus clientes escriben por donde quieren. Tú los atiendes desde un solo lugar, con el mismo agente.</p>
+      </div>
+
+      <div class="channel-bento">
+        <a class="channel-card channel-wa" href="/whatsapp">
+          <img src="images/v2/canal-whatsapp-1200.webp" alt="" width="1200" height="675" loading="lazy" />
+          <div class="channel-card-body">
+            <span class="status status-live">Disponible</span>
+            <h3><svg width="26" height="26" aria-hidden="true"><use href="images/icons-v1.svg#i-wa"/></svg> WhatsApp Business</h3>
+            <p>Conectamos tu número a la API oficial de Meta. El agente responde, envía plantillas aprobadas y te pasa la conversación cuando hace falta.</p>
+            <span class="channel-link">Cómo funciona con WhatsApp <svg width="16" height="16" aria-hidden="true"><use href="images/icons-v1.svg#t-arrow-right"/></svg></span>
+          </div>
+        </a>
+
+        <a class="channel-card channel-ig" href="/instagram">
+          <span class="status status-review">En aprobación de Meta</span>
+          <h3><svg width="24" height="24" aria-hidden="true"><use href="images/icons-v1.svg#i-ig"/></svg> Instagram Direct</h3>
+          <p>Mensajes directos, comentarios e historial de conversaciones en la misma bandeja. Ya está construido; se activa cuando Meta lo apruebe.</p>
+          <span class="channel-link">Únete a la lista de espera <svg width="16" height="16" aria-hidden="true"><use href="images/icons-v1.svg#t-arrow-right"/></svg></span>
+        </a>
+
+        <a class="channel-card channel-ms" href="/messenger">
+          <span class="status status-soon">Próximamente</span>
+          <h3><svg width="24" height="24" aria-hidden="true"><use href="images/icons-v1.svg#i-ms"/></svg> Facebook Messenger</h3>
+          <p>Conecta la Página de Facebook de tu negocio y responde sus mensajes con el mismo agente que atiende WhatsApp.</p>
+          <span class="channel-link">Ver detalles <svg width="16" height="16" aria-hidden="true"><use href="images/icons-v1.svg#t-arrow-right"/></svg></span>
+        </a>
+      </div>
+
+      <p class="channels-foot">
+        <svg width="18" height="18" aria-hidden="true"><use href="images/icons-v1.svg#t-rosette-discount-check"/></svg>
+        Closr ai está verificada por Meta como proveedor de servicios para sus plataformas de mensajería.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ DIFERENCIADORES ============ -->
   <section class="differentiators reveal">
     <div class="container">
       <div class="section-head">
-        <span class="kicker indigo">¿Por qué closr?</span>
-        <h2 class="section-title">No es un chatbot. Es un closer que ejecuta.</h2>
-        <p class="section-sub">Cuatro razones por las que las PYMEs eligen closr.</p>
+        <h2 class="section-title">No es un chatbot de menú. Es un vendedor que hace la pega.</h2>
+        <p class="section-sub">Cuatro razones por las que las pymes eligen closr.</p>
       </div>
 
       <div class="diff-grid">
-        <article class="diff-card hover-lift shimmer-card">
-          <div class="diff-icon">🎯</div>
-          <h3>Decisiones, no respuestas</h3>
-          <p>closr no solo contesta: agenda, cotiza, hace seguimiento y mueve leads. Acción real, no plantillas.</p>
-          <span class="diff-metric">Acción directa</span>
+        <article class="diff-card hover-lift">
+          <div class="diff-icon"><svg width="26" height="26" aria-hidden="true"><use href="images/icons-v1.svg#t-target-arrow"/></svg></div>
+          <h3>Acciones, no solo respuestas</h3>
+          <p>Además de contestar, mueve contactos en el embudo, crea tareas, envía fotos y consulta el estado de pedidos en WooCommerce.</p>
+          <span class="diff-metric">Hace la pega</span>
         </article>
-        <article class="diff-card hover-lift shimmer-card">
-          <div class="diff-icon">🔌</div>
-          <h3>En tu WhatsApp real</h3>
-          <p>Funciona dentro de tu WhatsApp Business existente, con tus clientes reales. Sin migrar números ni perder historial.</p>
-          <span class="diff-metric">Integración total</span>
+        <article class="diff-card hover-lift">
+          <div class="diff-icon"><svg width="26" height="26" aria-hidden="true"><use href="images/icons-v1.svg#t-plug-connected"/></svg></div>
+          <h3>API oficial de Meta</h3>
+          <p>Nada de apps truchas ni números que bloquean. closr usa la plataforma oficial de WhatsApp Business.</p>
+          <span class="diff-metric">Integración oficial</span>
         </article>
-        <article class="diff-card hover-lift shimmer-card">
-          <div class="diff-icon">🛡️</div>
+        <article class="diff-card hover-lift">
+          <div class="diff-icon"><svg width="26" height="26" aria-hidden="true"><use href="images/icons-v1.svg#t-shield-check"/></svg></div>
           <h3>Tú mandas siempre</h3>
-          <p>Humano en el loop cuando lo necesitas. Cada respuesta de la IA queda registrada y auditable.</p>
-          <span class="diff-metric">100% auditable</span>
+          <p>Eliges en qué etapas responde la IA, tomas cualquier conversación cuando quieras y cada respuesta queda registrada.</p>
+          <span class="diff-metric">Humano en el loop</span>
         </article>
-        <article class="diff-card hover-lift shimmer-card">
-          <div class="diff-icon">⚡</div>
-          <h3>Listo el mismo día</h3>
-          <p>Sin consultoría eterna, sin "fase de descubrimiento" infinita. Aprende de tus chats anteriores y arranca.</p>
-          <span class="diff-metric">5 minutos</span>
+        <article class="diff-card hover-lift">
+          <div class="diff-icon"><svg width="26" height="26" aria-hidden="true"><use href="images/icons-v1.svg#t-user-check"/></svg></div>
+          <h3>Te acompañamos</h3>
+          <p>Te ayudamos a conectar el canal y a dejar listo el agente. Sin consultoría eterna ni proyectos de meses.</p>
+          <span class="diff-metric">Soporte en chileno</span>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ FEATURES ROW ============ -->
+  <!-- ============ FEATURES ============ -->
   <section id="features" class="features-row reveal">
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">Todo lo que necesitas para cerrar</h2>
-        <p class="section-sub">Sin sumar 5 herramientas distintas.</p>
+        <p class="section-sub">Sin sumar cinco herramientas distintas.</p>
       </div>
 
       <div class="features-grid">
         <article class="feat hover-lift">
-          <div class="feat-icon indigo-bg">
-            <svg viewBox="0 0 48 48" width="32" height="32"><rect x="6" y="10" width="36" height="24" rx="6" fill="#6366F1"/><path d="M14 34 L11 40 L20 34" fill="#6366F1"/><circle cx="20" cy="22" r="2" fill="#FFFFFF"/><circle cx="28" cy="22" r="2" fill="#FFFFFF"/><path d="M20 27 q4 3 8 0" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Composer multi-canal</h3>
-          <p>Responde con texto, audio o archivo desde una sola bandeja unificada.</p>
+          <div class="feat-icon indigo-bg"><svg width="28" height="28" aria-hidden="true"><use href="images/icons-v1.svg#t-inbox"/></svg></div>
+          <h3>Bandeja unificada</h3>
+          <p>Todas tus conversaciones en un solo lugar, con pestaña por canal y el historial de cada cliente.</p>
         </article>
-
         <article class="feat hover-lift">
-          <div class="feat-icon blue-bg">
-            <svg viewBox="0 0 48 48" width="32" height="32"><rect x="6" y="10" width="14" height="6" rx="2" fill="#0F172A"/><rect x="6" y="20" width="20" height="6" rx="2" fill="#0F172A"/><rect x="6" y="30" width="10" height="6" rx="2" fill="#0F172A"/><rect x="30" y="20" width="12" height="6" rx="2" fill="#3B82F6"/></svg>
-          </div>
-          <h3>Embudo vivo</h3>
-          <p>Los leads se mueven solos según las señales reales de cada conversación.</p>
+          <div class="feat-icon blue-bg"><svg width="28" height="28" aria-hidden="true"><use href="images/icons-v1.svg#t-books"/></svg></div>
+          <h3>Agentes con tu conocimiento</h3>
+          <p>Sube PDFs, textos o links de tu web. El agente responde con esa información.</p>
         </article>
-
         <article class="feat hover-lift">
-          <div class="feat-icon indigo-bg">
-            <svg viewBox="0 0 48 48" width="32" height="32"><rect x="8" y="10" width="32" height="30" rx="4" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/><rect x="8" y="10" width="32" height="8" fill="#0F172A"/><rect x="20" y="22" width="8" height="6" fill="#6366F1"/><circle cx="34" cy="34" r="3" fill="#3B82F6"/></svg>
-          </div>
-          <h3>Agendamiento IA</h3>
-          <p>La IA propone horario, agenda y manda el recordatorio sin que tengas que tocarlo.</p>
+          <div class="feat-icon indigo-bg"><svg width="28" height="28" aria-hidden="true"><use href="images/icons-v1.svg#t-layout-kanban"/></svg></div>
+          <h3>Embudo y tareas</h3>
+          <p>Cada contacto en su etapa, con tareas de seguimiento y negocios ganados o perdidos.</p>
         </article>
-
         <article class="feat hover-lift">
-          <div class="feat-icon blue-bg">
-            <svg viewBox="0 0 48 48" width="32" height="32"><rect x="10" y="14" width="22" height="14" rx="3" fill="#0F172A" opacity=".15"/><rect x="13" y="11" width="22" height="14" rx="3" fill="#0F172A" opacity=".4"/><rect x="16" y="8" width="22" height="14" rx="3" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/><path d="M22 14 l3 3 l7 -7" stroke="#6366F1" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Plantillas Meta</h3>
-          <p>Respuestas listas, aprobadas por Meta, en tu tono y aplicadas según el contexto.</p>
+          <div class="feat-icon blue-bg"><svg width="28" height="28" aria-hidden="true"><use href="images/icons-v1.svg#t-template"/></svg></div>
+          <h3>Plantillas de Meta</h3>
+          <p>Retoma conversaciones fuera de la ventana de 24 horas con plantillas aprobadas.</p>
         </article>
-
         <article class="feat hover-lift">
-          <div class="feat-icon indigo-bg">
-            <svg viewBox="0 0 48 48" width="32" height="32"><rect x="8" y="28" width="6" height="14" fill="#94A3B8"/><rect x="20" y="20" width="6" height="22" fill="#6366F1"/><rect x="32" y="12" width="6" height="30" fill="#3B82F6"/><rect x="30" y="6" width="14" height="8" rx="4" fill="#6366F1"/></svg>
-          </div>
-          <h3>Dashboard ejecutivo</h3>
-          <p>Ves qué cierra, qué no y qué arreglar — sin abrir Excel ni reportería externa.</p>
+          <div class="feat-icon indigo-bg"><svg width="28" height="28" aria-hidden="true"><use href="images/icons-v1.svg#t-photo"/></svg></div>
+          <h3>Biblioteca de medios</h3>
+          <p>El agente envía fotos de productos, catálogos y videos cuando el cliente los pide.</p>
+        </article>
+        <article class="feat hover-lift">
+          <div class="feat-icon blue-bg"><svg width="28" height="28" aria-hidden="true"><use href="images/icons-v1.svg#t-chart-bar"/></svg></div>
+          <h3>Dashboard</h3>
+          <p>Ves cuántas conversaciones entran, cuántas avanzan y dónde se trancan.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ PARA QUIEN ============ -->
+  <!-- ============ PARA QUIÉN ============ -->
   <section id="para-quien" class="audience reveal">
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">¿Para quién es closr?</h2>
-        <p class="section-sub">Para PYMEs y solopreneurs que ya venden por WhatsApp y se les pasan los leads.</p>
+        <p class="section-sub">Para pymes que ya venden por WhatsApp y sienten que se les pasan los clientes.</p>
       </div>
 
       <div class="audience-grid">
-        <article class="aud-card hover-lift">
-          <span class="aud-icon">🥖</span>
-          <h3>Negocios con tienda</h3>
-          <p>Panaderías, ferreterías, almacenes. La IA responde stock, precios y horarios mientras tú atiendes el mostrador.</p>
+        <article class="aud-card has-photo">
+          <img src="images/v2/rubro-tienda-900.webp" alt="Dueño de una ferretería atiende a una clienta en el mesón" width="900" height="600" loading="lazy" />
+          <div class="aud-body">
+            <h3>Tiendas y comercios</h3>
+            <p>Ferreterías, almacenes, tiendas de ropa. La IA responde stock, precios y horarios mientras tú atiendes el mesón.</p>
+          </div>
         </article>
-        <article class="aud-card hover-lift featured-aud">
-          <span class="aud-icon">📦</span>
-          <h3>E-commerce y solopreneurs</h3>
-          <p>Tu chat de WhatsApp deja de ser un caos. Las ventas se cierran solas y tú solo empacas.</p>
+        <article class="aud-card has-photo">
+          <img src="images/v2/rubro-ecommerce-900.webp" alt="Emprendedora empaca pedidos en cajas de cartón en su living" width="900" height="600" loading="lazy" />
+          <div class="aud-body">
+            <h3>E-commerce y emprendedores</h3>
+            <p>Tu WhatsApp deja de ser un caos. Las consultas se responden solas y tú te dedicas a despachar.</p>
+          </div>
         </article>
-        <article class="aud-card hover-lift">
-          <span class="aud-icon">💼</span>
-          <h3>Equipos comerciales</h3>
-          <p>Tu equipo trabaja solo con los leads calientes. La IA filtra, califica y prepara la próxima acción.</p>
+        <article class="aud-card has-photo">
+          <img src="images/v2/rubro-servicios-900.webp" alt="Coach de un gimnasio de entrenamiento funcional mira la clase" width="900" height="600" loading="lazy" />
+          <div class="aud-body">
+            <h3>Servicios con reserva</h3>
+            <p>Gimnasios, academias, centros de estética. El agente explica planes y horarios y comparte el link para reservar.</p>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ PILOTO ============ -->
+  <!-- ============ CASOS ============ -->
   <!--
-    TODO (Gonzalo) — métricas del piloto con Kemass (www.kemass.cl).
-    No publicar ningún número aquí hasta tenerlo medido y respaldable.
-    Cuando estén los datos, descomentar el bloque .case-metric de más abajo
-    y reemplazar los TODO por las cifras reales + la ventana de medición.
-      - Tasa de respuesta fuera de horario: TODO
-      - Tiempo medio de primera respuesta (antes → después): TODO
-      - Ventana medida (fecha inicio → fecha fin): TODO
+    TODO (Gonzalo): métricas de los pilotos. No publicar ningún número aquí hasta
+    tenerlo medido y respaldable (ventana de medición + antes/después).
+    El box va ANÓNIMO a propósito: contexto/confidencial.md del agente de marketing
+    pide no mostrar su nombre. Si el dueño autoriza, se puede nombrar.
   -->
   <section id="casos" class="cases reveal">
     <div class="container">
       <div class="section-head">
-        <span class="kicker indigo">En piloto</span>
-        <h2 class="section-title">Hoy closr está en piloto con negocios reales.</h2>
+        <h2 class="section-title">closr ya atiende clientes de negocios reales.</h2>
         <p class="section-sub">
-          Estamos midiendo con los primeros clientes antes de publicar resultados.
-          Preferimos mostrarte el producto funcionando que un número que todavía no
-          podemos respaldar.
+          Estamos midiendo con los primeros clientes antes de publicar cifras.
+          Preferimos mostrarte el producto funcionando a un número que todavía no podemos respaldar.
         </p>
       </div>
 
-      <div class="pilot-panel">
+      <div class="pilot-panel pilot-panel-2">
         <article class="pilot-card">
           <header class="pilot-head">
             <span class="pilot-badge">Piloto en curso</span>
-            <h3>
-              <a href="https://www.kemass.cl" target="_blank" rel="noopener">Kemass</a>
-            </h3>
-            <p class="pilot-meta">
-              Importadora y comercializadora de motos y cuatrimotos · Buin, Región
-              Metropolitana · tienda física y despacho a todo Chile
-            </p>
+            <h3><a href="https://www.kemass.cl" target="_blank" rel="noopener">Kemass</a></h3>
+            <p class="pilot-meta">Importadora de motos y cuatrimotos · Buin, Región Metropolitana</p>
           </header>
           <div class="pilot-body">
             <p>
-              Venden vehículos que la gente investiga de noche y por WhatsApp: cilindrada,
-              precio, si queda stock, si despachan a regiones. Las consultas llegan cuando
-              el local ya cerró y al día siguiente varias ya compraron en otro lado. closr
-              responde con el catálogo y las condiciones que ellos mismos cargaron, y deja
-              anotado lo que no sabe para que una persona lo tome en la mañana.
-            </p>
-            <p class="pilot-status">
-              <strong>Estado:</strong> operando y en medición. Publicaremos las cifras
-              acá cuando tengamos una ventana suficiente.
+              Venden vehículos que la gente investiga de noche y por WhatsApp: cilindrada, precio,
+              stock y despacho a regiones. closr responde con el catálogo y las condiciones que ellos
+              mismos cargaron, y deja anotado lo que no sabe para que una persona lo tome en la mañana.
             </p>
           </div>
+        </article>
 
-          <!--
-          <div class="case-metric">
-            <div class="metric">
-              <span class="metric-value">TODO<span class="metric-unit">%</span></span>
-              <span class="metric-label">TODO</span>
-              <span class="metric-prev">TODO</span>
-            </div>
+        <article class="pilot-card">
+          <header class="pilot-head">
+            <span class="pilot-badge pilot-badge-live">En producción</span>
+            <h3>Box de entrenamiento funcional</h3>
+            <p class="pilot-meta">Gimnasio · Santiago</p>
+          </header>
+          <div class="pilot-body">
+            <p>
+              Por WhatsApp, el agente responde horarios y planes, entrega el link para tomar la clase
+              de prueba y ayuda a los alumnos a cambiarse de clase. Cuando alguien necesita a una
+              persona, la conversación pasa al equipo del box.
+            </p>
           </div>
-          -->
         </article>
       </div>
 
       <div class="cases-cta">
-        <p>¿Negocio parecido? Te mostramos en 15 min cómo lo aplicaría a tu caso.</p>
-        <a href="#cta" class="btn btn-primary btn-sm">Ver cómo aplicaría a mi negocio</a>
+        <p>¿Tienes un negocio parecido? Te mostramos en 15 minutos cómo funcionaría en el tuyo.</p>
+        <a href="#cta" class="btn btn-primary btn-sm">Agenda una demo</a>
       </div>
     </div>
   </section>
@@ -876,10 +737,10 @@
           <ul>
             <li>1 número de WhatsApp</li>
             <li>Hasta 100 conversaciones / mes</li>
-            <li>Respuestas con IA básicas</li>
+            <li>Agente de IA con tu información</li>
             <li>Embudo simple</li>
           </ul>
-          <a href="https://app.closr.cl/register" class="btn btn-ghost">Probar 14 días</a>
+          <a href="https://app.closr.cl/register" class="btn btn-ghost">Prueba gratis</a>
         </article>
 
         <article class="price-card featured shimmer-card">
@@ -887,24 +748,18 @@
           <h3>Crece</h3>
           <div class="price"><span class="amount">2,5 UF</span> <span class="per">/ mes</span></div>
           <div class="price-channels" aria-label="Canales incluidos">
-            <span class="ch-icon" title="WhatsApp">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
-            </span>
-            <span class="ch-icon" title="Instagram">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.897 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.897-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
-            </span>
-            <span class="ch-icon" title="Email">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-            </span>
-            <span class="ch-text">3 canales unificados</span>
+            <span class="ch-icon" title="WhatsApp"><svg width="18" height="18" aria-hidden="true"><use href="images/icons-v1.svg#i-wa"/></svg></span>
+            <span class="ch-icon" title="Instagram"><svg width="18" height="18" aria-hidden="true"><use href="images/icons-v1.svg#i-ig"/></svg></span>
+            <span class="ch-icon" title="Messenger"><svg width="18" height="18" aria-hidden="true"><use href="images/icons-v1.svg#i-ms"/></svg></span>
+            <span class="ch-text">Multicanal*</span>
           </div>
           <ul>
             <li>Conversaciones ilimitadas</li>
-            <li>IA entrenada con tus productos</li>
-            <li>Sugerencias de cotización</li>
-            <li>Plantillas Meta aprobadas</li>
+            <li>Agentes con base de conocimiento</li>
+            <li>Respuestas sugeridas para aprobar</li>
+            <li>Plantillas aprobadas por Meta</li>
           </ul>
-          <a href="https://app.closr.cl/register" class="btn btn-primary">Probar 14 días</a>
+          <a href="https://app.closr.cl/register" class="btn btn-primary">Prueba gratis</a>
         </article>
 
         <article class="price-card hover-lift">
@@ -912,17 +767,18 @@
           <div class="price"><span class="amount">5 UF</span> <span class="per">/ mes</span></div>
           <ul>
             <li>Todo lo anterior</li>
-            <li>Multi-usuario y roles</li>
-            <li>API e integraciones (CRM, ERP)</li>
+            <li>Multiusuario y roles</li>
+            <li>Integraciones a medida</li>
             <li>Soporte prioritario</li>
           </ul>
-          <a href="#cta" class="btn btn-ghost">Hablar con ventas</a>
+          <a href="#cta" class="btn btn-ghost">Agenda una demo</a>
         </article>
       </div>
 
       <p class="price-note">
         Valores en UF, netos (+ IVA). Se factura en pesos al valor de la UF del día
-        de emisión. Los 14 días de prueba no requieren tarjeta.
+        de emisión. Los 14 días de prueba no requieren tarjeta.<br />
+        *Instagram y Messenger se activan cuando Meta apruebe la integración (en revisión).
       </p>
     </div>
   </section>
@@ -937,39 +793,43 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>¿Qué es closr?</summary>
-          <p>closr es un agente de IA que se conecta a tu WhatsApp Business y cierra ventas por ti: responde 24/7, hace seguimiento automático y te entrega solo los leads listos para comprar. Es un producto de ValueData, especialistas en AI Agentic Analytics.</p>
+          <p>closr es una plataforma chilena con agentes de IA que atienden a los clientes de tu negocio por WhatsApp: responden las 24 horas con la información que tú cargas, hacen seguimiento y ordenan tu embudo de ventas. Es un producto de ValueData.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Funciona con Instagram y Facebook Messenger?</summary>
+          <p>La integración ya está construida. Instagram Direct está en revisión por Meta y Messenger viene después; los activamos en tu cuenta apenas Meta los apruebe. WhatsApp ya está disponible con la API oficial de Meta.</p>
         </details>
         <details class="faq-item">
           <summary>¿Cuánto demora la implementación?</summary>
-          <p>Conectas tu WhatsApp en 5 minutos. La IA aprende de tus chats anteriores y arranca el mismo día. No hay "fase de descubrimiento" eterna — partes vendiendo de inmediato.</p>
+          <p>Te ayudamos a conectar tu número a la API oficial de WhatsApp y a cargar tu catálogo, precios y preguntas frecuentes. Con eso el agente ya puede responder, y lo vas afinando con las conversaciones reales. No hay una consultoría de meses.</p>
         </details>
         <details class="faq-item">
           <summary>¿La IA inventa respuestas?</summary>
-          <p>No. closr solo responde con información que tú le diste (productos, precios, horarios, stock). Si no sabe algo, te lo deja anotado para que respondas tú. Cero alucinaciones.</p>
+          <p>El agente está instruido para responder solo con la información que tú cargas: productos, precios, horarios y políticas. Si no sabe algo, o la conversación necesita criterio humano, la pasa a tu equipo con el contexto. Cada respuesta queda registrada en la bandeja.</p>
         </details>
         <details class="faq-item">
           <summary>¿Necesito tarjeta de crédito para probar?</summary>
-          <p>No. Tienes 14 días gratis sin tarjeta. Cancelas cuando quieras desde el panel.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Cumple con normas de protección de datos?</summary>
-          <p>Sí. closr cumple con la Ley 19.628 de Chile y políticas de WhatsApp Business API. Tus datos viven en infraestructura segura, encriptada y auditable.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Reemplaza a mi equipo de ventas?</summary>
-          <p>No. closr se encarga de los leads que se caían entre las grietas (consultas de noche, seguimientos olvidados, calificación de leads). Tu equipo queda libre para cerrar los casos que requieren criterio humano.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Por qué los precios están en UF y no en pesos?</summary>
-          <p>Porque la UF se reajusta con la inflación y el precio no se desactualiza solo. Te cobramos en pesos: cada factura se emite al valor de la UF de ese día, así que sabes exactamente cuánto pagas. Los valores son netos, o sea que se les suma IVA.</p>
+          <p>No. Tienes 14 días gratis sin tarjeta.</p>
         </details>
         <details class="faq-item">
           <summary>¿Qué pasa cuando terminan los 14 días de prueba?</summary>
           <p>Eliges un plan o no pasa nada. No pedimos tarjeta al inicio, así que no hay cobro automático ni renovación sorpresa: si no eliges plan, la cuenta simplemente deja de responder mensajes y tus conversaciones quedan disponibles para que las descargues.</p>
         </details>
         <details class="faq-item">
+          <summary>¿Cómo cuidan los datos de mis clientes?</summary>
+          <p>Tratamos los datos según la Ley 19.628 y las políticas de WhatsApp Business. La plataforma corre en Microsoft Azure con cifrado en tránsito y en reposo, y los proveedores de IA no usan tus conversaciones para entrenar modelos. El detalle está en la <a href="/privacidad">política de privacidad</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Reemplaza a mi equipo de ventas?</summary>
+          <p>No. closr se encarga de lo que se caía entre las grietas: consultas de noche, seguimientos olvidados, preguntas repetidas. Tu equipo queda libre para los casos que requieren criterio humano.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Por qué los precios están en UF y no en pesos?</summary>
+          <p>Porque la UF se reajusta con la inflación y el precio no se desactualiza solo. Te cobramos en pesos: cada factura se emite al valor de la UF de ese día, así que sabes exactamente cuánto pagas. Los valores son netos, o sea que se les suma IVA.</p>
+        </details>
+        <details class="faq-item">
           <summary>¿Sirve si vendo productos con muchas variantes o precios que cambian?</summary>
-          <p>Sí, y es el caso donde más rinde. closr responde con el catálogo y las condiciones que tú mantienes, así que cuando cambias un precio o se acaba el stock la respuesta cambia con él. Lo que no sabe no lo inventa: lo deja anotado para que una persona lo conteste.</p>
+          <p>Sí, y es donde más rinde. El agente responde con el catálogo y las condiciones que tú mantienes, así que cuando cambias un precio la respuesta cambia con él. Lo que no sabe no lo inventa: lo deja para que una persona lo conteste.</p>
         </details>
       </div>
     </div>
@@ -980,85 +840,64 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-copy">
-          <span class="kicker indigo">Quiénes somos</span>
           <h2>closr es un producto de <span class="gradient-text">ValueData</span>.</h2>
           <p class="about-lead">
-            ValueData es una empresa chilena de <strong>AI Agentic Analytics</strong>:
-            llevamos 4 años desplegando agentes de IA en producción real para
-            empresas de Agro, Minería, Logística y Manufactura.
+            ValueData es una empresa chilena de <strong>analítica e inteligencia artificial</strong>
+            que pone agentes de IA a operar en empresas de agro, minería, logística y retail.
           </p>
           <p>
-            closr nace cuando vimos que las PYMEs chilenas tenían el mismo
-            problema que nuestros clientes corporativos —decisiones que se
-            caían entre las grietas— pero no podían pagar un proyecto enterprise.
-            Empaquetamos lo que sabemos hacer y lo hicimos accesible.
+            closr nace cuando vimos que las pymes tenían el mismo problema que nuestros clientes
+            grandes (decisiones que se caían entre las grietas), pero no podían pagar un proyecto
+            a medida. Empaquetamos lo que sabemos hacer y lo hicimos accesible.
+          </p>
+          <p class="about-clients">
+            Han trabajado con ValueData: Garcés Fruit, Ad Infinitum, UNIACC y el DII de la Universidad de Chile.
           </p>
 
-          <div class="about-stats">
-            <div class="about-stat">
-              <span class="stat-value">50<span class="stat-suffix">+</span></span>
-              <span class="stat-label">Agentes en producción</span>
-            </div>
-            <div class="about-stat">
-              <span class="stat-value">4<span class="stat-suffix"> años</span></span>
-              <span class="stat-label">Operando con IA</span>
-            </div>
-            <div class="about-stat">
-              <span class="stat-value">$1<span class="stat-suffix">M+</span></span>
-              <span class="stat-label">Impacto generado</span>
-            </div>
-          </div>
-
           <div class="about-ctas">
-            <a href="https://valuedata.cl" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-              Conocer ValueData
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/value-data-ai/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              LinkedIn
-            </a>
+            <a href="https://valuedata.cl" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Conocer ValueData</a>
+            <a href="https://www.linkedin.com/company/value-data-ai/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">LinkedIn de ValueData</a>
           </div>
         </div>
 
         <div class="about-visual">
           <div class="trust-card">
             <div class="trust-row">
-              <div class="trust-icon">🇨🇱</div>
+              <div class="trust-icon"><svg width="22" height="22" aria-hidden="true"><use href="images/icons-v1.svg#t-map-pin"/></svg></div>
               <div>
                 <strong>Empresa chilena</strong>
-                <span>Santiago de Chile · Operamos en LATAM</span>
+                <span>ValueData SpA · Santiago de Chile</span>
               </div>
             </div>
             <div class="trust-row">
-              <div class="trust-icon">🛡️</div>
+              <div class="trust-icon"><svg width="22" height="22" aria-hidden="true"><use href="images/icons-v1.svg#t-rosette-discount-check"/></svg></div>
               <div>
-                <strong>Cumple Ley 19.628</strong>
-                <span>Protección de datos personales</span>
+                <strong>Verificada por Meta</strong>
+                <span>Proveedor de servicios para sus plataformas de mensajería</span>
               </div>
             </div>
             <div class="trust-row">
-              <div class="trust-icon">✅</div>
+              <div class="trust-icon"><svg width="22" height="22" aria-hidden="true"><use href="images/icons-v1.svg#t-shield-lock"/></svg></div>
               <div>
-                <strong>WhatsApp Business Solution Provider</strong>
-                <span>Integración oficial con Meta</span>
+                <strong>Datos según la Ley 19.628</strong>
+                <span>Tus conversaciones no se usan para entrenar modelos</span>
               </div>
             </div>
             <div class="trust-row">
-              <div class="trust-icon">🔒</div>
+              <div class="trust-icon"><svg width="22" height="22" aria-hidden="true"><use href="images/icons-v1.svg#t-server-2"/></svg></div>
               <div>
-                <strong>SOC 2 Type II en proceso</strong>
-                <span>Certificación 2026</span>
+                <strong>Infraestructura en Microsoft Azure</strong>
+                <span>Cifrado en tránsito y en reposo</span>
               </div>
             </div>
           </div>
           <div class="contact-mini">
             <div class="contact-mini-row">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <a href="tel:+56932942337">+56 9 3294 2337</a>
             </div>
             <div class="contact-mini-row">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
               <a href="mailto:hola@closr.cl">hola@closr.cl</a>
             </div>
           </div>
@@ -1070,8 +909,8 @@
   <!-- ============ CTA FINAL ============ -->
   <section id="cta" class="cta-final">
     <div class="container cta-inner">
-      <h2>Cierra la próxima venta sin levantar el dedo.</h2>
-      <p>Conecta tu WhatsApp en 5 minutos. La IA aprende de tus chats anteriores y arranca el mismo día.</p>
+      <h2>Cierra la próxima venta mientras duermes.</h2>
+      <p>Déjanos tu correo y te mostramos closr con tu propio negocio. Te escribimos en menos de un día hábil.</p>
       <form
         class="cta-form"
         id="ctaForm"
@@ -1089,24 +928,25 @@
           <label>No completar: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
         </p>
 
-        <input type="email" name="email" placeholder="tu@email.cl" required aria-label="Tu email" autocomplete="email" />
+        <label class="visually-hidden" for="cta-email">Tu correo</label>
+        <input id="cta-email" type="email" name="email" placeholder="tu@email.cl" required autocomplete="email" />
         <button type="submit" class="btn btn-primary" id="ctaSubmitBtn">
-          <span class="btn-text">Probar gratis</span>
+          <span class="btn-text">Agenda una demo</span>
           <span class="btn-spinner" aria-hidden="true"></span>
         </button>
       </form>
       <p class="cta-alt">
-        ¿Prefieres empezar ahora? <a href="https://app.closr.cl/register">Crea tu cuenta y prueba 14 días gratis</a>.
+        ¿Prefieres partir solo? <a href="https://app.closr.cl/register">Crea tu cuenta y prueba 14 días gratis</a>.
       </p>
-      <small id="ctaSuccess">¡Gracias! Te escribimos en menos de 1 hora hábil.</small>
+      <small id="ctaSuccess">¡Gracias! Te escribimos en menos de un día hábil.</small>
       <small id="ctaError" class="cta-error">Algo falló. Escríbenos directo a <a href="mailto:hola@closr.cl">hola@closr.cl</a>.</small>
-      <small class="trust">Sin tarjeta · Cancelas cuando quieras · Soporte en chileno</small>
+      <small class="trust">Sin tarjeta · Soporte en chileno</small>
     </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
-    <div class="container footer-grid">
+    <div class="container footer-grid footer-grid-5">
       <div class="footer-brand">
         <a href="#" class="brand">
           <span class="brand-mark" aria-hidden="true">
@@ -1118,22 +958,37 @@
           </span>
           <span class="brand-word">closr</span>
         </a>
-        <p class="footer-tag">El agente de IA que cierra ventas por ti.</p>
-        <p class="footer-by">Un producto de <a href="https://valuedata.cl" target="_blank" rel="noopener">ValueData</a> — AI Agentic Analytics.</p>
+        <p class="footer-tag">El agente de IA que vende por WhatsApp.</p>
+        <p class="footer-by">Un producto de <a href="https://valuedata.cl" target="_blank" rel="noopener">ValueData</a>.</p>
+        <!-- REDES: agregar acá Instagram, YouTube y TikTok de closr cuando existan las cuentas
+             (y sumarlas a "sameAs" en el JSON-LD de la organización). -->
+        <ul class="footer-social" aria-label="closr en redes sociales">
+          <li><a href="https://www.linkedin.com/company/value-data-ai/" target="_blank" rel="noopener" aria-label="LinkedIn de ValueData">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a></li>
+        </ul>
       </div>
       <div>
         <h4>Producto</h4>
         <ul>
-          <li><a href="#features">Features</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#features">Funciones</a></li>
           <li><a href="#precio">Precio</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#faq">Preguntas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Canales</h4>
+        <ul>
+          <li><a href="/whatsapp">WhatsApp</a></li>
+          <li><a href="/instagram">Instagram</a></li>
+          <li><a href="/messenger">Messenger</a></li>
         </ul>
       </div>
       <div>
         <h4>Compañía</h4>
         <ul>
           <li><a href="https://valuedata.cl" target="_blank" rel="noopener">ValueData</a></li>
-          <li><a href="#">Blog</a></li>
           <li><a href="#cta">Contacto</a></li>
         </ul>
       </div>
@@ -1141,19 +996,17 @@
         <h4>Legal</h4>
         <ul>
           <li><a href="/terminos">Términos</a></li>
-          <li><a href="/eliminacion-datos">Eliminar mis datos</a></li>
           <li><a href="/privacidad">Privacidad</a></li>
-          <li><a href="/privacidad">Ley 19.628</a></li>
+          <li><a href="/eliminacion-datos">Eliminar mis datos</a></li>
         </ul>
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>© 2026 closr · ValueData SpA · Hecho en Chile 🇨🇱</span>
-      <a href="https://www.linkedin.com/company/value-data-ai/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+      <span>© 2026 closr · ValueData SpA · Hecho en Chile</span>
     </div>
   </footer>
 
-  <!-- ============ WhatsApp Floating Button ============ -->
+  <!-- ============ WhatsApp flotante ============ -->
   <a
     href="https://wa.me/56932942337?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20closr%20%28cerrar%20ventas%20con%20IA%29"
     target="_blank"
@@ -1161,13 +1014,11 @@
     class="whatsapp-fab"
     aria-label="Contactar por WhatsApp"
   >
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
-    </svg>
+    <svg width="28" height="28" aria-hidden="true"><use href="images/icons-v1.svg#i-wa"/></svg>
     <span class="wa-fab-pulse"></span>
     <span class="wa-fab-label">¿Hablamos?</span>
   </a>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20261113"></script>
 </body>
 </html>

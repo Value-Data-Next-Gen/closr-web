@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Medición: igual que index.html (config, consentimiento, atribución y tags). -->
+  <script src="/config.js"></script>
+  <script src="/consent.js" defer></script>
+  <script src="/attribution.js" defer></script>
+  <script src="/tags.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/images/v2/closr-icono-512.png" />
+
+  <title>IA para responder Facebook Messenger | closr</title>
+  <meta name="description" content="Responde los mensajes de la Página de Facebook de tu negocio con el mismo agente de IA que atiende tu WhatsApp. Integración construida, próxima a activarse. Únete a la lista." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0B1020" />
+  <link rel="canonical" href="https://closr.cl/messenger" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://closr.cl/messenger" />
+  <meta property="og:title" content="IA para los mensajes de tu Página de Facebook | closr" />
+  <meta property="og:description" content="Responde los mensajes de la Página de Facebook de tu negocio con el mismo agente de IA que atiende tu WhatsApp. Integración construida, próxima a activarse. Únete a la lista." />
+  <meta property="og:image" content="https://closr.cl/images/v2/og-closr.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="closr" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IA para los mensajes de tu Página de Facebook | closr" />
+  <meta name="twitter:description" content="Responde los mensajes de la Página de Facebook de tu negocio con el mismo agente de IA que atiende tu WhatsApp. Integración construida, próxima a activarse. Únete a la lista." />
+  <meta name="twitter:image" content="https://closr.cl/images/v2/og-closr.jpg" />
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://closr.cl/messenger#webpage",
+      "url": "https://closr.cl/messenger",
+      "name": "IA para responder Facebook Messenger | closr",
+      "description": "Responde los mensajes de la Página de Facebook de tu negocio con el mismo agente de IA que atiende tu WhatsApp. Integración construida, próxima a activarse. Únete a la lista.",
+      "inLanguage": "es-CL",
+      "isPartOf": {
+        "@id": "https://closr.cl/#website"
+      },
+      "about": {
+        "@id": "https://closr.cl/#app"
+      },
+      "primaryImageOfPage": "https://closr.cl/images/v2/rubro-tienda-900.webp"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://closr.cl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Canales",
+          "item": "https://closr.cl/#canales"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Messenger",
+          "item": "https://closr.cl/messenger"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuándo estará disponible Messenger?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La integración está construida y entra a revisión de Meta después de Instagram. Si te anotas en la lista de espera, te avisamos apenas se active."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Por qué el agente solo responde dentro de 24 horas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es una regla de Meta para Messenger: un negocio puede responder libremente dentro de las 24 horas siguientes al último mensaje del cliente. closr la respeta para que tu Página no tenga problemas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito una Página de Facebook?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Messenger para negocios funciona con la Página de Facebook de tu empresa, y tienes que ser administrador de esa Página para conectarla."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="stylesheet" href="/styles.css?v=20261113" />
+</head>
+
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="/" class="brand" aria-label="closr inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="32" height="32">
+            <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient></defs>
+            <rect x="3" y="3" width="34" height="30" rx="9" fill="url(#lg)"/>
+            <path d="M14 33 L11 38 L18 33 Z" fill="#3B82F6"/>
+            <path d="M13 18 l5 5 l10 -10" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </span>
+        <span class="brand-word">closr</span>
+        <span class="brand-by">by <strong>ValueData</strong></span>
+      </a>
+      <nav class="site-nav" aria-label="principal">
+        <a href="/#como-funciona">Cómo funciona</a>
+        <a href="/#canales">Canales</a>
+        <a href="/#casos">Casos</a>
+        <a href="/#precio">Precio</a>
+        <a href="/#faq">Preguntas</a>
+      </nav>
+      <a href="https://app.closr.cl/register" class="btn btn-primary btn-sm">Prueba gratis</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ESTADO-CANAL: Messenger construido, NO incluido en la App Review del 30-oct-2026. -->
+    <section class="page-hero">
+      <img class="page-hero-img" src="/images/v2/rubro-tienda-900.webp" alt="" width="1200" height="800" fetchpriority="high" />
+      <div class="container">
+        <div class="page-hero-copy">
+          <nav class="breadcrumbs" aria-label="Ruta"><a href="/">Inicio</a> / <a href="/#canales">Canales</a> / Messenger</nav>
+          <span class="status status-soon">Próximamente</span>
+          <h1>IA para responder los mensajes de tu Página de Facebook</h1>
+          <p>Conecta tu Página y el mismo agente que atiende tu WhatsApp responde sus mensajes de Messenger. La integración está construida y se activa cuando Meta la apruebe.</p>
+          <div class="hero-ctas">
+            <a href="#lista" class="btn btn-primary btn-lg">Avísame cuando esté</a>
+            <a href="https://app.closr.cl/register" class="btn btn-cosmic-ghost btn-lg">Prueba con WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <h2>Messenger, con el mismo agente que atiende tu WhatsApp</h2>
+        <p class="page-lead">Muchos clientes todavía escriben a la Página de Facebook del negocio. Con closr esos mensajes llegan a la misma bandeja y los responde el mismo agente.</p>
+        <div class="two-col">
+          <div>
+            <h3>Cómo va a funcionar</h3>
+            <ul class="plain-list">
+              <li>Conectas la Página de Facebook de tu negocio con tu cuenta de Facebook.</li>
+              <li>Los mensajes llegan a la bandeja de closr junto a WhatsApp.</li>
+              <li>El agente responde con tu información y te pasa los casos que necesitan a una persona.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Reglas de Meta que respetamos</h3>
+            <ul class="plain-list muted">
+              <li>Las respuestas se envían dentro de la ventana de 24 horas desde el último mensaje del cliente.</li>
+              <li>Los datos de las conversaciones no se usan para publicidad ni se venden.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" id="lista">
+          <strong>Estado:</strong> la integración está construida. Messenger pasa por la revisión de Meta después de Instagram.
+          Déjanos tu correo y te avisamos cuando se active.
+        <form class="waitlist-form" name="closr-lista-espera" method="POST" data-netlify="true"
+              data-netlify-honeypot="bot-field" action="/success.html">
+          <input type="hidden" name="form-name" value="closr-lista-espera" />
+          <input type="hidden" name="canal" value="messenger" />
+          <p class="hp-field" aria-hidden="true"><label>No completar: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+          <label class="visually-hidden" for="wl-email">Tu correo</label>
+          <input id="wl-email" type="email" name="email" placeholder="tu@email.cl" required autocomplete="email" />
+          <button type="submit" class="btn btn-primary">Avísame</button>
+        </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section alt">
+      <div class="container page-faq">
+        <h2>Preguntas frecuentes sobre Messenger</h2>
+        <div class="faq-list">
+        <details class="faq-item">
+          <summary>¿Cuándo estará disponible Messenger?</summary>
+          <p>La integración está construida y entra a revisión de Meta después de Instagram. Si te anotas en la lista de espera, te avisamos apenas se active.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Por qué el agente solo responde dentro de 24 horas?</summary>
+          <p>Es una regla de Meta para Messenger: un negocio puede responder libremente dentro de las 24 horas siguientes al último mensaje del cliente. closr la respeta para que tu Página no tenga problemas.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Necesito una Página de Facebook?</summary>
+          <p>Sí. Messenger para negocios funciona con la Página de Facebook de tu empresa, y tienes que ser administrador de esa Página para conectarla.</p>
+        </details>
+        </div>
+        <p class="related-channels">
+          <a class="btn btn-ghost btn-sm" href="/">Volver a closr.cl</a>
+          <a class="btn btn-ghost btn-sm" href="/whatsapp">closr para WhatsApp</a>
+          <a class="btn btn-ghost btn-sm" href="/instagram">closr para Instagram</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid footer-grid-5">
+      <div class="footer-brand">
+        <a href="/" class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" width="28" height="28">
+            <rect x="3" y="3" width="34" height="30" rx="9" fill="url(#lg)"/>
+            <path d="M14 33 L11 38 L18 33 Z" fill="#3B82F6"/>
+            <path d="M13 18 l5 5 l10 -10" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          </span>
+          <span class="brand-word">closr</span>
+        </a>
+        <p class="footer-tag">El agente de IA que vende por WhatsApp.</p>
+        <p class="footer-by">Un producto de <a href="https://valuedata.cl" target="_blank" rel="noopener">ValueData</a>.</p>
+        <!-- REDES: agregar acá Instagram, YouTube y TikTok de closr cuando existan las cuentas. -->
+        <ul class="footer-social" aria-label="closr en redes sociales">
+          <li><a href="https://www.linkedin.com/company/value-data-ai/" target="_blank" rel="noopener" aria-label="LinkedIn de ValueData">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Producto</h4>
+        <ul>
+          <li><a href="/#como-funciona">Cómo funciona</a></li>
+          <li><a href="/#features">Funciones</a></li>
+          <li><a href="/#precio">Precio</a></li>
+          <li><a href="/#faq">Preguntas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Canales</h4>
+        <ul>
+          <li><a href="/whatsapp">WhatsApp</a></li>
+          <li><a href="/instagram">Instagram</a></li>
+          <li><a href="/messenger">Messenger</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Compañía</h4>
+        <ul>
+          <li><a href="https://valuedata.cl" target="_blank" rel="noopener">ValueData</a></li>
+          <li><a href="/#cta">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/terminos">Términos</a></li>
+          <li><a href="/privacidad">Privacidad</a></li>
+          <li><a href="/eliminacion-datos">Eliminar mis datos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 closr · ValueData SpA · Hecho en Chile</span>
+    </div>
+  </footer>
+
+  <script src="/script.js?v=20261113"></script>
+</body>
+</html>

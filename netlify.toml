@@ -101,6 +101,23 @@
   to = "/eliminacion-datos.html"
   status = 200
 
+# Páginas por canal (SEO). Igual que /terminos: sin la regla, el catch-all de abajo
+# serviría la landing con status 200 en vez de la página del canal.
+[[redirects]]
+  from = "/whatsapp"
+  to = "/whatsapp.html"
+  status = 200
+
+[[redirects]]
+  from = "/instagram"
+  to = "/instagram.html"
+  status = 200
+
+[[redirects]]
+  from = "/messenger"
+  to = "/messenger.html"
+  status = 200
+
 # SPA-ish fallback (por si algún día agregamos rutas)
 [[redirects]]
   from = "/*"
