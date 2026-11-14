@@ -189,10 +189,10 @@
         <h2>Crea tu link</h2>
         <p class="page-lead">Todo ocurre en tu navegador: no guardamos tu número ni tu mensaje.</p>
         <div class="wa-gen">
-          <form id="waGen" class="wa-form" novalidate>
+          <form id="waGen" class="wa-form" novalidate onsubmit="return false">
             <div class="wa-field">
               <label for="waPais">País</label>
-              <select id="waPais" name="pais">
+              <select id="waPais">
                 <option value="56" selected>Chile (+56)</option>
                 <option value="54">Argentina (+54)</option>
                 <option value="591">Bolivia (+591)</option>
@@ -208,12 +208,12 @@
             </div>
             <div class="wa-field">
               <label for="waNum">Número de WhatsApp</label>
-              <input id="waNum" name="numero" type="tel" inputmode="tel" autocomplete="off" placeholder="9 1234 5678" required />
+              <input id="waNum" type="tel" inputmode="tel" autocomplete="off" placeholder="9 1234 5678" required />
               <p class="form-hint">Sin el código del país. En Chile, el celular empieza con 9.</p>
             </div>
             <div class="wa-field">
               <label for="waMsg">Mensaje predefinido <span class="form-hint-inline">(opcional)</span></label>
-              <textarea id="waMsg" name="mensaje" rows="3" maxlength="500" placeholder="Hola, vi su página y quiero más información"></textarea>
+              <textarea id="waMsg" rows="3" maxlength="500" placeholder="Hola, vi su página y quiero más información"></textarea>
             </div>
             <p class="form-error" id="waError" role="alert" hidden></p>
             <button type="submit" class="btn btn-primary btn-lg">Crear link y código QR</button>
@@ -297,7 +297,7 @@
       </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" integrity="sha384-mZT2gIty7ZDdOGkxfP6joZcYdMW1Jvj9dRlfpTmaJAKKXTqzygtB22k7FLe+KZC1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" defer integrity="sha384-mZT2gIty7ZDdOGkxfP6joZcYdMW1Jvj9dRlfpTmaJAKKXTqzygtB22k7FLe+KZC1" crossorigin="anonymous"></script>
     <script>
     // Generador de link wa.me + QR. Nada sale del navegador: el número y el mensaje no se envían a ningún servidor
     // y el evento de GA4 (solo con cookies aceptadas) no lleva ni el número ni el mensaje.
@@ -343,8 +343,10 @@
         var texto = msg.value.trim();
         current = 'https://wa.me/' + cc + d + (texto ? '?text=' + encodeURIComponent(texto) : '');
         linkEl.textContent = current;
-        if (typeof window.qrcode === 'function') { dibujaQr(current); canvas.hidden = false; }
-        else { canvas.hidden = true; }
+        var conQr = typeof window.qrcode === 'function';
+        if (conQr) dibujaQr(current);
+        canvas.hidden = !conQr;
+        document.getElementById('waDownload').hidden = !conQr;
         empty.hidden = true;
         result.hidden = false;
         if (typeof window.gtag === 'function' && window.CLOSR_CONFIG && window.CLOSR_CONFIG.GA_ID) {
