@@ -67,7 +67,7 @@
     b.innerHTML =
       '<p>Usamos cookies de medición y publicidad para saber qué campañas ' +
       'funcionan. Puedes rechazarlas sin perder ninguna función. ' +
-      '<a href="/privacidad">Más información</a>.</p>' +
+      '<a href="/privacidad">Más información sobre las cookies</a>.</p>' +
       '<div class="consent-actions">' +
       '<button type="button" class="btn btn-ghost btn-sm" id="closrConsentNo">Rechazar</button>' +
       '<button type="button" class="btn btn-primary btn-sm" id="closrConsentSi">Aceptar</button>' +

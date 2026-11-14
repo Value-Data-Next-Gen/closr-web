@@ -2267,6 +2267,7 @@ template { display: none; }
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+.footer-grid h3,
 .footer-grid h4 {
   color: var(--white);
   font-size: 13px;
@@ -4403,3 +4404,10 @@ template { display: none; }
   .compare-table tbody tr:last-child th, .compare-table tbody tr:last-child td { border: 0; }
 }
 .wa-result [hidden], .uf-calc [hidden] { display: none !important; }
+
+/* v2f (13-nov-2026): contraste AA que marcó Lighthouse.
+   Blanco sobre #6366F1 da 4,46:1 (bajo 4,5). El botón principal pasa a #4F46E5 (6,3:1) y el hover a #4338CA.
+   Los grises del pie suben de 40% a 62% de blanco (de 3,8:1 a más de 6:1 sobre #0F172A). */
+.btn-primary { background: var(--indigo-dark); }
+.btn-primary:hover { background: #4338CA; }
+.footer-by, .footer-bottom { color: rgba(255, 255, 255, .62); }
