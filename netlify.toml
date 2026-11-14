@@ -24,6 +24,46 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Excepcion a la regla immutable de arriba, para los cuatro scripts de
+# medicion/atribucion. Este sitio no tiene build ni hash de contenido en el
+# nombre de archivo (`publish = "."`, sin comando): un JS sin version en el
+# nombre bajo `max-age=31536000, immutable` queda fijo en el navegador de
+# cada visitante recurrente por un año, pase lo que pase con el contenido.
+#
+# config.js hoy nace con los cinco identificadores vacios (ninguna cuenta de
+# publicidad existe todavia). El dia que se peguen los reales y se haga push,
+# un visitante que ya paso por el sitio seguiria sirviendo desde cache el
+# config.js vacio de antes -- sus pixeles nunca se encenderian, en silencio,
+# indistinguible de "los pixeles no funcionan". Lo mismo aplica a cualquier
+# cambio futuro en consent.js, attribution.js o tags.js (p.ej. la etiqueta de
+# conversion de Google Ads que hoy vive en config.js).
+#
+# La regla exacta por archivo, declarada despues de la wildcard de arriba,
+# es mas especifica y gana sobre ella. `must-revalidate` (igual que /*.html
+# mas abajo) es la opcion que no depende de que alguien se acuerde de nada:
+# el navegador siempre revalida contra el servidor, y con el ETag que Netlify
+# ya sirve, un archivo sin cambios responde 304 sin volver a bajar el body --
+# no es cache cero, es cache que nunca puede quedar obsoleto en silencio.
+[[headers]]
+  for = "/config.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/consent.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/attribution.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/tags.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 [[headers]]
   for = "/*.svg"
   [headers.values]
@@ -61,9 +101,50 @@
   to = "/eliminacion-datos.html"
   status = 200
 
-# SPA-ish fallback (por si algún día agregamos rutas)
+# Páginas por canal (SEO). Igual que /terminos: sin la regla, el catch-all de abajo
+# serviría la landing con status 200 en vez de la página del canal.
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/whatsapp"
+  to = "/whatsapp.html"
   status = 200
-  force = false
+
+[[redirects]]
+  from = "/instagram"
+  to = "/instagram.html"
+  status = 200
+
+[[redirects]]
+  from = "/messenger"
+  to = "/messenger.html"
+  status = 200
+
+# Páginas SEO (v2e, 13-nov-2026): precios, rubros, comparativa y herramienta gratis.
+# Sin la regla, /precios daría 404 (ya no hay comodín) aunque exista precios.html.
+[[redirects]]
+  from = "/precios"
+  to = "/precios.html"
+  status = 200
+
+[[redirects]]
+  from = "/gimnasios"
+  to = "/gimnasios.html"
+  status = 200
+
+[[redirects]]
+  from = "/motos-automotriz"
+  to = "/motos-automotriz.html"
+  status = 200
+
+[[redirects]]
+  from = "/closr-vs-vambe"
+  to = "/closr-vs-vambe.html"
+  status = 200
+
+[[redirects]]
+  from = "/generador-link-whatsapp"
+  to = "/generador-link-whatsapp.html"
+  status = 200
+
+# Antes había acá un comodín /* -> /index.html con status 200: cualquier URL inexistente
+# devolvía la portada con 200 y Google la veía como contenido duplicado ("soft 404").
+# Sin el comodín, Netlify sirve /404.html con status 404 para lo que no exista.

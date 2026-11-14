@@ -1,0 +1,57 @@
+# closr
+
+> closr es una plataforma chilena con agentes de inteligencia artificial que atienden a los clientes de una pyme por WhatsApp: responden las 24 horas con el catálogo, los precios y las políticas que carga el negocio, hacen seguimiento, ordenan el embudo de ventas y pasan la conversación a una persona cuando hace falta. Es un producto de ValueData SpA, hecho en Santiago de Chile.
+
+Sitio: https://closr.cl
+App: https://app.closr.cl
+Contacto: hola@closr.cl · WhatsApp +56 9 3294 2337
+Redes: Instagram https://www.instagram.com/closr.cl/ · LinkedIn https://www.linkedin.com/company/closr-cl/
+Última actualización: 2026-11-13
+
+## Estado de los canales
+
+- WhatsApp: disponible, sobre la API oficial de WhatsApp Business de Meta. closr ayuda a conectar el número y a verificar el negocio.
+- Instagram Direct: la integración está construida y está en revisión de Meta. No está disponible todavía.
+- Facebook Messenger: próximamente, después de Instagram.
+
+## Qué hace el agente
+
+- Responde dudas de productos, precios, stock, horarios y despacho con la información que carga el negocio (PDFs, textos o links de su web).
+- Envía fotos, catálogos en PDF y videos desde una biblioteca de medios.
+- Mueve a cada contacto a su etapa del embudo y crea tareas de seguimiento.
+- Consulta el estado de un pedido en tiendas WooCommerce.
+- Pasa la conversación a una persona, con el contexto, cuando hace falta criterio humano.
+- Para retomar una conversación después de 24 horas, el equipo envía una plantilla aprobada por Meta.
+
+## Lo que no hace
+
+- No inventa precios ni condiciones: si no sabe algo, deja la conversación a una persona.
+- No envía mensajes masivos.
+- Todavía no escucha audios ni lee imágenes.
+- No hace llamadas de voz.
+
+## Precios (en UF, netos, más IVA; se factura en pesos al valor de la UF del día)
+
+- Parte: 1,5 UF al mes. 1 número de WhatsApp, hasta 100 conversaciones al mes, agente de IA, embudo simple.
+- Crece: 3 UF al mes. Conversaciones ilimitadas, agentes con base de conocimiento, tareas de seguimiento, plantillas de Meta.
+- Equipo: 6 UF al mes. Todo lo anterior, multiusuario y roles, integraciones a medida, soporte prioritario.
+- Prueba gratis de 14 días, sin tarjeta. Los costos de mensajería de Meta son adicionales.
+
+## Clientes con nombre público
+
+- Kemass (kemass.cl): motos y cuatrimotos, Buin.
+- Box Santillana (crossfitsantillana.cl): Hyrox, funcional y boxeo, El Monte. 62 contactos nuevos atendidos por WhatsApp entre el 14 de octubre y el 13 de noviembre de 2026.
+
+## Páginas
+
+- [Inicio](https://closr.cl/): qué es closr, cómo funciona, casos y preguntas frecuentes.
+- [WhatsApp](https://closr.cl/whatsapp): agente de IA para WhatsApp Business.
+- [Instagram](https://closr.cl/instagram): estado de la integración y lista de espera.
+- [Messenger](https://closr.cl/messenger): estado de la integración y lista de espera.
+- [Precios](https://closr.cl/precios): planes en UF y qué cobra Meta aparte.
+- [Gimnasios y boxes](https://closr.cl/gimnasios): uso en gimnasios, con el caso Box Santillana.
+- [Motos y automotriz](https://closr.cl/motos-automotriz): uso en tiendas de vehículos, con el caso Kemass.
+- [closr vs Vambe](https://closr.cl/closr-vs-vambe): comparación con información pública.
+- [Generador de link de WhatsApp](https://closr.cl/generador-link-whatsapp): herramienta gratis para crear links wa.me y códigos QR.
+- [Privacidad](https://closr.cl/privacidad): tratamiento de datos según la Ley 21.719.
+- [Términos](https://closr.cl/terminos)

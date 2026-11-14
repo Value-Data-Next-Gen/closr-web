@@ -17,25 +17,41 @@ Sitio estático puro — sin build step.
 ## Estructura
 
 ```
-closr/
-├── index.html                  # Landing single-page
-├── styles.css                  # Paleta + componentes + animaciones
-├── script.js                   # Reveal, counters, chat demo, scroll progress
-├── favicon.svg                 # Logo gradient bubble
-├── images/                     # PNGs generados con Gemini
-│   ├── hero.png
-│   ├── section_night.png
-│   ├── section_notification.png
-│   ├── section_kanban.png
-│   ├── pain_lost_lead.png
-│   ├── pain_won_lead.png
-│   ├── og_image.png
-│   └── icons_set.png
-├── generate_images.py          # Script para (re)generar imágenes vía Gemini API
-├── netlify.toml                # Deploy config (Netlify)
-├── BRAND_BRIEF.md              # Brand guidelines + prompts originales
-└── NANO_BANANA_PROMPTS.md      # Prompts para imágenes (paleta Value Data)
+closr-web/
+├── index.html                  # Landing
+├── whatsapp.html               # /whatsapp  (SEO: agente de IA para WhatsApp Business)
+├── instagram.html              # /instagram (SEO + lista de espera, en aprobación de Meta)
+├── messenger.html              # /messenger (SEO + lista de espera, próximamente)
+├── privacidad.html, terminos.html, eliminacion-datos.html, success.html
+├── styles.css                  # Paleta + componentes (bloque "v2" al final)
+├── script.js                   # Reveal, counters, chat demo, formulario
+├── config.js, consent.js, attribution.js, tags.js   # Medición (no tocar sin leer sus comentarios)
+├── images/
+│   ├── icons-v1.svg            # Sprite: marcas (Simple Icons) + interfaz (Tabler)
+│   └── v2/                     # Fotos WebP generadas con Codex, OG 1200x630 e ícono 512
+└── netlify.toml                # Deploy, cache y rutas (/whatsapp, /instagram, /messenger)
 ```
+
+## Estado de los canales (ESTADO-CANAL)
+
+El sitio dice el estado real de cada canal. Al 13-nov-2026: WhatsApp **disponible**;
+Instagram **en aprobación de Meta** (App Review enviada el 30-oct); Messenger **próximamente**
+(no incluido en esa revisión). Cuando cambie, buscar `ESTADO-CANAL` en los HTML y actualizar:
+el strip de canales y la sección `#canales` de `index.html`, la nota del plan Crece, la pregunta
+del FAQ (visible y JSON-LD) y la cabecera de `instagram.html` / `messenger.html`.
+
+## Cache: versionar al cambiar CSS, JS, imágenes o íconos
+
+`netlify.toml` sirve `*.css`, `*.js`, `*.svg` e `/images/*` como `immutable` por un año.
+Por eso `styles.css` y `script.js` se cargan con `?v=AAAAMMDD` en **todos** los HTML: al
+cambiarlos, subir la versión. Las imágenes y el sprite cambian de **nombre** (`icons-v2.svg`).
+
+## Imágenes
+
+Desde nov-2026 las fotos son fotografía realista generada con Codex (`codex exec -m gpt-6-astra`),
+sin texto ni pantallas: todo texto e interfaz va en HTML/CSS (antes las imágenes traían texto
+con errores). Se exportan a WebP en `images/v2/`. Las imágenes antiguas de `images/*.png`
+quedan solo como referencia.
 
 ## Desarrollo local
 
@@ -161,13 +177,13 @@ Si más adelante querés bypass de Netlify, podés cambiar el `action` del form 
 - ✅ Lang `es-CL`
 - ✅ Favicon SVG
 - ✅ Imagen OG real (`images/og_image.png`)
-- ⚠️ Pendiente: `sitemap.xml` + `robots.txt` cuando se decida el dominio definitivo
+- ✅ `sitemap.xml` + `robots.txt` (closr.cl), páginas por canal con BreadcrumbList y FAQPage
 
 ## Performance
 
 - Sin build step → primera carga directa
 - Fuentes con `preconnect`
-- Imágenes `loading="lazy"` excepto el hero
+- Imágenes WebP con `loading="lazy"`, salvo el hero, que se precarga con `srcset`
 - Cache headers de 1 año para assets estáticos (`netlify.toml`)
 - HTML siempre revalidado (no se cachea agresivamente)
 - HTTPS automático via Netlify

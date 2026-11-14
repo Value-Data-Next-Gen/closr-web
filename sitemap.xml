@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  closr es una landing de una sola página. Los fragmentos (#precio, #casos, …) NO son
-  URLs para Google: se ignoran en el sitemap, así que listarlos solo mete ruido.
-  Antes había 6 entradas de las cuales 5 eran anclas, y una de ellas (#como-funciona)
-  ni siquiera existía en el HTML.
+  closr: landing + páginas por canal + legales. Los fragmentos (#precio, #casos, …) NO son
+  URLs para Google, así que no van acá.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://closr.cl/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url><loc>https://closr.cl/privacidad</loc></url>
+  <url><loc>https://closr.cl/whatsapp</loc><lastmod>2026-11-13</lastmod><priority>0.9</priority></url>
+  <url><loc>https://closr.cl/instagram</loc><lastmod>2026-11-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://closr.cl/messenger</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
+  <url><loc>https://closr.cl/precios</loc><lastmod>2026-11-13</lastmod><priority>0.9</priority></url>
+  <url><loc>https://closr.cl/gimnasios</loc><lastmod>2026-11-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://closr.cl/motos-automotriz</loc><lastmod>2026-11-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://closr.cl/closr-vs-vambe</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
+  <url><loc>https://closr.cl/generador-link-whatsapp</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
+  <url><loc>https://closr.cl/privacidad</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://closr.cl/terminos</loc></url>
   <url><loc>https://closr.cl/eliminacion-datos</loc></url>
 </urlset>

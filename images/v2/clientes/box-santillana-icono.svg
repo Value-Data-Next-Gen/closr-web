@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+     width="512" height="512" role="img" aria-label="Box Santillana">
+  <title>Box Santillana</title>
+  <rect width="512" height="512" rx="103.9" fill="#111214"/>
+  <g transform="translate(97.3 98.4) scale(0.6887)">
+    <polygon fill="#4084F0" points="455.7,118.0 375.3,161.8 229.4,80.3 80.5,156.1 310.6,287.1 235.5,325.2 0.5,191.5 0.5,120.6 230.6,0.0"/>
+    <polygon fill="#EF333A" points="460.9,263.6 460.9,336.3 230.0,457.7 0.0,336.6 84.4,290.4 236.1,374.1 365.5,307.0 365.5,288.8 159.4,170.3 229.3,134.0"/>
+  </g>
+</svg>

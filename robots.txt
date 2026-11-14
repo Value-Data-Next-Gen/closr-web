@@ -1,4 +1,22 @@
+# closr.cl · robots.txt
+# Abierto a buscadores y a los buscadores con IA (ChatGPT, Claude, Perplexity, Gemini).
+# Resumen del sitio para modelos de lenguaje: https://closr.cl/llms.txt
+
 User-agent: *
+Allow: /
+Disallow: /success.html
+
+# Buscadores con IA, permitidos de forma explícita
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
 Allow: /
 Disallow: /success.html
 
