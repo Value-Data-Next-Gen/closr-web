@@ -118,6 +118,33 @@
   to = "/messenger.html"
   status = 200
 
+# Páginas SEO (v2e, 13-nov-2026): precios, rubros, comparativa y herramienta gratis.
+# Sin la regla, /precios daría 404 (ya no hay comodín) aunque exista precios.html.
+[[redirects]]
+  from = "/precios"
+  to = "/precios.html"
+  status = 200
+
+[[redirects]]
+  from = "/gimnasios"
+  to = "/gimnasios.html"
+  status = 200
+
+[[redirects]]
+  from = "/motos-automotriz"
+  to = "/motos-automotriz.html"
+  status = 200
+
+[[redirects]]
+  from = "/closr-vs-vambe"
+  to = "/closr-vs-vambe.html"
+  status = 200
+
+[[redirects]]
+  from = "/generador-link-whatsapp"
+  to = "/generador-link-whatsapp.html"
+  status = 200
+
 # Antes había acá un comodín /* -> /index.html con status 200: cualquier URL inexistente
 # devolvía la portada con 200 y Google la veía como contenido duplicado ("soft 404").
 # Sin el comodín, Netlify sirve /404.html con status 404 para lo que no exista.
