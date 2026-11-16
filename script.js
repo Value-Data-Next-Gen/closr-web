@@ -555,14 +555,26 @@
       window.gtag('event', nombre, Object.assign({ transport_type: 'beacon' }, params || {}));
     }
   };
+  // Meta Pixel: eventos personalizados (trackCustom), no "Lead", para no inflar los leads.
+  // Sirven para crear conversiones personalizadas en el Administrador de eventos y optimizar
+  // los anuncios a clics hacia la prueba. Solo se envían si el píxel cargó (cookies aceptadas
+  // y META_PIXEL_ID con valor en config.js).
+  const meta = (nombre, params) => {
+    if (typeof window.fbq === 'function' && window.CLOSR_CONFIG && window.CLOSR_CONFIG.META_PIXEL_ID) {
+      window.fbq('trackCustom', nombre, params || {});
+    }
+  };
   document.addEventListener('click', (e) => {
     const a = e.target.closest ? e.target.closest('a') : null;
     if (!a) return;
     const href = a.getAttribute('href') || '';
     if (href.indexOf('app.closr.cl/register') !== -1) {
-      ga('clic_registro', { ubicacion: a.closest('section, header, footer')?.id || a.closest('section, header, footer')?.className || 'otro' });
+      const ubicacion = a.closest('section, header, footer')?.id || a.closest('section, header, footer')?.className || 'otro';
+      ga('clic_registro', { ubicacion });
+      meta('ClicPruebaGratis', { ubicacion });
     } else if (a.classList.contains('whatsapp-fab') || href.indexOf('wa.me/') !== -1) {
       ga('clic_whatsapp');
+      meta('ClicWhatsApp');
     }
   });
   document.querySelectorAll('form[name="closr-lista-espera"]').forEach((f) => {
