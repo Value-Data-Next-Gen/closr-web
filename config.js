@@ -27,6 +27,8 @@ window.CLOSR_CONFIG = {
   GA_ID: 'G-54CJCSH83N',
   ADS_ID: '',
   ADS_LEAD_LABEL: '',
-  META_PIXEL_ID: '',
+  // Píxel de Meta: conjunto de datos "closr.cl sitio web" del portafolio comercial "Closr ai",
+  // creado el 16-nov-2026. No usar los conjuntos de Santillana Hyrox (es un cliente).
+  META_PIXEL_ID: '1149132147696581',
   TIKTOK_PIXEL_ID: '',
 };
